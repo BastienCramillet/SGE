@@ -1,4 +1,4 @@
-SE - Simple Engine
+SGE - Simple Game Engine
 
 Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
