@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sounds>
+	<sound id="saut robot" description="son joué lors d'un saut de la part du robot" url="SautRobot.wav" />
+	<sound id="shuriken 1" description="son joué lors de la collision d'un shuriken avec quelque chose" url="shuriken/Shuriken1.wav" />
+	<sound id="shuriken 2" description="son joué lors de la collision d'un shuriken avec quelque chose" url="shuriken/Shuriken2.wav" />
+	<sound id="shuriken 3" description="son joué lors de la collision d'un shuriken avec quelque chose" url="shuriken/Shuriken3.wav" />
+	<sound id="explosion" description="Un sond d'explosion" url="Explosion.wav" />
+</sounds>

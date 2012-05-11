@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="2D Game Engine" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Static">
+				<Option output="libsge-s-d" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj\Debug\" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-DSFML_STATIC" />
+				</Compiler>
+				<Linker>
+					<Add option="-lsfml-audio-s-d" />
+					<Add option="-lsfml-network-s-d" />
+					<Add option="-lsfml-graphics-s-d" />
+					<Add option="-lsfml-window-s-d" />
+					<Add option="-lsfml-system-s-d" />
+					<Add option="-static" />
+					<Add option="-lbox2d-s-d" />
+					<Add option="-ltinyxml-s-d" />
+				</Linker>
+			</Target>
+			<Target title="Release Static">
+				<Option output="libsge-s" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj\Release\" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-DSFML_STATIC" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lsfml-audio-s" />
+					<Add option="-lsfml-network-s" />
+					<Add option="-lsfml-graphics-s" />
+					<Add option="-lsfml-window-s" />
+					<Add option="-lsfml-system-s" />
+					<Add option="-static" />
+					<Add option="-lbox2d-s" />
+					<Add option="-ltinyxml-s" />
+				</Linker>
+			</Target>
+			<Target title="Debug Dynamic">
+				<Option output="sge-d" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-lsfml-audio-d" />
+					<Add option="-lsfml-network-d" />
+					<Add option="-lsfml-graphics-d" />
+					<Add option="-lsfml-window-d" />
+					<Add option="-lsfml-system-d" />
+					<Add option="-lbox2d-d" />
+					<Add option="-ltinyxml-d" />
+				</Linker>
+			</Target>
+			<Target title="Release Dynamic">
+				<Option output="sge" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lsfml-audio" />
+					<Add option="-lsfml-network" />
+					<Add option="-lsfml-graphics" />
+					<Add option="-lsfml-window" />
+					<Add option="-lsfml-system" />
+					<Add option="-lbox2d" />
+					<Add option="-ltinyxml" />
+				</Linker>
+			</Target>
+			<Target title="App test">
+				<Option output="2D Game Engine" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-DSFML_STATIC" />
+				</Compiler>
+				<Linker>
+					<Add option="-lsfml-audio-s" />
+					<Add option="-lsfml-network-s" />
+					<Add option="-lsfml-graphics-s" />
+					<Add option="-lsfml-window-s" />
+					<Add option="-lsfml-system-s" />
+					<Add option="-static" />
+					<Add option="-lbox2d-s" />
+					<Add option="-ltinyxml-s" />
+				</Linker>
+			</Target>
+			<Target title="App test debug">
+				<Option output="2D Game Engine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-DSFML_STATIC" />
+					<Add option="-DD_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-lsfml-audio-s-d" />
+					<Add option="-lsfml-network-s-d" />
+					<Add option="-lsfml-graphics-s-d" />
+					<Add option="-lsfml-window-s-d" />
+					<Add option="-lsfml-system-s-d" />
+					<Add option="-static" />
+					<Add option="-lbox2d-s-d" />
+					<Add option="-ltinyxml-s-d" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="F:\Developpement\Travaux\Prog\2DGameEngine\include" />
+			<Add directory="F:\Developpement\SFML_git\include" />
+			<Add directory="F:\Developpement\Box2D_v2.2.1\Box2D" />
+			<Add directory="F:\Developpement\Box2D_v2.2.1" />
+			<Add directory="F:\Developpement\tinyxml" />
+		</Compiler>
+		<Linker>
+			<Add directory="F:\Developpement\SFML_git\lib" />
+			<Add directory="F:\Developpement\Box2D_v2.2.1\lib" />
+			<Add directory="F:\Developpement\tinyxml\lib" />
+		</Linker>
+		<Unit filename="..\..\include\Constants.hpp" />
+		<Unit filename="..\..\include\Core\DebugNew.hpp" />
+		<Unit filename="..\..\include\Core\DebugNewOff.hpp" />
+		<Unit filename="..\..\include\Core\File.hpp" />
+		<Unit filename="..\..\include\Core\MemoryManager.hpp" />
+		<Unit filename="..\..\include\Core\Position.hpp" />
+		<Unit filename="..\..\include\Core\Singleton.hpp" />
+		<Unit filename="..\..\include\Core\Thread.hpp" />
+		<Unit filename="..\..\include\Elements\Drawable.hpp" />
+		<Unit filename="..\..\include\Elements\DynamicObject.hpp" />
+		<Unit filename="..\..\include\Elements\Element.hpp" />
+		<Unit filename="..\..\include\Elements\Physical.hpp" />
+		<Unit filename="..\..\include\Elements\Playable.hpp" />
+		<Unit filename="..\..\include\Engines.hpp" />
+		<Unit filename="..\..\include\Engines\AudioEngine.hpp" />
+		<Unit filename="..\..\include\Engines\Engine.hpp" />
+		<Unit filename="..\..\include\Engines\EngineEvent.hpp" />
+		<Unit filename="..\..\include\Engines\GraphicEngine.hpp" />
+		<Unit filename="..\..\include\Engines\IGraphicEngine.hpp" />
+		<Unit filename="..\..\include\Engines\NetworkEngine.hpp" />
+		<Unit filename="..\..\include\Engines\PhysicEngine.hpp" />
+		<Unit filename="..\..\include\Engines\WindowEngine.hpp" />
+		<Unit filename="..\..\include\Managers\Manager.hpp" />
+		<Unit filename="..\..\include\Managers\Settings.hpp" />
+		<Unit filename="..\..\include\Map.hpp" />
+		<Unit filename="..\..\include\Resources\AudioResource.hpp" />
+		<Unit filename="..\..\include\Resources\GraphicResource.hpp" />
+		<Unit filename="..\..\include\Resources\Resource.hpp" />
+		<Unit filename="..\..\include\Resources\Resource.inl" />
+		<Unit filename="..\..\include\Resources\ResourceManager.hpp" />
+		<Unit filename="..\..\include\Resources\ResourceManager.inl" />
+		<Unit filename="..\..\include\Resources\ResourceSettings.hpp" />
+		<Unit filename="..\..\include\Ressources.hpp" />
+		<Unit filename="..\..\include\Tools\Log.hpp" />
+		<Unit filename="..\..\include\Tools\Log.inl" />
+		<Unit filename="..\..\include\core\Singleton.inl" />
+		<Unit filename="..\..\include\network\Client.hpp" />
+		<Unit filename="..\..\include\network\Server.hpp" />
+		<Unit filename="..\..\include\tools\Log.inl" />
+		<Unit filename="..\..\src\Elements\Drawable.cpp" />
+		<Unit filename="..\..\src\Elements\DynamicObject.cpp" />
+		<Unit filename="..\..\src\Elements\Physical.cpp" />
+		<Unit filename="..\..\src\Elements\Playable.cpp" />
+		<Unit filename="..\..\src\Engines\AudioEngine.cpp" />
+		<Unit filename="..\..\src\Engines\GraphicEngine.cpp" />
+		<Unit filename="..\..\src\Engines\PhysicEngine.cpp" />
+		<Unit filename="..\..\src\Engines\WindowEngine.cpp" />
+		<Unit filename="..\..\src\Managers\Settings.cpp" />
+		<Unit filename="..\..\src\Map.cpp" />
+		<Unit filename="..\..\src\Network\Server.cpp" />
+		<Unit filename="..\..\src\Tools\Log.cpp" />
+		<Unit filename="..\..\src\core\File.cpp" />
+		<Unit filename="..\..\src\core\MemoryManager.cpp" />
+		<Unit filename="..\..\src\main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

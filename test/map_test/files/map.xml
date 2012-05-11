@@ -1,0 +1,30 @@
+<!DOCTYPE CARTE>
+<map width="800" height="600" name="Toxicity">
+	<editorsData>
+		<layouts>
+			<layout id="-3" name="3"/>
+			<layout id="-2" name="2"/>
+			<layout id="-1" name="1"/>
+		</layouts>
+	</editorsData>
+	<load>
+		<objects>
+			<object id="grand monstre avec bombe"/>
+			<object id="caisse"/>
+			<object id="petit monstre avec bombe"/>
+		</objects>
+		<musics/>
+	</load>
+	<items>
+		<objects>
+			<object isOnBackground="false" x="350" y="250" rotation="0" isDestructible="false" resistance="1" id="caisse" imageOnCreateID="caisse 2" isMovable="true" density="1" layout="-2" name="" friction="1"/>
+			<object isOnBackground="false" x="450" y="350" rotation="0" isDestructible="false" resistance="1" id="caisse" imageOnCreateID="caisse 2" isMovable="true" density="1" layout="-2" name="" friction="1"/>
+			<object isOnBackground="false" x="387" y="283" rotation="0" isDestructible="true" resistance="100" id="petit monstre avec bombe" imageOnCreateID="monstre avec bombe droite" isMovable="true" density="1" layout="-1" name="" friction="1"/>
+			<object isOnBackground="false" x="350" y="350" rotation="0" isDestructible="false" resistance="1" id="caisse" imageOnCreateID="caisse 1" isMovable="true" density="1" layout="-2" name="" friction="1"/>
+			<object isOnBackground="false" x="450" y="250" rotation="0" isDestructible="false" resistance="1" id="caisse" imageOnCreateID="caisse 1" isMovable="true" density="1" layout="-2" name="" friction="1"/>
+			<object isOnBackground="false" x="393" y="246" rotation="0" isDestructible="true" resistance="100" id="grand monstre avec bombe" imageOnCreateID="monstre avec bombe droite" isMovable="true" density="1" layout="-3" name="" friction="1"/>
+		</objects>
+		<areas/>
+	</items>
+</map>
+
