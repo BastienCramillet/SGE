@@ -27,7 +27,7 @@ namespace sg
         return *m_currentSprite;
     }
 
-    void Drawable::setCurrentSprite (std::string& id)
+    void Drawable::setCurrentSprite (const std::string &id)
     {
         m_currentSprite = m_mSprite[id];
     }
@@ -38,7 +38,7 @@ namespace sg
     }
 
 
-    void Drawable::addSprite(std::string& url, sf::Sprite* sprite)
+    void Drawable::addSprite(const std::string &url, sf::Sprite* sprite)
     {
         m_mSprite[url] = sprite;
     }

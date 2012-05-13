@@ -25,46 +25,54 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef DRAWABLE_HPP_INCLUDED
-#define DRAWABLE_HPP_INCLUDED
+#ifndef FRAME_MANAGER_HPP_INCLUDED
+#define FRAME_MANAGER_HPP_INCLUDED
 
 /*!
-*   \file Drawable.cpp
-*   \brief The drawable object header
+*   \file
+*   \brief
 *   \version 0.1
-*   \author Bastien (Bigz) Cramillet
 */
 
-#include <SFML/Graphics.hpp>
+#include <string>
+#include <vector>
 
 namespace sg
 {
-    class Drawable
+
+    class Frame;
+
+
+    class FrameManager
     {
+
         public :
 
-            /*!
-            *   \brief Constructor
+            FrameManager();
+
+            ~FrameManager();
+
+            /**
+              Add some frame into the frame manager
             */
-            Drawable ();
+            int addFrame(Frame *frame);
 
-            /*!
-            *   \brief Destructor
+            /**
+              Unload some frame. It won't change ID's of previous loaded frames
             */
-            ~Drawable ();
+            void unloadFrame(int frameID);
 
-            const sf::Sprite& getCurrentSprite() const;
-
-            void setCurrentSprite (const std::string& id);
-            void setPosition(sf::Vector2f position);
-
-            void addSprite (const std::string& id, sf::Sprite* drawable);
 
         protected :
 
-            std::map<std::string, sf::Sprite*> m_mSprite;
-            sf::Sprite* m_currentSprite;
-    };
-}
 
-#endif // DRAWABLE_HPP_INCLUDED
+        private :
+
+            /**
+                The managed frames
+            */
+            std::vector<Frame *> m_frames;
+
+    };
+} // namespace sg
+#endif // FRAME_MANAGER_HPP_INCLUDED

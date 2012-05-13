@@ -174,19 +174,3 @@ inline Log::LogLine& Log::LogLine::operator<<(const std::multiset<T> &multiset) 
     return addSpace();
 }
 
-
-
-
-// spécialisations spéciales Qt, à voir à l'usage ...
-#ifdef QT_VERSION
-
-class QString;
-
-// spécialisation pour QString
-template<>
-inline Log::LogLine& Log::LogLine::operator<< <QString>(const QString &s) {
-    *m_message << '"' << s.toStdString() << '"';
-    return addSpace();
-}
-
-#endif

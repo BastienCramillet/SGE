@@ -38,8 +38,8 @@
 
 #include <Core/Singleton.hpp>
 #include <SFML/Graphics.hpp>
-#include <resources/ResourceManager.hpp>
-#include <resources/GraphicResource.hpp>
+#include <Resources/ResourceManager.hpp>
+#include <Resources/GraphicResource.hpp>
 
 
 namespace sg
@@ -68,7 +68,7 @@ namespace sg
 
             void draw (sf::RenderTarget& target, sf::Sprite& sprite);
 
-            sf::Sprite* getSprite(std::string& url);
+            sf::Sprite* getSprite(const std::string& url);
 
         private :
 

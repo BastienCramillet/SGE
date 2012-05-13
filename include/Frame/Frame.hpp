@@ -25,46 +25,31 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef DRAWABLE_HPP_INCLUDED
-#define DRAWABLE_HPP_INCLUDED
+#ifndef FRAME_HPP_INCLUDED
+#define FRAME_HPP_INCLUDED
 
 /*!
-*   \file Drawable.cpp
-*   \brief The drawable object header
+*   \file
+*   \brief
 *   \version 0.1
-*   \author Bastien (Bigz) Cramillet
 */
-
-#include <SFML/Graphics.hpp>
 
 namespace sg
 {
-    class Drawable
+    class Frame
     {
         public :
 
-            /*!
-            *   \brief Constructor
-            */
-            Drawable ();
+            Frame();
 
-            /*!
-            *   \brief Destructor
-            */
-            ~Drawable ();
+            virtual ~Frame();
 
-            const sf::Sprite& getCurrentSprite() const;
-
-            void setCurrentSprite (const std::string& id);
-            void setPosition(sf::Vector2f position);
-
-            void addSprite (const std::string& id, sf::Sprite* drawable);
 
         protected :
 
-            std::map<std::string, sf::Sprite*> m_mSprite;
-            sf::Sprite* m_currentSprite;
-    };
-}
 
-#endif // DRAWABLE_HPP_INCLUDED
+        private :
+
+    };
+} // namespace sg
+#endif // FRAME_HPP_INCLUDED

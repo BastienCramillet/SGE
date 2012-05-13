@@ -22,49 +22,53 @@
 *
 *    3. This notice may not be removed or altered from any source
 *   distribution.
+
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef DRAWABLE_HPP_INCLUDED
-#define DRAWABLE_HPP_INCLUDED
+#include "../../include/Frame/Frame.hpp"
+#include "../../include/Frame/FrameManager.hpp"
 
-/*!
-*   \file Drawable.cpp
-*   \brief The drawable object header
-*   \version 0.1
-*   \author Bastien (Bigz) Cramillet
-*/
+#include "../../include/Tools/Log.hpp"
 
-#include <SFML/Graphics.hpp>
+#include "ObjectXmlLoader.hpp"
+#include "ImageXmlLoader.hpp"
 
-namespace sg
-{
-    class Drawable
-    {
-        public :
 
-            /*!
-            *   \brief Constructor
-            */
-            Drawable ();
+namespace sg {
 
-            /*!
-            *   \brief Destructor
-            */
-            ~Drawable ();
 
-            const sf::Sprite& getCurrentSprite() const;
+    FrameManager::FrameManager() {
 
-            void setCurrentSprite (const std::string& id);
-            void setPosition(sf::Vector2f position);
+    }
 
-            void addSprite (const std::string& id, sf::Sprite* drawable);
 
-        protected :
+    FrameManager::~FrameManager() {
+        Log::i("FrameManager") << "Deleting all frames...";
+        for (unsigned int i = 0; i < m_frames.size(); ++i)
+        {
+            unloadFrame(i);
+        }
+        m_frames.clear();
 
-            std::map<std::string, sf::Sprite*> m_mSprite;
-            sf::Sprite* m_currentSprite;
-    };
+        ImageXmlLoader::kill();
+        ObjectXmlLoader::kill();
+    }
+
+
+    int FrameManager::addFrame(Frame *frame) {
+        Log::i("FrameManager") << "Adding a new frame";
+        m_frames.push_back(frame);
+        return m_frames.size() - 1;
+    }
+
+
+    void FrameManager::unloadFrame(int frameID) {
+        Log::v("FrameManager") << "Unloading frame #" << frameID;
+        if (m_frames[frameID] != 0) {
+            delete m_frames[frameID];
+            m_frames[frameID] = 0;
+        }
+    }
+
 }
-
-#endif // DRAWABLE_HPP_INCLUDED

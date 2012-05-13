@@ -25,46 +25,36 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef DRAWABLE_HPP_INCLUDED
-#define DRAWABLE_HPP_INCLUDED
+#include "../../include/Frame/GameFrame.hpp"
 
-/*!
-*   \file Drawable.cpp
-*   \brief The drawable object header
-*   \version 0.1
-*   \author Bastien (Bigz) Cramillet
-*/
+#include "../../include/Level.hpp"
 
-#include <SFML/Graphics.hpp>
+#include "../../include/Tools/Log.hpp"
 
-namespace sg
-{
-    class Drawable
-    {
-        public :
+namespace sg {
 
-            /*!
-            *   \brief Constructor
-            */
-            Drawable ();
 
-            /*!
-            *   \brief Destructor
-            */
-            ~Drawable ();
+    GameFrame::GameFrame() : Frame(), m_level(0) {
+        Log::d("GameFrame") << "Creation of an empty game frame";
+    }
 
-            const sf::Sprite& getCurrentSprite() const;
+    GameFrame::~GameFrame() {
+        Log::v("GameFrame") << "Deleting game frame";
+        if (m_level) {
+            delete m_level;
+        }
+    }
 
-            void setCurrentSprite (const std::string& id);
-            void setPosition(sf::Vector2f position);
 
-            void addSprite (const std::string& id, sf::Sprite* drawable);
+    void GameFrame::loadLevel(const std::string &levelFile) {
+        Log::d("GameFrame") << "Loading some level...";
+        m_level = new Level();
+        m_level->load(levelFile);
+    }
 
-        protected :
 
-            std::map<std::string, sf::Sprite*> m_mSprite;
-            sf::Sprite* m_currentSprite;
-    };
+    void GameFrame::update() {
+        m_level->update();
+    }
+
 }
-
-#endif // DRAWABLE_HPP_INCLUDED

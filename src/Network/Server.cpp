@@ -1,4 +1,4 @@
-#include <network/Server.hpp>
+#include <Network/Server.hpp>
 #include <iostream>
 
 namespace sg

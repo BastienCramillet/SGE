@@ -35,8 +35,8 @@
  * \version 1.0
  */
 
-#include "resources/Resource.hpp"
-#include "resources/ResourceManager.hpp"
+#include "Resources/Resource.hpp"
+#include "Resources/ResourceManager.hpp"
 
 
 #endif // RESSOURCES_HPP_INCLUDED

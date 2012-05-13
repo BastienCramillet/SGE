@@ -25,46 +25,50 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef DRAWABLE_HPP_INCLUDED
-#define DRAWABLE_HPP_INCLUDED
+#ifndef GAME_FRAME_HPP_INCLUDED
+#define GAME_FRAME_HPP_INCLUDED
 
 /*!
-*   \file Drawable.cpp
-*   \brief The drawable object header
+*   \file
+*   \brief
 *   \version 0.1
-*   \author Bastien (Bigz) Cramillet
 */
 
-#include <SFML/Graphics.hpp>
+#include <string>
+#include <functional>
+
+#include "Frame.hpp"
 
 namespace sg
 {
-    class Drawable
+    class Level;
+
+    class GameFrame : public Frame
     {
         public :
 
-            /*!
-            *   \brief Constructor
+            GameFrame();
+
+            ~GameFrame();
+
+            /**
+              Load the given level
             */
-            Drawable ();
+            void loadLevel(const std::string &levelFile);
 
-            /*!
-            *   \brief Destructor
+            /**
+                Update the game frame (refresh object positions...)
             */
-            ~Drawable ();
+            void update();
 
-            const sf::Sprite& getCurrentSprite() const;
-
-            void setCurrentSprite (const std::string& id);
-            void setPosition(sf::Vector2f position);
-
-            void addSprite (const std::string& id, sf::Sprite* drawable);
 
         protected :
 
-            std::map<std::string, sf::Sprite*> m_mSprite;
-            sf::Sprite* m_currentSprite;
-    };
-}
 
-#endif // DRAWABLE_HPP_INCLUDED
+        private :
+
+            Level *m_level;
+
+    };
+} // namespace sg
+#endif // GAME_FRAME_HPP_INCLUDED

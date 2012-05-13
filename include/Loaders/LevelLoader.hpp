@@ -1,8 +1,9 @@
 /*------------------------------------------------------------------------------
 *
-* SGE - Simple Game Engine
+* SE - Simple Engine
 *
-* Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+* Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -25,46 +26,37 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef DRAWABLE_HPP_INCLUDED
-#define DRAWABLE_HPP_INCLUDED
 
 /*!
-*   \file Drawable.cpp
-*   \brief The drawable object header
-*   \version 0.1
-*   \author Bastien (Bigz) Cramillet
+*   \file MapLoader.hpp
+*   \version 1.0
 */
 
-#include <SFML/Graphics.hpp>
+#ifndef MAPLOADER_HPP_INCLUDED
+#define MAPLOADER_HPP_INCLUDED
 
-namespace sg
-{
-    class Drawable
-    {
-        public :
 
-            /*!
-            *   \brief Constructor
-            */
-            Drawable ();
+#include <string>
 
-            /*!
-            *   \brief Destructor
-            */
-            ~Drawable ();
+namespace sg {
 
-            const sf::Sprite& getCurrentSprite() const;
+    class Level;
 
-            void setCurrentSprite (const std::string& id);
-            void setPosition(sf::Vector2f position);
 
-            void addSprite (const std::string& id, sf::Sprite* drawable);
+    class LevelLoader {
 
-        protected :
+    public :
 
-            std::map<std::string, sf::Sprite*> m_mSprite;
-            sf::Sprite* m_currentSprite;
+        /**
+          Load some map and the attached resources
+        */
+        static void loadLevel(const std::string &filePath, Level *level);
+
+
     };
+
 }
 
-#endif // DRAWABLE_HPP_INCLUDED
+#endif
+
+

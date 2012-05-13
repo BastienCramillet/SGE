@@ -4,6 +4,8 @@
 #include <Core/Singleton.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "GameFrame.hpp"
+
 namespace sg
 {
     class WindowEngine : public Singleton<WindowEngine>
@@ -17,6 +19,9 @@ namespace sg
             void createWindow ();
 
             void run ();
+
+            // test
+            void run(GameFrame *gf);
 
         private :
 

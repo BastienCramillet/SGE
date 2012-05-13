@@ -93,7 +93,7 @@ namespace sg
         target.draw(sprite);
     }
 
-    sf::Sprite* GraphicEngine::getSprite(std::string& url)
+    sf::Sprite* GraphicEngine::getSprite(const std::string &url)
     {
         //const sf::Texture* img = m_resourceManager.getResource(url);
         sf::Sprite* sprite = new sf::Sprite(*(m_resourceManager.getResource(url)));

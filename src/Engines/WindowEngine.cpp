@@ -59,6 +59,7 @@ namespace sg
         obj->addSound(urls, sg::AudioEngine::getInstance().getSound(urls));
         obj->addBody(sg::PhysicEngine::getInstance().createDynamicBox(500, 100, 57, 87));
 
+        //sg::PhysicEngine::getInstance().start();
 
         sf::Event event;
         while (m_window->isOpen())
@@ -76,6 +77,7 @@ namespace sg
                 if (event.key.code == sf::Keyboard::Left)   GraphicEngine::getInstance().moveView(sf::Vector2f(-50,0));
                 if (event.key.code == sf::Keyboard::Right)  GraphicEngine::getInstance().moveView(sf::Vector2f(50,0));
             }
+
             m_window->clear();
             m_window->setView(GraphicEngine::getInstance().getView());
 
@@ -83,12 +85,52 @@ namespace sg
             obj->update();
             GraphicEngine::getInstance().draw(*m_window);
 
-
-
             m_window->display();
         }
         delete dobj;
         delete obj;
+    }
+
+
+
+    void WindowEngine::run(GameFrame *gf) {
+
+        sg::PhysicEngine::getInstance().start();
+/*
+        std::string url = "data/bouche_incendie.png";
+        sg::DynamicObject* obj = new sg::DynamicObject();
+        obj->addSprite(url, sg::GraphicEngine::getInstance().getSprite(url));
+        obj->setCurrentSprite(url);
+        obj->addBody(sg::PhysicEngine::getInstance().createDynamicBox(50, 750, 57, 87));
+*/
+
+        sf::Event event;
+        while (m_window->isOpen())
+        {
+            sf::Vector3f pos = sf::Vector3f(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y,0);
+            // Get the keyboard and mouse events
+            while (m_window->pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                {
+                    m_window->close();
+                }
+                if (event.key.code == sf::Keyboard::Up)     GraphicEngine::getInstance().moveView(sf::Vector2f(0,-50));
+                if (event.key.code == sf::Keyboard::Down)   GraphicEngine::getInstance().moveView(sf::Vector2f(0,50));
+                if (event.key.code == sf::Keyboard::Left)   GraphicEngine::getInstance().moveView(sf::Vector2f(-50,0));
+                if (event.key.code == sf::Keyboard::Right)  GraphicEngine::getInstance().moveView(sf::Vector2f(50,0));
+            }
+
+            m_window->clear();
+            m_window->setView(GraphicEngine::getInstance().getView());
+
+            gf->update();
+
+            GraphicEngine::getInstance().draw(*m_window);
+
+            m_window->display();
+        }
+
     }
 
 

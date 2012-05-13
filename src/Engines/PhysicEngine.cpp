@@ -83,6 +83,7 @@ namespace sg
 
     void PhysicEngine::run ()
     {
+        Log::d("PhysicEngine") << "Start running";
         sf::Clock timer;
         while (m_running)
         {

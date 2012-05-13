@@ -1,6 +1,10 @@
 #include <Engines/NetworkEngine.hpp>
 
-NetworkEngine::NetworkEngine ()
-{
+namespace sg {
+
+    NetworkEngine::NetworkEngine ()
+    {
+
+    }
 
 }

@@ -3,6 +3,8 @@
 
 #include <Core/Singleton.hpp>
 
+#include <string>
+
 namespace sg
 {
     class NetworkEngine : public Singleton<NetworkEngine>

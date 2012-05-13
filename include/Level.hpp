@@ -26,103 +26,115 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef MAP_HPP_INCLUDED
-#define MAP_HPP_INCLUDED
+#ifndef Level_HPP_INCLUDED
+#define Level_HPP_INCLUDED
 
 /*!
- * \file Map.hpp
- * \brief Map class header
+ * \file Level.hpp
+ * \brief Level class header
  * \version 1.0
  */
 
 
 #include <string>
-
+#include <vector>
 
 namespace sg {
 
+    class DynamicObject;
+
     /*!
-    *   \class Map
-    *   \brief Some map of the game
+    *   \class Level
+    *   \brief Some Level of the game
     */
-    class Map {
+    class Level {
+
+        friend class LevelLoader;
 
     public :
 
 
         /*!
-            \brief Build an empty map, with nothing...
+            \brief Build an empty Level, with nothing...
         */
-        Map();
+        Level();
 
+        ~Level();
 
         /*!
-            \brief Build the map and load the given file
+            \brief Build the Level and load the given file
 
             \see load(const std::string &filePath);
         */
-        Map(const std::string &filePath);
+        Level(const std::string &filePath);
 
 
         /*!
-            \brief Load the map from a file
+            \brief Load the Level from a file
 
-            \param filePath Name of the map file, with full path
+            \param filePath Name of the Level file, with full path
 
-            \warning This method will load the resource associated to the map, so it can take a few time !
+            \warning This method will load the resource associated to the Level, so it can take a few time !
         */
         void load(const std::string &filePath);
 
 
         /*!
-            \brief Clear the map and set default value for attributs
+            \brief Clear the Level and set default value for attributs
         */
         void clear();
 
 
         /*!
-            \brief Get the map name
+            \brief Get the Level name
 
-            \return Map name
+            \return Level name
         */
         const std::string& getName() const;
 
 
         /*!
-            \brief Get the map height
+            \brief Get the Level height
 
-            \return Map height
+            \return Level height
         */
         int getHeight() const;
 
 
         /*!
-            \brief Get the map width
+            \brief Get the Level width
 
-            \return Map width
+            \return Level width
         */
         int getWidth() const;
 
         /*!
-            \brief Is the map loaded ?
+            \brief Is the Level loaded ?
 
-            \return True if the map is loaded, false otherwise
+            \return True if the Level is loaded, false otherwise
         */
         bool isLoaded() const;
 
 
+        /*!
+            \brief Update object locations
+        */
+        void update();
+
+
     protected :
 
-        bool m_isLoaded;        //!< Map is loaded ?
+        bool m_isLoaded;                            //!< Level is loaded ?
 
-        std::string m_name;     //!< Name of the map
+        std::string m_name;                         //!< Name of the Level
 
-        int m_height;           //!< Height of the map
+        int m_height;                               //!< Height of the Level
 
-        int m_width;            //!< Width of the map
+        int m_width;                                //!< Width of the Level
 
+        std::vector<DynamicObject *> m_vDynamics;   //!< Level dynamics elements
     };
 
 }
 
-#endif // MAP_HPP_INCLUDED
+#endif // Level_HPP_INCLUDED
