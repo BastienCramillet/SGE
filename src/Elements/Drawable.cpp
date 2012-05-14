@@ -42,4 +42,14 @@ namespace sg
     {
         m_mSprite[url] = sprite;
     }
+
+
+    int Drawable::getZIndex() const {
+        return zIndex;
+    }
+
+    void Drawable::setZIndex(int z) {
+        zIndex = z;
+    }
+
 } // namespace sg

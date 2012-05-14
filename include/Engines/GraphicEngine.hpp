@@ -38,12 +38,15 @@
 
 #include <Core/Singleton.hpp>
 #include <SFML/Graphics.hpp>
+
 #include <Resources/ResourceManager.hpp>
 #include <Resources/GraphicResource.hpp>
 
 
 namespace sg
 {
+    class Drawable;
+
     class GraphicEngine : public Singleton<GraphicEngine>
     {
         friend class Singleton<GraphicEngine>;
@@ -68,7 +71,7 @@ namespace sg
 
             void draw (sf::RenderTarget& target, sf::Sprite& sprite);
 
-            sf::Sprite* getSprite(const std::string& url);
+            sf::Sprite* getSprite(const std::string& url, int zIndex = 1);
 
         private :
 
@@ -77,7 +80,7 @@ namespace sg
 
             sf::View m_view;
 
-            std::vector<sf::Drawable*> m_vDrawable;
+            std::vector<Drawable *> m_vDrawable;
 
             ResourceManager<GraphicResource> m_resourceManager;
 

@@ -34,7 +34,7 @@ namespace sg
     {
         public :
 
-            Position();
+            Element();
 
             Position(float x, float y);
 

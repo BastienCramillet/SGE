@@ -129,7 +129,10 @@ namespace sg {
                 if (objectOnMap->Attribute("isMovable") == std::string("true")) {
 
                     sg::DynamicObject* obj = new sg::DynamicObject();
-                    obj->addSprite(imageData->url, GraphicEngine::getInstance().getSprite("data/images/" + imageData->url));
+                    obj->addSprite(
+                                imageData->url,
+                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url, std::abs(atoi(objectOnMap->Attribute("layout"))))
+                               );
                     obj->setCurrentSprite(imageData->url);
 
                     //obj->addSound(urls, sg::AudioEngine::getInstance().getSound(urls));
@@ -149,7 +152,10 @@ namespace sg {
                 else { // non movable
 
                     sg::DynamicObject* obj = new sg::DynamicObject();
-                    obj->addSprite(imageData->url, GraphicEngine::getInstance().getSprite("data/images/" + imageData->url));
+                    obj->addSprite(
+                                imageData->url,
+                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url, std::abs(atoi(objectOnMap->Attribute("layout"))))
+                                );
                     obj->setCurrentSprite(imageData->url);
 
                     //obj->addSound(urls, sg::AudioEngine::getInstance().getSound(urls));

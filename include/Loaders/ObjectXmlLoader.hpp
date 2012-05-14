@@ -63,8 +63,25 @@ namespace sg {
 
     public :
 
-
         const ObjectData* getObjectData(const std::string& objectID);
+
+        /**
+            return a possible sound for the given trigger
+        */
+        std::string getSoundID(const std::string &objectID, const std::string &trigger);
+
+
+        /**
+            return a possible image for the given trigger
+        */
+        std::string getImageID(const std::string &objectID, const std::string &trigger);
+
+
+        /**
+            return a possible ephemeral for the given trigger
+        */
+        std::string getEphemeralID(const std::string &objectID, const std::string &trigger);
+
 
     private :
 

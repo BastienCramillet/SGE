@@ -124,7 +124,7 @@ namespace sg
             m_window->clear();
             m_window->setView(GraphicEngine::getInstance().getView());
 
-            gf->update();
+            gf->update();       // shouldn't be managed by phy engine ?
 
             GraphicEngine::getInstance().draw(*m_window);
 

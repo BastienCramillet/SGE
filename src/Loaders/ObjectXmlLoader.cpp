@@ -37,6 +37,7 @@
 #include "ObjectXmlLoader.hpp"
 #include "ImageXmlLoader.hpp"
 
+#include "Tools/Randomizer.hpp"
 #include "Tools/Log.hpp"
 
 
@@ -121,6 +122,88 @@ namespace sg {
         }
         return m_datas[objectID];
     }
+
+
+    std::string ObjectXmlLoader::getSoundID(const std::string &objectID, const std::string &trigger) {
+
+        if ( ! m_datas[objectID] ) {
+            Log::w("ObjectXmlLoader") << "No object datas for ID : " << objectID;
+        }
+        ObjectData *od = m_datas[objectID];
+
+        if ( od->sounds.count(trigger) > 0 ) {
+
+            std::pair< std::multimap< std::string, std::string>::iterator, std::multimap<std::string, std::string>::iterator> it;
+            it = od->sounds.equal_range(trigger);
+
+            std::vector<std::string> soundsPossible;
+            for (std::multimap<std::string, std::string>::iterator it2 = it.first; it2 != it.second; ++it2) {
+                   soundsPossible.push_back( (*it2).second );
+            }
+
+            return soundsPossible[sg::Randomizer::random(0, soundsPossible.size() - 1)];
+        }
+        else {
+            Log::e("ObjectXmlLoader") << "No sounds for trigger" << trigger << " on object " << objectID;
+        }
+
+        return "";
+    }
+
+
+    std::string ObjectXmlLoader::getImageID(const std::string &objectID, const std::string &trigger) {
+
+        if ( ! m_datas[objectID] ) {
+            Log::w("ObjectXmlLoader") << "No object datas for ID : " << objectID;
+        }
+        ObjectData *od = m_datas[objectID];
+
+        if ( od->images.count(trigger) > 0 ) {
+
+            std::pair< std::multimap< std::string, std::string>::iterator, std::multimap<std::string, std::string>::iterator> it;
+            it = od->images.equal_range(trigger);
+
+            std::vector<std::string> imagesPossible;
+            for (std::multimap<std::string, std::string>::iterator it2 = it.first; it2 != it.second; ++it2) {
+                   imagesPossible.push_back( (*it2).second );
+            }
+
+            return imagesPossible[sg::Randomizer::random(0, imagesPossible.size() - 1)];
+        }
+        else {
+            Log::e("ObjectXmlLoader") << "No image for trigger" << trigger << " on object " << objectID;
+        }
+
+        return "";
+    }
+
+
+    std::string ObjectXmlLoader::getEphemeralID(const std::string &objectID, const std::string &trigger) {
+
+        if ( ! m_datas[objectID] ) {
+            Log::w("ObjectXmlLoader") << "No object datas for ID : " << objectID;
+        }
+        ObjectData *od = m_datas[objectID];
+
+        if ( od->ephemerals.count(trigger) > 0 ) {
+
+            std::pair< std::multimap< std::string, std::string>::iterator, std::multimap<std::string, std::string>::iterator> it;
+            it = od->ephemerals.equal_range(trigger);
+
+            std::vector<std::string> ephemeralsPossible;
+            for (std::multimap<std::string, std::string>::iterator it2 = it.first; it2 != it.second; ++it2) {
+                   ephemeralsPossible.push_back( (*it2).second );
+            }
+
+            return ephemeralsPossible[sg::Randomizer::random(0, ephemeralsPossible.size() - 1)];
+        }
+        else {
+            Log::e("ObjectXmlLoader") << "No ephemeral for trigger" << trigger << " on object " << objectID;
+        }
+
+        return "";
+    }
+
 
 }
 
