@@ -71,7 +71,7 @@ namespace sg
 
             void draw (sf::RenderTarget& target, sf::Sprite& sprite);
 
-            sf::Sprite* getSprite(const std::string& url, int zIndex = 1);
+            sf::Sprite* getSprite(const std::string& url);
 
         private :
 
@@ -80,7 +80,7 @@ namespace sg
 
             sf::View m_view;
 
-            std::vector<Drawable *> m_vDrawable;
+            std::vector<sf::Drawable *> m_vDrawable;
 
             ResourceManager<GraphicResource> m_resourceManager;
 

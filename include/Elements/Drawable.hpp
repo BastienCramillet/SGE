@@ -61,27 +61,22 @@ namespace sg
 
             void addSprite (const std::string& id, sf::Sprite* drawable);
 
-            int getZIndex() const;
-
-            void setZIndex(int z);
 
         protected :
 
-            int zIndex;
 
             std::map<std::string, sf::Sprite*> m_mSprite;
             sf::Sprite* m_currentSprite;
     };
 
-    /*!
-        \struct ZIndexSort
-        \brief Sort objects according to there z-index
-    */
+    /*
     struct ZIndexSort {
         bool operator() (const Drawable *d1, const Drawable *d2) const {
             return d1->getZIndex() < d2->getZIndex();
         }
     };
+    //std::sort(m_vDrawable.begin(), m_vDrawable.end(), ZIndexSort());
+    */
 
 
 }

@@ -1,8 +1,6 @@
 #include <Engines/GraphicEngine.hpp>
 #include <Core/DebugNew.hpp>
 
-#include "Elements/Drawable.hpp"
-
 namespace sg
 {
 
@@ -82,7 +80,7 @@ namespace sg
         int size = m_vDrawable.size();
         for (int i = 0; i < size; ++i)
         {
-            target.draw(m_vDrawable[i]->getCurrentSprite());
+            target.draw(*m_vDrawable[i]);
         }
     }
 
@@ -95,23 +93,14 @@ namespace sg
         target.draw(sprite);
     }
 
-    sf::Sprite* GraphicEngine::getSprite(const std::string &url, int zIndex)
+    sf::Sprite* GraphicEngine::getSprite(const std::string &url)
     {
         //const sf::Texture* img = m_resourceManager.getResource(url);
-        sg::Drawable *d = new sg::Drawable();
 
         sf::Sprite* sprite = new sf::Sprite(*(m_resourceManager.getResource(url)));
+        m_vDrawable.push_back(sprite);
+
         sprite->setPosition(sf::Vector2f(50,50));
-
-        d->addSprite(url, sprite);
-        d->setCurrentSprite(url);
-
-        d->setZIndex(zIndex);
-
-        m_vDrawable.push_back(d);
-
-        // drawable has been added, sort according to ZValue
-        std::sort(m_vDrawable.begin(), m_vDrawable.end(), ZIndexSort());
 
         return sprite;
     }

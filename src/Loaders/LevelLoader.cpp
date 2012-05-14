@@ -131,7 +131,7 @@ namespace sg {
                     sg::DynamicObject* obj = new sg::DynamicObject();
                     obj->addSprite(
                                 imageData->url,
-                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url, std::abs(atoi(objectOnMap->Attribute("layout"))))
+                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
                                );
                     obj->setCurrentSprite(imageData->url);
 
@@ -154,7 +154,7 @@ namespace sg {
                     sg::DynamicObject* obj = new sg::DynamicObject();
                     obj->addSprite(
                                 imageData->url,
-                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url, std::abs(atoi(objectOnMap->Attribute("layout"))))
+                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
                                 );
                     obj->setCurrentSprite(imageData->url);
 
