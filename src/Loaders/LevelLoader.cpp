@@ -33,17 +33,17 @@
 */
 
 
-#include "LevelLoader.hpp"
-#include "Level.hpp"
-#include "Tools/Log.hpp"
+#include <Loaders/LevelLoader.hpp>
+#include <Level.hpp>
+#include <Tools/Log.hpp>
 
-#include "PhysicEngine.hpp"
-#include "GraphicEngine.hpp"
+#include <Engines/PhysicEngine.hpp>
+#include <Engines/GraphicEngine.hpp>
 
-#include "DynamicObject.hpp"
+#include <Elements/DynamicObject.hpp>
 
-#include "ObjectXmlLoader.hpp"
-#include "ImageXmlLoader.hpp"
+#include <Loaders/ObjectXmlLoader.hpp>
+#include <Loaders/ImageXmlLoader.hpp>
 
 #include <set>
 #include <tinyxml.h>

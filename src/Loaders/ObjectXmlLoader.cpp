@@ -34,11 +34,11 @@
 
 #include <tinyxml.h>
 
-#include "ObjectXmlLoader.hpp"
-#include "ImageXmlLoader.hpp"
+#include <Loaders/ObjectXmlLoader.hpp>
+#include <Loaders/ImageXmlLoader.hpp>
 
-#include "Tools/Randomizer.hpp"
-#include "Tools/Log.hpp"
+#include <Tools/Randomizer.hpp>
+#include <Tools/Log.hpp>
 
 
 namespace sg {

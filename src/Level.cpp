@@ -35,12 +35,12 @@
 
 #include <tinyxml.h>
 
-#include "LevelLoader.hpp"
-#include "Level.hpp"
+#include <Loaders/LevelLoader.hpp>
+#include <Level.hpp>
 
-#include "DynamicObject.hpp"
+#include <Elements/DynamicObject.hpp>
 
-#include "Tools/Log.hpp"
+#include <Tools/Log.hpp>
 
 namespace sg {
 

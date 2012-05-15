@@ -4,7 +4,7 @@
 #include <Core/Singleton.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "GameFrame.hpp"
+#include <Frame/GameFrame.hpp>
 
 namespace sg
 {
