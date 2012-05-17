@@ -36,16 +36,17 @@
 
 #include <tinyxml.h>
 
-#include "Level.hpp"
+#include <Loaders/LevelLoader.hpp>
+#include <Level.hpp>
+#include <Tools/Log.hpp>
 
-#include "Loaders/LevelLoader.hpp"
-#include "Loaders/ObjectXmlLoader.hpp"
-#include "Loaders/ImageXmlLoader.hpp"
+#include <Engines/PhysicEngine.hpp>
+#include <Engines/GraphicEngine.hpp>
 
-#include "Tools/Log.hpp"
+#include <Elements/DynamicObject.hpp>
 
-#include "Engines/PhysicEngine.hpp"
-#include "Engines/GraphicEngine.hpp"
+#include <Loaders/ObjectXmlLoader.hpp>
+#include <Loaders/ImageXmlLoader.hpp>
 
 #include "Elements/Decor.hpp"
 #include "Elements/DynamicObject.hpp"

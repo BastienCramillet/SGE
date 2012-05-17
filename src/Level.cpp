@@ -37,13 +37,12 @@
 
 #include "Level.hpp"
 
-
 #include "Loaders/LevelLoader.hpp"
 
 #include "Elements/DynamicObject.hpp"
 #include "Elements/Decor.hpp"
 
-#include "Tools/Log.hpp"
+#include <Tools/Log.hpp>
 
 namespace sg {
 

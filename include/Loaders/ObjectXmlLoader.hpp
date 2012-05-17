@@ -39,7 +39,7 @@
 #include <string>
 #include <map>
 
-#include "Singleton.hpp"
+#include <Core/Singleton.hpp>
 
 
 namespace sg {

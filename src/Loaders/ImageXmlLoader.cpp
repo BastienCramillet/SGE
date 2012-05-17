@@ -34,11 +34,11 @@
 
 #include <tinyxml.h>
 
-#include "ImageXmlLoader.hpp"
+#include <Loaders/ImageXmlLoader.hpp>
 
-#include "GraphicEngine.hpp"
+#include <Engines/GraphicEngine.hpp>
 
-#include "Tools/Log.hpp"
+#include <Tools/Log.hpp>
 
 
 namespace sg {

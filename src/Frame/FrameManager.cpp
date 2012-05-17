@@ -26,13 +26,13 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#include "../../include/Frame/Frame.hpp"
-#include "../../include/Frame/FrameManager.hpp"
+#include <Frame/Frame.hpp>
+#include <Frame/FrameManager.hpp>
 
-#include "../../include/Tools/Log.hpp"
+#include <Tools/Log.hpp>
 
-#include "ObjectXmlLoader.hpp"
-#include "ImageXmlLoader.hpp"
+#include <Loaders/ObjectXmlLoader.hpp>
+#include <Loaders/ImageXmlLoader.hpp>
 
 
 namespace sg {

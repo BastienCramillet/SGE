@@ -138,7 +138,7 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add directory="F:\Developpement\Travaux\Prog\2DGameEngine\include" />
+			<Add directory="F:\Developpement\Travaux\Prog\SGE\include" />
 			<Add directory="F:\Developpement\SFML_git\include" />
 			<Add directory="F:\Developpement\Box2D_v2.2.1\Box2D" />
 			<Add directory="F:\Developpement\Box2D_v2.2.1" />
@@ -171,9 +171,15 @@
 		<Unit filename="..\..\include\Engines\NetworkEngine.hpp" />
 		<Unit filename="..\..\include\Engines\PhysicEngine.hpp" />
 		<Unit filename="..\..\include\Engines\WindowEngine.hpp" />
+		<Unit filename="..\..\include\Frame\Frame.hpp" />
+		<Unit filename="..\..\include\Frame\FrameManager.hpp" />
+		<Unit filename="..\..\include\Frame\GameFrame.hpp" />
+		<Unit filename="..\..\include\Level.hpp" />
+		<Unit filename="..\..\include\Loaders\ImageXmlLoader.hpp" />
+		<Unit filename="..\..\include\Loaders\LevelLoader.hpp" />
+		<Unit filename="..\..\include\Loaders\ObjectXmlLoader.hpp" />
 		<Unit filename="..\..\include\Managers\Manager.hpp" />
 		<Unit filename="..\..\include\Managers\Settings.hpp" />
-		<Unit filename="..\..\include\Map.hpp" />
 		<Unit filename="..\..\include\Resources\AudioResource.hpp" />
 		<Unit filename="..\..\include\Resources\GraphicResource.hpp" />
 		<Unit filename="..\..\include\Resources\Resource.hpp" />
@@ -184,6 +190,7 @@
 		<Unit filename="..\..\include\Ressources.hpp" />
 		<Unit filename="..\..\include\Tools\Log.hpp" />
 		<Unit filename="..\..\include\Tools\Log.inl" />
+		<Unit filename="..\..\include\Tools\Randomizer.hpp" />
 		<Unit filename="..\..\include\core\Singleton.inl" />
 		<Unit filename="..\..\include\network\Client.hpp" />
 		<Unit filename="..\..\include\network\Server.hpp" />
@@ -196,10 +203,17 @@
 		<Unit filename="..\..\src\Engines\GraphicEngine.cpp" />
 		<Unit filename="..\..\src\Engines\PhysicEngine.cpp" />
 		<Unit filename="..\..\src\Engines\WindowEngine.cpp" />
+		<Unit filename="..\..\src\Frame\Frame.cpp" />
+		<Unit filename="..\..\src\Frame\FrameManager.cpp" />
+		<Unit filename="..\..\src\Frame\GameFrame.cpp" />
+		<Unit filename="..\..\src\Level.cpp" />
+		<Unit filename="..\..\src\Loaders\ImageXmlLoader.cpp" />
+		<Unit filename="..\..\src\Loaders\LevelLoader.cpp" />
+		<Unit filename="..\..\src\Loaders\ObjectXmlLoader.cpp" />
 		<Unit filename="..\..\src\Managers\Settings.cpp" />
-		<Unit filename="..\..\src\Map.cpp" />
 		<Unit filename="..\..\src\Network\Server.cpp" />
 		<Unit filename="..\..\src\Tools\Log.cpp" />
+		<Unit filename="..\..\src\Tools\Randomizer.cpp" />
 		<Unit filename="..\..\src\core\File.cpp" />
 		<Unit filename="..\..\src\core\MemoryManager.cpp" />
 		<Unit filename="..\..\src\main.cpp" />

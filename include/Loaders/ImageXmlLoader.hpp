@@ -45,7 +45,7 @@
 
 #include <SFML/System/Vector2.hpp>
 
-#include "Singleton.hpp"
+#include <Core/Singleton.hpp>
 
 
 namespace sg {
