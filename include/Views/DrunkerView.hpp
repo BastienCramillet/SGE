@@ -65,7 +65,7 @@ namespace sg {
         /**
           Fix the min & max rotation (in degrees)
 
-          Default values are 4 .. 4
+          Default values are -5 .. 4
         */
         void setRotationLimits(const sf::Vector2f &limits);
 

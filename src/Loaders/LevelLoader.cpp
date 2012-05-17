@@ -36,19 +36,20 @@
 
 #include <tinyxml.h>
 
-#include <Loaders/LevelLoader.hpp>
-#include <Level.hpp>
-#include <Tools/Log.hpp>
+#include "Loaders/LevelLoader.hpp"
 
-#include <Engines/PhysicEngine.hpp>
-#include <Engines/GraphicEngine.hpp>
+#include "Level.hpp"
 
-#include <Elements/DynamicObject.hpp>
+#include "Tools/Log.hpp"
 
-#include <Loaders/ObjectXmlLoader.hpp>
-#include <Loaders/ImageXmlLoader.hpp>
+#include "Engines/PhysicEngine.hpp"
+#include "Engines/GraphicEngine.hpp""
+
+#include "Loaders/ObjectXmlLoader.hpp"
+#include "Loaders/ImageXmlLoader.hpp"
 
 #include "Elements/Decor.hpp"
+#include "Elements/StaticObject.hpp"
 #include "Elements/DynamicObject.hpp"
 
 
@@ -153,7 +154,7 @@ namespace sg {
                 }
                 else { // non movable
 
-                    sg::DynamicObject* obj = new sg::DynamicObject();
+                    sg::StaticObject * obj = new sg::StaticObject();
                     obj->addSprite(
                                 imageData->url,
                                 GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
@@ -169,7 +170,7 @@ namespace sg {
                                      objectData->height
                                      ));
 
-                    level->m_vDynamics.push_back(obj);
+                    level->m_staticObjects.push_back(obj);
                 }
             }
             else { // non dynamic object (decor)

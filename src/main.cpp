@@ -43,13 +43,14 @@ int main()
 
     sg::GameFrame *gameFrame = new sg::GameFrame();
     gameFrame->loadLevel("data/maps/demo_map.xml");
+
     gameFrame->addView(
                 "simple view",
-                    new sg::View(
+                 new sg::View(
                            sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
                            sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
-                           )
-                );
+                    )
+            );
 
     gameFrame->addView
             ("drunker view",

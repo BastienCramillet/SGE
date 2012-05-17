@@ -43,6 +43,7 @@ namespace sg {
 
     class Decor;
     class DynamicObject;
+    class StaticObject;
 
     /*!
     *   \class Level
@@ -132,6 +133,8 @@ namespace sg {
         int m_height;                               //!< Height of the Level
 
         int m_width;                                //!< Width of the Level
+
+        std::vector<StaticObject *> m_staticObjects;//!< Level statics but physicals elements
 
         std::vector<DynamicObject *> m_vDynamics;   //!< Level dynamics elements
 

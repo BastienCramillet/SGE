@@ -26,48 +26,18 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file DynamicObject.hpp
-*   \brief Dynamic object header
+*   \file StaticObject.cpp
+*   \brief Static object source code
 *   \version 0.1
-*   \author Bastien (Bigz) Cramillet
+*   \author Xavier
 */
 
-#ifndef DYNAMICOBJECT_HPP_INCLUDED
-#define DYNAMICOBJECT_HPP_INCLUDED
-
-#include <Elements/Element.hpp>
-#include <Elements/Drawable.hpp>
-
-#include <Elements/Playable.hpp>
-#include <Elements/Physical.hpp>
+#include "Elements/StaticObject.hpp"
 
 namespace sg
 {
-    class DynamicObject : public Element, public Drawable, public Playable, public Physical
+
+    void StaticObject::update()
     {
-        public :
-
-            DynamicObject();
-
-            virtual ~DynamicObject();
-
-            virtual void update();
-
-            void play(std::string& id);
-
-            /**
-                Override Element::getPostion
-            */
-            sf::Vector2f getPosition() const;
-
-
-        private :
-
-            int a;
-
-
-    };
+    }
 }
-
-
-#endif // DYNAMICOBJECT_HPP_INCLUDED

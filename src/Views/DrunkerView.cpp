@@ -39,7 +39,7 @@ namespace sg {
         m_saveViewInitialSize = size;
 
         m_offsetRotationLimits  = sf::Vector2f(0.0f, 0.05f);
-        m_rotationLimits        = sf::Vector2f(4.f, 4.f);
+        m_rotationLimits        = sf::Vector2f(-5.f, 4.f);
         m_offsetGrowX           = sf::Vector2f(1.0f, 4.5f);
         m_offsetGrowY           = sf::Vector2f(1.0f, 2.5f);
         m_growXLimits           = sf::Vector2f(-150.f, 150.f);
@@ -78,7 +78,7 @@ namespace sg {
         if (m_viewRotatePositif && getRotation() < 180 && getRotation() > m_rotationLimits.y) {
             m_viewRotatePositif = false;
         }
-        if (!m_viewRotatePositif && getRotation() > 180 && getRotation() <  (360 - m_rotationLimits.x)) {
+        if (!m_viewRotatePositif && getRotation() > 180 && getRotation() <  (360 + m_rotationLimits.x)) {
             m_viewRotatePositif = true;
         }
         if (!m_viewRotatePositif) {

@@ -39,6 +39,7 @@
 
 #include "Loaders/LevelLoader.hpp"
 
+#include "Elements/StaticObject.hpp"
 #include "Elements/DynamicObject.hpp"
 #include "Elements/Decor.hpp"
 
@@ -83,6 +84,11 @@ namespace sg {
         m_name = "";
         m_height = 0;
         m_width = 0;
+
+        for (std::vector<StaticObject *>::iterator it = m_staticObjects.begin(); it != m_staticObjects.end(); ++it) {
+            delete *it;
+        }
+        m_staticObjects.clear();
 
         for (std::vector<DynamicObject *>::iterator it = m_vDynamics.begin(); it != m_vDynamics.end(); ++it) {
             delete *it;
