@@ -32,21 +32,23 @@
 *   \version 1.0
 */
 
+#include <set>
 
-#include "LevelLoader.hpp"
+#include <tinyxml.h>
+
 #include "Level.hpp"
+
+#include "Loaders/LevelLoader.hpp"
+#include "Loaders/ObjectXmlLoader.hpp"
+#include "Loaders/ImageXmlLoader.hpp"
+
 #include "Tools/Log.hpp"
 
-#include "PhysicEngine.hpp"
-#include "GraphicEngine.hpp"
+#include "Engines/PhysicEngine.hpp"
+#include "Engines/GraphicEngine.hpp"
 
-#include "DynamicObject.hpp"
-
-#include "ObjectXmlLoader.hpp"
-#include "ImageXmlLoader.hpp"
-
-#include <set>
-#include <tinyxml.h>
+#include "Elements/Decor.hpp"
+#include "Elements/DynamicObject.hpp"
 
 
 namespace sg {
@@ -120,11 +122,10 @@ namespace sg {
             Log::v("LevelLoader") << "Object on map : " << objectOnMap->Attribute("id")
                           << " (" << objectOnMap->Attribute("x") << "," << objectOnMap->Attribute("y") << ")";
 
+            const ImageData *imageData   = ImageXmlLoader::getInstance().getImageData(objectOnMap->Attribute("imageOnCreateID"));
+            const ObjectData *objectData = ObjectXmlLoader::getInstance().getObjectData(objectOnMap->Attribute("id"));
 
             if (objectOnMap->Attribute("isOnBackground") == std::string("false")) { // this is a dynamic object
-
-                const ImageData *imageData   = ImageXmlLoader::getInstance().getImageData(objectOnMap->Attribute("imageOnCreateID"));
-                const ObjectData *objectData = ObjectXmlLoader::getInstance().getObjectData(objectOnMap->Attribute("id"));
 
                 if (objectOnMap->Attribute("isMovable") == std::string("true")) {
 
@@ -171,7 +172,21 @@ namespace sg {
                 }
             }
             else { // non dynamic object (decor)
-                Log::w("LevelLoader") << "decor loading not implemented yet";
+
+                sg::Decor *decor = new sg::Decor();
+
+                decor->addSprite(
+                            imageData->url,
+                            GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
+                    );
+
+                decor->setCurrentSprite(imageData->url);
+
+                decor->setPosition(sf::Vector2f(
+                                        atof(objectOnMap->Attribute("x")),
+                                        atof(objectOnMap->Attribute("y"))
+                                   )
+                            );
             }
 
             objectOnMap  = objectOnMap->NextSiblingElement();

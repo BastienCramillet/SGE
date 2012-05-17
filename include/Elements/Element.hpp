@@ -28,24 +28,20 @@
 #ifndef ELEMENT_HPP_INCLUDED
 #define ELEMENT_HPP_INCLUDED
 
+#include <SFML/System/Vector2.hpp>
+
 namespace sg
 {
     class Element
     {
         public :
 
-            Element();
+            virtual ~Element() {
+            }
 
-            Position(float x, float y);
-
-            const Position& getPosition() const;
+            virtual sf::Vector2f getPosition() const = 0;
 
 
-        protected :
-
-            virtual void update() = 0;
-
-            Position m_position;
     };
 } // namespace sg
 

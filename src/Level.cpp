@@ -35,10 +35,13 @@
 
 #include <tinyxml.h>
 
-#include "LevelLoader.hpp"
 #include "Level.hpp"
 
-#include "DynamicObject.hpp"
+
+#include "Loaders/LevelLoader.hpp"
+
+#include "Elements/DynamicObject.hpp"
+#include "Elements/Decor.hpp"
 
 #include "Tools/Log.hpp"
 
@@ -81,10 +84,16 @@ namespace sg {
         m_name = "";
         m_height = 0;
         m_width = 0;
+
         for (std::vector<DynamicObject *>::iterator it = m_vDynamics.begin(); it != m_vDynamics.end(); ++it) {
             delete *it;
         }
         m_vDynamics.clear();
+
+        for (std::vector<Decor *>::iterator it = m_vDecors.begin(); it != m_vDecors.end(); ++it) {
+            delete *it;
+        }
+        m_vDecors.clear();
     }
 
 

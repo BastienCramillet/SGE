@@ -38,8 +38,9 @@ namespace sg {
         Log::d("GameFrame") << "Creation of an empty game frame";
     }
 
+
     GameFrame::~GameFrame() {
-        Log::v("GameFrame") << "Deleting game frame";
+        Log::d("GameFrame") << "Deleting game frame";
         if (m_level) {
             delete m_level;
         }
@@ -54,6 +55,7 @@ namespace sg {
 
 
     void GameFrame::update() {
+        Frame::update();
         m_level->update();
     }
 

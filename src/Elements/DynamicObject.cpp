@@ -49,21 +49,23 @@ namespace sg
 
     }
 
+    sf::Vector2f DynamicObject::getPosition() const {
+        return sf::Vector2f(getBodyPosition().x * 100, getBodyPosition().y * 100);
+    }
+
     void DynamicObject::update()
     {
-        float x = getBodyPosition().x * 100.f;
-        float y = getBodyPosition().y * 100.f;
+        sf::Vector2f pos = getPosition();
 
         if (m_currentSprite!=0)
-            m_currentSprite->setPosition(sf::Vector2f(x,y));
+            m_currentSprite->setPosition(sf::Vector2f(pos.x, pos.y));
     }
 
     void DynamicObject::play(std::string& id)
     {
-        float x = getBodyPosition().x;
-        float y = getBodyPosition().y;
+        sf::Vector2f pos = getPosition();
 
-        m_mSound[id]->setPosition(sf::Vector3f(x,y,1));
+        m_mSound[id]->setPosition(sf::Vector3f(pos.x, pos.y, 1));
         m_mSound[id]->play();
     }
 }

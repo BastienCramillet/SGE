@@ -34,21 +34,66 @@
 *   \version 0.1
 */
 
+#include <string>
+#include <map>
+
+#include "Views/View.hpp"
+
 namespace sg
 {
+    class View;
+
+    /**
+      \class Frame
+      \brief A frame is an abstract screen of the application
+    */
     class Frame
     {
         public :
 
+            /**
+                \param v
+                           The frame view
+            */
             Frame();
+
 
             virtual ~Frame();
 
 
+            /**
+              Returns the current frame view
+            */
+            View* getCurrentView();
+
+            /**
+              Add some view
+              \param key
+                            The view name
+              \param view
+                            the new view
+
+              The added view will be automaticly managed and freed from memory
+            */
+            void addView(const std::string &key, View *v);
+
+            /**
+              Set the current view
+            */
+            void setCurrentView(const std::string &key);
+
+
+            /**
+              Update elements in the frame
+            */
+            virtual void update();
+
+
         protected :
 
+            std::map<std::string, sg::View *> m_views;  //!< this frames registred views <key, view>
 
-        private :
+            View *m_view;                               //!< The current view
 
     };
 } // namespace sg

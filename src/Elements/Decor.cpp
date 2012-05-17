@@ -25,50 +25,36 @@
 *
 *-----------------------------------------------------------------------------*/
 
+/*!
+*   \file Decor.cpp
+*   \brief Decor source code
+*   \version 0.1
+*   \author Xavier
+*/
 
-#include "../../include/Frame/Frame.hpp"
+#include <Elements/Decor.hpp>
 
-#include "Views/View.hpp"
+#include <Tools/Log.hpp>
 
-#include "Tools/Log.hpp"
-
-namespace sg {
-
-    Frame::Frame()
-        : m_view(0)
+namespace sg
+{
+    Decor::Decor ()
     {
+
     }
 
-    Frame::~Frame() {
-        Log::d("Frame") << "Deleting frame";
-        for (std::map<std::string, View *>::iterator it = m_views.begin(); it != m_views.end(); ++it) {
-            delete it->second;
-        }
-        m_views.clear();
+    Decor::~Decor ()
+    {
+
     }
 
-
-    View* Frame::getCurrentView() {
-        if (!m_view) {
-            Log::w("Frame") << "No view selected";
-        }
-        return m_view;
+    sf::Vector2f Decor::getPosition() const {
+        return getCurrentSprite().getPosition();
     }
 
-
-    void Frame::addView(const std::string &key, View *v) {
-        m_views[key] = v;
+    void Decor::update()
+    {
+        // nothing to do
     }
 
-
-    void Frame::setCurrentView(const std::string &key) {
-        if (! m_views[key]) {
-            Log::e("Frame") << "This view doesn't exists : " << key;
-        }
-        m_view = m_views[key];
-    }
-
-    void Frame::update() {
-        m_view->update();
-    }
 }

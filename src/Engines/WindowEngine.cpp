@@ -11,6 +11,9 @@
 #include <Managers/Settings.hpp>
 
 #include <Elements/DynamicObject.hpp>
+#include <Elements/Decor.hpp>
+
+#include <Tools/Randomizer.hpp>
 
 namespace sg
 {
@@ -72,14 +75,16 @@ namespace sg
                 {
                     m_window->close();
                 }
+                /*
                 if (event.key.code == sf::Keyboard::Up)     GraphicEngine::getInstance().moveView(sf::Vector2f(0,-50));
                 if (event.key.code == sf::Keyboard::Down)   GraphicEngine::getInstance().moveView(sf::Vector2f(0,50));
                 if (event.key.code == sf::Keyboard::Left)   GraphicEngine::getInstance().moveView(sf::Vector2f(-50,0));
                 if (event.key.code == sf::Keyboard::Right)  GraphicEngine::getInstance().moveView(sf::Vector2f(50,0));
+                */
             }
 
             m_window->clear();
-            m_window->setView(GraphicEngine::getInstance().getView());
+            //m_window->setView(GraphicEngine::getInstance().getView());
 
             dobj->update();
             obj->update();
@@ -96,13 +101,7 @@ namespace sg
     void WindowEngine::run(GameFrame *gf) {
 
         sg::PhysicEngine::getInstance().start();
-/*
-        std::string url = "data/bouche_incendie.png";
-        sg::DynamicObject* obj = new sg::DynamicObject();
-        obj->addSprite(url, sg::GraphicEngine::getInstance().getSprite(url));
-        obj->setCurrentSprite(url);
-        obj->addBody(sg::PhysicEngine::getInstance().createDynamicBox(50, 750, 57, 87));
-*/
+
 
         sf::Event event;
         while (m_window->isOpen())
@@ -115,22 +114,21 @@ namespace sg
                 {
                     m_window->close();
                 }
-                if (event.key.code == sf::Keyboard::Up)     GraphicEngine::getInstance().moveView(sf::Vector2f(0,-50));
-                if (event.key.code == sf::Keyboard::Down)   GraphicEngine::getInstance().moveView(sf::Vector2f(0,50));
-                if (event.key.code == sf::Keyboard::Left)   GraphicEngine::getInstance().moveView(sf::Vector2f(-50,0));
-                if (event.key.code == sf::Keyboard::Right)  GraphicEngine::getInstance().moveView(sf::Vector2f(50,0));
+                if (event.key.code == sf::Keyboard::Up)     gf->getCurrentView()->move(sf::Vector2f(0,-50));
+                if (event.key.code == sf::Keyboard::Down)   gf->getCurrentView()->move(sf::Vector2f(0,50));
+                if (event.key.code == sf::Keyboard::Left)   gf->getCurrentView()->move(sf::Vector2f(-50,0));
+                if (event.key.code == sf::Keyboard::Right)  gf->getCurrentView()->move(sf::Vector2f(50,0));
             }
 
             m_window->clear();
-            m_window->setView(GraphicEngine::getInstance().getView());
+            m_window->setView(*gf->getCurrentView());
 
-            gf->update();       // shouldn't be managed by phy engine ?
+            gf->update();
 
             GraphicEngine::getInstance().draw(*m_window);
 
             m_window->display();
         }
-
     }
 
 

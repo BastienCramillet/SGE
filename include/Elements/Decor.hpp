@@ -2,8 +2,7 @@
 *
 * SGE - Simple Game Engine
 *
-* Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
+* Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -27,58 +26,41 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file GraphicEngine.hpp
-*   \brief Graphic Engine class header
+*   \file Decor.hpp
+*   \brief Decor header
 *   \version 0.1
-*   \author Bastien (Bigz) Cramillet
+*   \author Xavier
 */
 
-#ifndef GRAPHICENGINE_HPP_INCLUDED
-#define GRAPHICENGINE_HPP_INCLUDED
+#ifndef DECOR_HPP_INCLUDED
+#define DECOR_HPP_INCLUDED
 
-#include <Core/Singleton.hpp>
-#include <SFML/Graphics.hpp>
-
-#include <Resources/ResourceManager.hpp>
-#include <Resources/GraphicResource.hpp>
-
+#include <Elements/Element.hpp>
+#include <Elements/Drawable.hpp>
 
 namespace sg
 {
-    class Drawable;
-
-    class GraphicEngine : public Singleton<GraphicEngine>
+    class Decor : public Element, public Drawable
     {
-        friend class Singleton<GraphicEngine>;
-
         public :
 
-            void init();
+            Decor();
 
-            void clear();
+            ~Decor();
 
-            void update ();
+            void update();
 
+            /**
+                Override Element::getPostion
+            */
+            sf::Vector2f getPosition() const;
 
-            void draw (sf::RenderTarget& target);
-
-            void draw (sf::RenderTarget& target, sf::Sprite& sprite);
-
-            sf::Sprite* getSprite(const std::string& url);
 
         private :
 
-            GraphicEngine ();
-
-            ~GraphicEngine ();
-
-            std::vector<sf::Drawable *> m_vDrawable;
-
-            ResourceManager<GraphicResource> m_resourceManager;
-
-
 
     };
-} // namespace sg
+}
 
-#endif // GRAPHICENGINE_HPP_INCLUDED
+
+#endif // DYNAMICOBJECT_HPP_INCLUDED

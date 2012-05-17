@@ -64,8 +64,8 @@ namespace sg
 
         protected :
 
-
             std::map<std::string, sf::Sprite*> m_mSprite;
+
             sf::Sprite* m_currentSprite;
     };
 

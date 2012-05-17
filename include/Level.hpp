@@ -41,6 +41,7 @@
 
 namespace sg {
 
+    class Decor;
     class DynamicObject;
 
     /*!
@@ -133,6 +134,9 @@ namespace sg {
         int m_width;                                //!< Width of the Level
 
         std::vector<DynamicObject *> m_vDynamics;   //!< Level dynamics elements
+
+        std::vector<Decor *> m_vDecors;             //!< Level decorations
+
     };
 
 }

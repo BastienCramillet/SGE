@@ -24,6 +24,9 @@ namespace sg
 
     const sf::Sprite& Drawable::getCurrentSprite() const
     {
+        if (! m_currentSprite) {
+            Log::w("Drawable") << "No sprite selected";
+        }
         return *m_currentSprite;
     }
 
