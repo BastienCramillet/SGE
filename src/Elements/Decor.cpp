@@ -38,12 +38,12 @@
 
 namespace sg
 {
-    Decor::Decor ()
+    Decor::Decor(const std::string &elementID)
+        : Element(elementID)
     {
-
     }
 
-    Decor::~Decor ()
+    Decor::~Decor()
     {
 
     }

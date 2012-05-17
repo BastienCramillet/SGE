@@ -39,9 +39,9 @@
 
 namespace sg
 {
-    DynamicObject::DynamicObject ()
+    DynamicObject::DynamicObject(const std::string &elementID)
+        : Element(elementID)
     {
-
     }
 
     DynamicObject::~DynamicObject ()

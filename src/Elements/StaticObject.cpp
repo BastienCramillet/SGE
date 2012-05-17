@@ -37,6 +37,12 @@
 namespace sg
 {
 
+    StaticObject::StaticObject(const std::string &elementID)
+        : DynamicObject(elementID)
+    {
+    }
+
+
     void StaticObject::update()
     {
     }

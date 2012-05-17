@@ -133,7 +133,7 @@ namespace sg {
 
                 if (objectOnMap->Attribute("isMovable") == std::string("true")) {
 
-                    sg::DynamicObject* obj = new sg::DynamicObject();
+                    sg::DynamicObject* obj = new sg::DynamicObject(objectData->objectID);
                     obj->addSprite(
                                 imageData->url,
                                 GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
@@ -158,7 +158,7 @@ namespace sg {
                 }
                 else { // non movable
 
-                    sg::StaticObject * obj = new sg::StaticObject();
+                    sg::StaticObject * obj = new sg::StaticObject(objectData->objectID);
                     obj->addSprite(
                                 imageData->url,
                                 GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
@@ -181,7 +181,7 @@ namespace sg {
             }
             else { // non dynamic object (decor)
 
-                sg::Decor *decor = new sg::Decor();
+                sg::Decor *decor = new sg::Decor(objectData->objectID);
 
                 decor->addSprite(
                             imageData->url,

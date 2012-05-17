@@ -43,6 +43,8 @@ namespace sg
     {
         public :
 
+            StaticObject(const std::string &elementID);
+
             void update();
     };
 }

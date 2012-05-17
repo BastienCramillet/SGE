@@ -47,7 +47,7 @@ namespace sg
     {
         public :
 
-            DynamicObject();
+            DynamicObject(const std::string &elementID);
 
             virtual ~DynamicObject();
 

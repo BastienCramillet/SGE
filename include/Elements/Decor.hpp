@@ -44,7 +44,7 @@ namespace sg
     {
         public :
 
-            Decor();
+            Decor(const std::string &elementID);
 
             ~Decor();
 

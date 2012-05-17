@@ -30,13 +30,13 @@ int main()
     sg::FrameManager frameManager;
 
     std::string url = "data/images/fonds/fond.png";
-    sg::Decor* obj = new sg::Decor();
+    sg::Decor* obj = new sg::Decor("");
     obj->addSprite(url, sg::GraphicEngine::getInstance().getSprite(url));
     obj->setCurrentSprite(url);
     obj->setPosition(sf::Vector2f(-200, -1170));
 
     std::string url2 = "data/images/fonds/decor.png";
-    sg::Decor* obj2 = new sg::Decor();
+    sg::Decor* obj2 = new sg::Decor("");
     obj2->addSprite(url2, sg::GraphicEngine::getInstance().getSprite(url2));
     obj2->setCurrentSprite(url2);
     obj2->setPosition(sf::Vector2f(-200, -1170));

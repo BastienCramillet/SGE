@@ -48,6 +48,9 @@ namespace sg
 
     void WindowEngine::run ()
     {
+        // too old, just update and run with frame
+
+        /*
         std::string url = "data/bouche_incendie.png";
 
         std::string urls = "data/Aterrissage.wav";
@@ -75,12 +78,10 @@ namespace sg
                 {
                     m_window->close();
                 }
-                /*
                 if (event.key.code == sf::Keyboard::Up)     GraphicEngine::getInstance().moveView(sf::Vector2f(0,-50));
                 if (event.key.code == sf::Keyboard::Down)   GraphicEngine::getInstance().moveView(sf::Vector2f(0,50));
                 if (event.key.code == sf::Keyboard::Left)   GraphicEngine::getInstance().moveView(sf::Vector2f(-50,0));
                 if (event.key.code == sf::Keyboard::Right)  GraphicEngine::getInstance().moveView(sf::Vector2f(50,0));
-                */
             }
 
             m_window->clear();
@@ -94,6 +95,7 @@ namespace sg
         }
         delete dobj;
         delete obj;
+        */
     }
 
 
