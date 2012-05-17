@@ -45,7 +45,7 @@ namespace sg
 
             void clear();
 
-            sf::Sound* getSound(std::string& url);
+            sf::Sound* getSound(const std::string &url);
 
             void playSound (sf::Sound sound);
 

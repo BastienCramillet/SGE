@@ -79,7 +79,7 @@ namespace sg
         }
     }
 
-    sf::Sound* AudioEngine::getSound(std::string& url)
+    sf::Sound* AudioEngine::getSound(const std::string& url)
     {
         sf::Sound* sound = new sf::Sound(*(m_resourceManager.getResource(url)));
         sound->setMinDistance(480.f);

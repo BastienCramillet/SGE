@@ -33,6 +33,7 @@
 */
 
 #include <set>
+#include <map>
 
 #include <tinyxml.h>
 
@@ -43,7 +44,8 @@
 #include "Tools/Log.hpp"
 
 #include "Engines/PhysicEngine.hpp"
-#include "Engines/GraphicEngine.hpp""
+#include "Engines/GraphicEngine.hpp"
+#include "Engines/AudioEngine.hpp"
 
 #include "Loaders/ObjectXmlLoader.hpp"
 #include "Loaders/ImageXmlLoader.hpp"
@@ -138,7 +140,9 @@ namespace sg {
                                );
                     obj->setCurrentSprite(imageData->url);
 
-                    //obj->addSound(urls, sg::AudioEngine::getInstance().getSound(urls));
+                    for (std::multimap<std::string, std::string>::const_iterator it = objectData->sounds.begin(); it != objectData->sounds.end(); ++it) {
+                        obj->addSound(it->first, AudioEngine::getInstance().getSound(it->second));
+                    }
 
                     obj->addBody(sg::PhysicEngine::getInstance().createDynamicBox(
                                      atoi(objectOnMap->Attribute("x")),
@@ -161,7 +165,9 @@ namespace sg {
                                 );
                     obj->setCurrentSprite(imageData->url);
 
-                    //obj->addSound(urls, sg::AudioEngine::getInstance().getSound(urls));
+                    for (std::multimap<std::string, std::string>::const_iterator it = objectData->sounds.begin(); it != objectData->sounds.end(); ++it) {
+                        obj->addSound(it->first, AudioEngine::getInstance().getSound(it->second));
+                    }
 
                     obj->addBody(sg::PhysicEngine::getInstance().createStaticBox(
                                      atoi(objectOnMap->Attribute("x")),
