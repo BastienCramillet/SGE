@@ -65,35 +65,35 @@ namespace sg {
         /**
           Fix the min & max rotation (in degrees)
 
-          Default values are -5 .. 4
+          Default values are -30 .. 22
         */
         void setRotationLimits(const sf::Vector2f &limits);
 
         /**
             Fix the min & max x growing speed
 
-            Default values are 1 .. 4.5
+            Default values are 1.5 .. 4.5
         */
         void setOffsetGrowX(const sf::Vector2f &limits);
 
         /**
             Fix the min & max y growing speed
 
-            Default values are 1 .. 2.5
+            Default values are 1.5 .. 2.5
         */
         void setOffsetGrowY(const sf::Vector2f &limits);
 
         /**
           Fix the min & max x growing
 
-          Default values are -150 .. 150
+          Default values are -150 .. 250
         */
         void setXGrowingLimits(const sf::Vector2f &limits);
 
         /**
           Fix the min & max x growing
 
-          Default values are -200 .. 200
+          Default values are -300 .. 200
         */
         void setYGrowingLimits(const sf::Vector2f &limits);
 

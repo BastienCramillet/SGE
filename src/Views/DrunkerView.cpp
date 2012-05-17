@@ -38,12 +38,12 @@ namespace sg {
     {
         m_saveViewInitialSize = size;
 
-        m_offsetRotationLimits  = sf::Vector2f(0.0f, 0.05f);
-        m_rotationLimits        = sf::Vector2f(-10.f, 6.f);
-        m_offsetGrowX           = sf::Vector2f(1.0f, 4.5f);
-        m_offsetGrowY           = sf::Vector2f(1.0f, 2.5f);
-        m_growXLimits           = sf::Vector2f(-150.f, 150.f);
-        m_growYLimits           = sf::Vector2f(-200.f, 200.f);
+        m_offsetRotationLimits  = sf::Vector2f(0.0f, 0.2f);
+        m_rotationLimits        = sf::Vector2f(-30.f, 22.f);
+        m_offsetGrowX           = sf::Vector2f(1.5f, 4.5f);
+        m_offsetGrowY           = sf::Vector2f(1.5f, 2.5f);
+        m_growXLimits           = sf::Vector2f(-150.f, 250.f);
+        m_growYLimits           = sf::Vector2f(-300.f, 200.f);
     }
 
 
