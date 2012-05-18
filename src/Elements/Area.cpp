@@ -26,42 +26,25 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file DynamicObject.hpp
-*   \brief Dynamic object header
+*   \file Area.cpp
+*   \brief Area source code
 *   \version 0.1
-*   \author Bastien (Bigz) Cramillet
+*   \author Xavier
 */
 
-#ifndef DYNAMICOBJECT_HPP_INCLUDED
-#define DYNAMICOBJECT_HPP_INCLUDED
-
-#include <Elements/Element.hpp>
-#include <Elements/Drawable.hpp>
-
-#include <Elements/Playable.hpp>
-#include <Elements/Physical.hpp>
+#include "Elements/Area.hpp"
 
 namespace sg
 {
-    class DynamicObject : public Element, public Drawable, public Playable, public Physical
+
+    Area::Area(const sf::FloatRect &rect)
+        : Element("area"), sf::FloatRect(rect)
     {
-        public :
+    }
 
-            DynamicObject(const std::string &elementID);
 
-            virtual ~DynamicObject();
+    sf::Vector2f Area::getPosition() const {
+        return sf::Vector2f(top, left);
+    }
 
-            virtual void update();
-
-            void play(std::string& id);
-
-            /**
-                Override Element::getPostion
-            */
-            sf::Vector2f getPosition() const;
-
-    };
 }
-
-
-#endif // DYNAMICOBJECT_HPP_INCLUDED

@@ -45,9 +45,11 @@ namespace sg
 
             StaticObject(const std::string &elementID);
 
-            void update();
+            inline void update() {
+            }
+
     };
 }
 
 
-#endif // DYNAMICOBJECT_HPP_INCLUDED
+#endif // STATIC_OBJECT_HPP_INCLUDED

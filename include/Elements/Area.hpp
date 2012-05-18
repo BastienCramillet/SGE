@@ -26,37 +26,43 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file DynamicObject.hpp
-*   \brief Dynamic object header
+*   \file Area.hpp
+*   \brief Area header
 *   \version 0.1
-*   \author Bastien (Bigz) Cramillet
+*   \author Xavier
 */
 
-#ifndef DYNAMICOBJECT_HPP_INCLUDED
-#define DYNAMICOBJECT_HPP_INCLUDED
+#ifndef AREA_HPP_INCLUDED
+#define AREA_HPP_INCLUDED
 
-#include <Elements/Element.hpp>
-#include <Elements/Drawable.hpp>
+#include <SFML/Graphics/Rect.hpp>
 
-#include <Elements/Playable.hpp>
-#include <Elements/Physical.hpp>
+#include "Elements/Element.hpp"
 
 namespace sg
 {
-    class DynamicObject : public Element, public Drawable, public Playable, public Physical
+    /**
+        \class Area
+        \brief An area is a zone of the map
+    */
+    class Area : public Element, public sf::FloatRect
     {
         public :
 
-            DynamicObject(const std::string &elementID);
+            /**
+                Create an area
+            */
+            explicit Area(const sf::FloatRect &rect);
 
-            virtual ~DynamicObject();
-
-            virtual void update();
-
-            void play(std::string& id);
 
             /**
-                Override Element::getPostion
+                Update the area (does nothing)
+            */
+            inline void update() {
+            }
+
+            /**
+                Get the area position
             */
             sf::Vector2f getPosition() const;
 
@@ -64,4 +70,4 @@ namespace sg
 }
 
 
-#endif // DYNAMICOBJECT_HPP_INCLUDED
+#endif // AREA_HPP_INCLUDED

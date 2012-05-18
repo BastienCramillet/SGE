@@ -45,16 +45,11 @@ namespace sg
 
     Decor::~Decor()
     {
-
     }
 
     sf::Vector2f Decor::getPosition() const {
         return getCurrentSprite().getPosition();
     }
 
-    void Decor::update()
-    {
-        // nothing to do
-    }
 
 }

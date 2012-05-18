@@ -44,6 +44,7 @@ namespace sg {
     class Decor;
     class DynamicObject;
     class StaticObject;
+    class Area;
 
     /*!
     *   \class Level
@@ -119,7 +120,7 @@ namespace sg {
 
 
         /*!
-            \brief Update object locations
+            \brief Update objects on level
         */
         void update();
 
@@ -140,6 +141,7 @@ namespace sg {
 
         std::vector<Decor *> m_vDecors;             //!< Level decorations
 
+        std::vector<Area *> m_vAreas;               //!< Level areas
     };
 
 }

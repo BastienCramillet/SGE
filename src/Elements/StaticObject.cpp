@@ -42,8 +42,4 @@ namespace sg
     {
     }
 
-
-    void StaticObject::update()
-    {
-    }
 }

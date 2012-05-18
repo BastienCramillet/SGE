@@ -48,16 +48,17 @@ namespace sg
 
             ~Decor();
 
-            void update();
+            /**
+              Update the decor
+            */
+            inline void update() {
+            }
+
 
             /**
                 Override Element::getPostion
             */
             sf::Vector2f getPosition() const;
-
-
-        private :
-
 
     };
 }

@@ -50,11 +50,12 @@
 #include "Loaders/ObjectXmlLoader.hpp"
 #include "Loaders/ImageXmlLoader.hpp"
 #include "Loaders/SoundXmlLoader.hpp"
+#include "Loaders/MusicXmlLoader.hpp"
 
 #include "Elements/Decor.hpp"
 #include "Elements/StaticObject.hpp"
 #include "Elements/DynamicObject.hpp"
-
+#include "Elements/Area.hpp"
 
 namespace sg {
 
@@ -213,7 +214,18 @@ namespace sg {
         while (areaOnMap) {
             Log::v("LevelLoader") << "Area on map : " << areaOnMap->Attribute("description")
                           << " (" << areaOnMap->Attribute("x") << "," << areaOnMap->Attribute("y") << ")";
-            Log::w("LevelLoader") << "This loading is not implemented yet !";
+
+            level->m_vAreas.push_back(
+                            new Area(
+                                sf::FloatRect(
+                                    atof(areaOnMap->Attribute("x")),
+                                    atof(areaOnMap->Attribute("y")),
+                                    atof(areaOnMap->Attribute("width")),
+                                    atof(areaOnMap->Attribute("height"))
+                                )
+                            )
+                        );
+
             areaOnMap = areaOnMap->NextSiblingElement();
         }
 

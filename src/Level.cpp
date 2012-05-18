@@ -42,8 +42,10 @@
 #include "Elements/StaticObject.hpp"
 #include "Elements/DynamicObject.hpp"
 #include "Elements/Decor.hpp"
+#include "Elements/Area.hpp"
 
-#include <Tools/Log.hpp>
+#include "Tools/Log.hpp"
+
 
 namespace sg {
 
@@ -99,6 +101,12 @@ namespace sg {
             delete *it;
         }
         m_vDecors.clear();
+
+        for (std::vector<Area *>::iterator it = m_vAreas.begin(); it != m_vAreas.end(); ++it) {
+            delete *it;
+        }
+        m_vAreas.clear();
+
     }
 
 
