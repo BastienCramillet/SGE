@@ -28,68 +28,55 @@
 
 
 /*!
-*   \file ImageXmlLoader.hpp
+*   \file SoundsXmlLoader.hpp
 *   \version 1.0
 */
 
 
 
-#ifndef IMAGE_XML_LOADER_HPP
-#define IMAGE_XML_LOADER_HPP
+#ifndef SOUNDS_XML_LOADER_HPP
+#define SOUNDS_XML_LOADER_HPP
 
 
 #include <string>
-#include <set>
 #include <map>
-#include <vector>
-
-#include <SFML/System/Vector2.hpp>
 
 #include <Core/Singleton.hpp>
-
 
 namespace sg {
 
 
     /**
-        The datas which compose an image
+        The datas which compose a sound
     */
-    struct ImageData {
-        std::string imageID;                //!< image ID
-        int width;                          //!< image width
-        int height;                         //!< image height
-        int rowCount;                       //!< row count (tileset)
-        int columnCount;                    //!< column count (tileset)
-        bool isOneShotAnim;                 //!< This image should be played only one time (explosion for example)
-        int fps;                            //!< Image FPS
-        std::string url;                    //!< Image url
-        bool isRectangular;                 //!< For collision, if false, it's polygonal
-        std::vector<sf::Vector2f> points;   //!< Points for collision
+    struct SoundData {
+        std::string soundID;                //!< sound ID
+        std::string url;                    //!< file url
     };
 
 
     /**
-        \brief The LevelImageManger is a manager based on images.xml
+        \brief The SoundXmlLoader is a manager based on sounds.xml
     */
-    class ImageXmlLoader : public Singleton<ImageXmlLoader> {
+    class SoundXmlLoader : public Singleton<SoundXmlLoader> {
 
-        friend class Singleton<ImageXmlLoader>;
+        friend class Singleton<SoundXmlLoader>;
 
     public :
 
         /**
             Get images datas from image ID
         */
-        const ImageData* getImageData(const std::string &imageID);
+        const SoundData* getSoundData(const std::string &soundID);
 
 
     private :
 
-        ImageXmlLoader();
+        SoundXmlLoader();
 
-        ~ImageXmlLoader();
+        ~SoundXmlLoader();
 
-        std::map<std::string, ImageData*> m_datas; // datas, loaded once from images.xml
+        std::map<std::string, SoundData*> m_datas; // datas, loaded once from sounds.xml
 
     };
 
@@ -97,5 +84,5 @@ namespace sg {
 
 
 
-#endif // MAPOBJECTLOADER_HPP
+#endif // SOUNDS_XML_LOADER_HPP
 

@@ -28,7 +28,7 @@
 
 
 /*!
-*   \file LevelImageLoader.cpp
+*   \file ImageXmlLoader.cpp
 *   \version 1.0
 */
 
@@ -36,15 +36,15 @@
 
 #include <Loaders/ImageXmlLoader.hpp>
 
-#include <Engines/GraphicEngine.hpp>
-
 #include <Tools/Log.hpp>
-
 
 namespace sg {
 
     ImageXmlLoader::ImageXmlLoader() {
         Log::i("ImageXmlLoader") << "Loading images data from images.xml";
+
+        // return in case of error
+        m_datas["default"] = new ImageData;
 
         TiXmlDocument doc("data/images.xml");
         if ( ! doc.LoadFile() ) {
@@ -68,22 +68,22 @@ namespace sg {
 
             Log::v("ImageXmlLoader") << "Image found : " << image->Attribute("id");
 
-            ImageData *lid = new ImageData;
+            ImageData *id = new ImageData;
 
-            lid->imageID        = std::string(image->Attribute("id"));
-            lid->width          = atoi(image->Attribute("width"));
-            lid->height         = atoi(image->Attribute("height"));
-            lid->rowCount       = atoi(image->Attribute("rowCount"));
-            lid->columnCount    = atoi(image->Attribute("columnCount"));
-            lid->isOneShotAnim  = (image->Attribute("isOneShotAnim") == std::string("true"));
-            lid->url            = std::string(image->Attribute("url"));
-            lid->isRectangular  = (image->Attribute("isRectangular") == std::string("true"));
+            id->imageID        = std::string(image->Attribute("id"));
+            id->width          = atoi(image->Attribute("width"));
+            id->height         = atoi(image->Attribute("height"));
+            id->rowCount       = atoi(image->Attribute("rowCount"));
+            id->columnCount    = atoi(image->Attribute("columnCount"));
+            id->isOneShotAnim  = (image->Attribute("isOneShotAnim") == std::string("true"));
+            id->url            = std::string(image->Attribute("url"));
+            id->isRectangular  = (image->Attribute("isRectangular") == std::string("true"));
 
-            if ( ! lid->isRectangular ) { // load points
+            if ( ! id->isRectangular ) { // load points
 
                 TiXmlElement *point = image->FirstChildElement();
                 while (point) {
-                    lid->points.push_back(sf::Vector2f(
+                    id->points.push_back(sf::Vector2f(
                                               atof(point->Attribute("x")),
                                               atof(point->Attribute("y"))));
                     point = point->NextSiblingElement();
@@ -91,13 +91,13 @@ namespace sg {
             }
 
 
-            m_datas[lid->imageID] = lid;
+            m_datas[id->imageID] = id;
 
             image = image->NextSiblingElement();
         }
 
 
-        Log::i("ImageXmlLoader") << "Loading map resources... Over !";
+        Log::i("ImageXmlLoader") << "Loading images resources... Over !";
     }
 
 
@@ -113,7 +113,8 @@ namespace sg {
 
     const ImageData* ImageXmlLoader::getImageData(const std::string &imageID) {
         if ( ! m_datas[imageID] ) {
-            Log::w("ImageXmlLoader") << "No images datas for ID : " << imageID;
+            Log::e("ImageXmlLoader") << "No images datas for ID : " << imageID;
+            return m_datas["default"];
         }
         return m_datas[imageID];
     }

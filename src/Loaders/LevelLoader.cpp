@@ -49,6 +49,7 @@
 
 #include "Loaders/ObjectXmlLoader.hpp"
 #include "Loaders/ImageXmlLoader.hpp"
+#include "Loaders/SoundXmlLoader.hpp"
 
 #include "Elements/Decor.hpp"
 #include "Elements/StaticObject.hpp"
@@ -80,7 +81,7 @@ namespace sg {
             Looking for items to load
         */
 
-
+/*
         // 1. Object(s)
         TiXmlElement *objectToLoad = hdl.FirstChildElement().
                                          FirstChildElement("load").
@@ -108,7 +109,7 @@ namespace sg {
             Log::v("LevelLoader") << "Music to load : " << musicToLoad->Attribute("id");
             musicToLoad  = musicToLoad->NextSiblingElement();
         }
-
+*/
 
         /*
             Now we're looking for items which will fill the map
@@ -141,7 +142,7 @@ namespace sg {
                     obj->setCurrentSprite(imageData->url);
 
                     for (std::multimap<std::string, std::string>::const_iterator it = objectData->sounds.begin(); it != objectData->sounds.end(); ++it) {
-                        obj->addSound(it->first, AudioEngine::getInstance().getSound(it->second));
+                        obj->addSound(it->first, AudioEngine::getInstance().getSound(SoundXmlLoader::getInstance().getSoundData(it->second)->url));
                     }
 
                     obj->addBody(sg::PhysicEngine::getInstance().createDynamicBox(
@@ -166,7 +167,7 @@ namespace sg {
                     obj->setCurrentSprite(imageData->url);
 
                     for (std::multimap<std::string, std::string>::const_iterator it = objectData->sounds.begin(); it != objectData->sounds.end(); ++it) {
-                        obj->addSound(it->first, AudioEngine::getInstance().getSound(it->second));
+                        obj->addSound(it->first, AudioEngine::getInstance().getSound(SoundXmlLoader::getInstance().getSoundData(it->second)->url));
                     }
 
                     obj->addBody(sg::PhysicEngine::getInstance().createStaticBox(
