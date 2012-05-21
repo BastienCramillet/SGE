@@ -35,26 +35,30 @@
 #ifndef DYNAMICOBJECT_HPP_INCLUDED
 #define DYNAMICOBJECT_HPP_INCLUDED
 
+#include <Elements/Element.hpp>
 #include <Elements/Drawable.hpp>
+
 #include <Elements/Playable.hpp>
 #include <Elements/Physical.hpp>
 
 namespace sg
 {
-    class DynamicObject : public Drawable, public Playable, public Physical
+    class DynamicObject : public Element, public Drawable, public Playable, public Physical
     {
         public :
 
-            DynamicObject ();
-            ~DynamicObject ();
+            DynamicObject(const std::string &elementID);
 
-            void update ();
+            virtual ~DynamicObject();
+
+            virtual void update();
+
             void play(std::string& id);
 
-        private :
-
-            int a;
-
+            /**
+                Override Element::getPostion
+            */
+            sf::Vector2f getPosition() const;
 
     };
 }

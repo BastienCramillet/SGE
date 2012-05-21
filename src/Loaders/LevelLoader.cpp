@@ -32,22 +32,30 @@
 *   \version 1.0
 */
 
-
-#include <Loaders/LevelLoader.hpp>
-#include <Level.hpp>
-#include <Tools/Log.hpp>
-
-#include <Engines/PhysicEngine.hpp>
-#include <Engines/GraphicEngine.hpp>
-
-#include <Elements/DynamicObject.hpp>
-
-#include <Loaders/ObjectXmlLoader.hpp>
-#include <Loaders/ImageXmlLoader.hpp>
-
 #include <set>
+#include <map>
+
 #include <tinyxml.h>
 
+#include "Loaders/LevelLoader.hpp"
+
+#include "Level.hpp"
+
+#include "Tools/Log.hpp"
+
+#include "Engines/PhysicEngine.hpp"
+#include "Engines/GraphicEngine.hpp"
+#include "Engines/AudioEngine.hpp"
+
+#include "Loaders/ObjectXmlLoader.hpp"
+#include "Loaders/ImageXmlLoader.hpp"
+#include "Loaders/SoundXmlLoader.hpp"
+#include "Loaders/MusicXmlLoader.hpp"
+
+#include "Elements/Decor.hpp"
+#include "Elements/StaticObject.hpp"
+#include "Elements/DynamicObject.hpp"
+#include "Elements/Area.hpp"
 
 namespace sg {
 
@@ -74,7 +82,7 @@ namespace sg {
             Looking for items to load
         */
 
-
+/*
         // 1. Object(s)
         TiXmlElement *objectToLoad = hdl.FirstChildElement().
                                          FirstChildElement("load").
@@ -102,7 +110,7 @@ namespace sg {
             Log::v("LevelLoader") << "Music to load : " << musicToLoad->Attribute("id");
             musicToLoad  = musicToLoad->NextSiblingElement();
         }
-
+*/
 
         /*
             Now we're looking for items which will fill the map
@@ -120,22 +128,23 @@ namespace sg {
             Log::v("LevelLoader") << "Object on map : " << objectOnMap->Attribute("id")
                           << " (" << objectOnMap->Attribute("x") << "," << objectOnMap->Attribute("y") << ")";
 
+            const ImageData *imageData   = ImageXmlLoader::getInstance().getImageData(objectOnMap->Attribute("imageOnCreateID"));
+            const ObjectData *objectData = ObjectXmlLoader::getInstance().getObjectData(objectOnMap->Attribute("id"));
 
             if (objectOnMap->Attribute("isOnBackground") == std::string("false")) { // this is a dynamic object
 
-                const ImageData *imageData   = ImageXmlLoader::getInstance().getImageData(objectOnMap->Attribute("imageOnCreateID"));
-                const ObjectData *objectData = ObjectXmlLoader::getInstance().getObjectData(objectOnMap->Attribute("id"));
-
                 if (objectOnMap->Attribute("isMovable") == std::string("true")) {
 
-                    sg::DynamicObject* obj = new sg::DynamicObject();
+                    sg::DynamicObject* obj = new sg::DynamicObject(objectData->objectID);
                     obj->addSprite(
                                 imageData->url,
                                 GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
                                );
                     obj->setCurrentSprite(imageData->url);
 
-                    //obj->addSound(urls, sg::AudioEngine::getInstance().getSound(urls));
+                    for (std::multimap<std::string, std::string>::const_iterator it = objectData->sounds.begin(); it != objectData->sounds.end(); ++it) {
+                        obj->addSound(it->first, AudioEngine::getInstance().getSound(SoundXmlLoader::getInstance().getSoundData(it->second)->url));
+                    }
 
                     obj->addBody(sg::PhysicEngine::getInstance().createDynamicBox(
                                      atoi(objectOnMap->Attribute("x")),
@@ -151,14 +160,16 @@ namespace sg {
                 }
                 else { // non movable
 
-                    sg::DynamicObject* obj = new sg::DynamicObject();
+                    sg::StaticObject * obj = new sg::StaticObject(objectData->objectID);
                     obj->addSprite(
                                 imageData->url,
                                 GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
                                 );
                     obj->setCurrentSprite(imageData->url);
 
-                    //obj->addSound(urls, sg::AudioEngine::getInstance().getSound(urls));
+                    for (std::multimap<std::string, std::string>::const_iterator it = objectData->sounds.begin(); it != objectData->sounds.end(); ++it) {
+                        obj->addSound(it->first, AudioEngine::getInstance().getSound(SoundXmlLoader::getInstance().getSoundData(it->second)->url));
+                    }
 
                     obj->addBody(sg::PhysicEngine::getInstance().createStaticBox(
                                      atoi(objectOnMap->Attribute("x")),
@@ -167,11 +178,25 @@ namespace sg {
                                      objectData->height
                                      ));
 
-                    level->m_vDynamics.push_back(obj);
+                    level->m_staticObjects.push_back(obj);
                 }
             }
             else { // non dynamic object (decor)
-                Log::w("LevelLoader") << "decor loading not implemented yet";
+
+                sg::Decor *decor = new sg::Decor(objectData->objectID);
+
+                decor->addSprite(
+                            imageData->url,
+                            GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
+                    );
+
+                decor->setCurrentSprite(imageData->url);
+
+                decor->setPosition(sf::Vector2f(
+                                        atof(objectOnMap->Attribute("x")),
+                                        atof(objectOnMap->Attribute("y"))
+                                   )
+                            );
             }
 
             objectOnMap  = objectOnMap->NextSiblingElement();
@@ -189,7 +214,18 @@ namespace sg {
         while (areaOnMap) {
             Log::v("LevelLoader") << "Area on map : " << areaOnMap->Attribute("description")
                           << " (" << areaOnMap->Attribute("x") << "," << areaOnMap->Attribute("y") << ")";
-            Log::w("LevelLoader") << "This loading is not implemented yet !";
+
+            level->m_vAreas.push_back(
+                            new Area(
+                                sf::FloatRect(
+                                    atof(areaOnMap->Attribute("x")),
+                                    atof(areaOnMap->Attribute("y")),
+                                    atof(areaOnMap->Attribute("width")),
+                                    atof(areaOnMap->Attribute("height"))
+                                )
+                            )
+                        );
+
             areaOnMap = areaOnMap->NextSiblingElement();
         }
 

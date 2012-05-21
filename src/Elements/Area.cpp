@@ -25,40 +25,26 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef AUDIOENGINE_HPP_INCLUDED
-#define AUDIOENGINE_HPP_INCLUDED
+/*!
+*   \file Area.cpp
+*   \brief Area source code
+*   \version 0.1
+*   \author Xavier
+*/
 
-#include <Core/Singleton.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Resources/AudioResource.hpp>
-#include <SFML/Audio.hpp>
+#include "Elements/Area.hpp"
 
 namespace sg
 {
-    class AudioEngine : public Singleton<AudioEngine>
+
+    Area::Area(const sf::FloatRect &rect)
+        : Element("area"), sf::FloatRect(rect)
     {
-        friend class Singleton<AudioEngine>;
+    }
 
-        public :
 
-            void init();
+    sf::Vector2f Area::getPosition() const {
+        return sf::Vector2f(top, left);
+    }
 
-            void clear();
-
-            sf::Sound* getSound(const std::string &url);
-
-            void playSound (sf::Sound sound);
-
-        private :
-
-            AudioEngine();
-            ~AudioEngine();
-
-            std::vector<sf::Sound*> m_vSound;
-            std::vector<sf::Music*> m_vMusic;
-
-            ResourceManager<AudioResource> m_resourceManager;
-    };
-} // namespace sg
-
-#endif // AUDIOENGINE_HPP_INCLUDED
+}

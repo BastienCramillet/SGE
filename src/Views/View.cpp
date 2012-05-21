@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
 *
-* SGE - Simple Game Engine
+* SE - Simple Engine
 *
 * Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
 *                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
@@ -26,59 +26,16 @@
 *
 *-----------------------------------------------------------------------------*/
 
-/*!
-*   \file GraphicEngine.hpp
-*   \brief Graphic Engine class header
-*   \version 0.1
-*   \author Bastien (Bigz) Cramillet
-*/
+#include "Views/View.hpp"
 
-#ifndef GRAPHICENGINE_HPP_INCLUDED
-#define GRAPHICENGINE_HPP_INCLUDED
+namespace sg {
 
-#include <Core/Singleton.hpp>
-#include <SFML/Graphics.hpp>
-
-#include <Resources/ResourceManager.hpp>
-#include <Resources/GraphicResource.hpp>
-
-
-namespace sg
-{
-    class Drawable;
-
-    class GraphicEngine : public Singleton<GraphicEngine>
+    View::View(const sf::Vector2f &center, const sf::Vector2f &size)
+        : sf::View(center, size)
     {
-        friend class Singleton<GraphicEngine>;
+    }
 
-        public :
+    View::~View() {
+    }
 
-            void init();
-
-            void clear();
-
-            void update ();
-
-
-            void draw (sf::RenderTarget& target);
-
-            void draw (sf::RenderTarget& target, sf::Sprite& sprite);
-
-            sf::Sprite* getSprite(const std::string& url);
-
-        private :
-
-            GraphicEngine ();
-
-            ~GraphicEngine ();
-
-            std::vector<sf::Drawable *> m_vDrawable;
-
-            ResourceManager<GraphicResource> m_resourceManager;
-
-
-
-    };
-} // namespace sg
-
-#endif // GRAPHICENGINE_HPP_INCLUDED
+}

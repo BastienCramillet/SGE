@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
 *
-* SGE - Simple Game Engine
+* SE - Simple Engine
 *
 * Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
 *                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
@@ -26,59 +26,39 @@
 *
 *-----------------------------------------------------------------------------*/
 
-/*!
-*   \file GraphicEngine.hpp
-*   \brief Graphic Engine class header
-*   \version 0.1
-*   \author Bastien (Bigz) Cramillet
-*/
+#ifndef VIEW_HPP_INCLUDED
+#define VIEW_HPP_INCLUDED
 
-#ifndef GRAPHICENGINE_HPP_INCLUDED
-#define GRAPHICENGINE_HPP_INCLUDED
+#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/View.hpp>
 
-#include <Core/Singleton.hpp>
-#include <SFML/Graphics.hpp>
+namespace sg {
 
-#include <Resources/ResourceManager.hpp>
-#include <Resources/GraphicResource.hpp>
+    /*!
+    *   \class View
+    *   \brief A view
+    */
+    class View : public sf::View {
 
+    public :
 
-namespace sg
-{
-    class Drawable;
+        /**
+            Create a view with a focuse on center and a size of size
+        */
+        View(const sf::Vector2f &center, const sf::Vector2f &size);
 
-    class GraphicEngine : public Singleton<GraphicEngine>
-    {
-        friend class Singleton<GraphicEngine>;
+        virtual ~View();
 
-        public :
+        /**
+            If there is some automatic action in the child view, this method should be override
 
-            void init();
-
-            void clear();
-
-            void update ();
-
-
-            void draw (sf::RenderTarget& target);
-
-            void draw (sf::RenderTarget& target, sf::Sprite& sprite);
-
-            sf::Sprite* getSprite(const std::string& url);
-
-        private :
-
-            GraphicEngine ();
-
-            ~GraphicEngine ();
-
-            std::vector<sf::Drawable *> m_vDrawable;
-
-            ResourceManager<GraphicResource> m_resourceManager;
-
-
+            There is no stuff here
+        */
+        virtual void update() {
+        }
 
     };
-} // namespace sg
 
-#endif // GRAPHICENGINE_HPP_INCLUDED
+}
+
+#endif

@@ -55,7 +55,7 @@ namespace sg
         m_mSound[id]->play();
     }
 
-    void Playable::addSound(std::string& id, sf::Sound* sound)
+    void Playable::addSound(const std::string& id, sf::Sound* sound)
     {
         m_mSound[id] = sound;
     }

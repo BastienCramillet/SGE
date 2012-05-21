@@ -41,7 +41,10 @@
 
 namespace sg {
 
+    class Decor;
     class DynamicObject;
+    class StaticObject;
+    class Area;
 
     /*!
     *   \class Level
@@ -117,7 +120,7 @@ namespace sg {
 
 
         /*!
-            \brief Update object locations
+            \brief Update objects on level
         */
         void update();
 
@@ -132,7 +135,13 @@ namespace sg {
 
         int m_width;                                //!< Width of the Level
 
+        std::vector<StaticObject *> m_staticObjects;//!< Level statics but physicals elements
+
         std::vector<DynamicObject *> m_vDynamics;   //!< Level dynamics elements
+
+        std::vector<Decor *> m_vDecors;             //!< Level decorations
+
+        std::vector<Area *> m_vAreas;               //!< Level areas
     };
 
 }

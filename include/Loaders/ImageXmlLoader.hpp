@@ -28,14 +28,14 @@
 
 
 /*!
-*   \file LevelImageLoader.hpp
+*   \file ImageXmlLoader.hpp
 *   \version 1.0
 */
 
 
 
-#ifndef LEVEL_IMAGE_LOADER_HPP
-#define LEVEL_IMAGE_LOADER_HPP
+#ifndef IMAGE_XML_LOADER_HPP
+#define IMAGE_XML_LOADER_HPP
 
 
 #include <string>

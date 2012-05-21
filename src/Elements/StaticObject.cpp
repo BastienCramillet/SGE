@@ -25,40 +25,21 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef AUDIOENGINE_HPP_INCLUDED
-#define AUDIOENGINE_HPP_INCLUDED
+/*!
+*   \file StaticObject.cpp
+*   \brief Static object source code
+*   \version 0.1
+*   \author Xavier
+*/
 
-#include <Core/Singleton.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Resources/AudioResource.hpp>
-#include <SFML/Audio.hpp>
+#include "Elements/StaticObject.hpp"
 
 namespace sg
 {
-    class AudioEngine : public Singleton<AudioEngine>
+
+    StaticObject::StaticObject(const std::string &elementID)
+        : DynamicObject(elementID)
     {
-        friend class Singleton<AudioEngine>;
+    }
 
-        public :
-
-            void init();
-
-            void clear();
-
-            sf::Sound* getSound(const std::string &url);
-
-            void playSound (sf::Sound sound);
-
-        private :
-
-            AudioEngine();
-            ~AudioEngine();
-
-            std::vector<sf::Sound*> m_vSound;
-            std::vector<sf::Music*> m_vMusic;
-
-            ResourceManager<AudioResource> m_resourceManager;
-    };
-} // namespace sg
-
-#endif // AUDIOENGINE_HPP_INCLUDED
+}

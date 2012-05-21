@@ -36,44 +36,7 @@ namespace sg
 
     }
 
-    /******************************************************
-    *                     View Part                       *
-    ******************************************************/
 
-    void GraphicEngine::createView (sf::Vector2f center, sf::Vector2f size)
-    {
-        m_view = sf::View(center, size);
-    }
-
-    const sf::View& GraphicEngine::getView() const
-    {
-        return m_view;
-    }
-
-    void GraphicEngine::setViewPosition (sf::Vector2f position)
-    {
-        m_view.setCenter(position);
-    }
-
-    void GraphicEngine::setViewSize (sf::Vector2f size)
-    {
-        m_view.setSize(size);
-    }
-
-    void GraphicEngine::zoomView (float factor)
-    {
-        m_view.zoom(factor);
-    }
-
-    void GraphicEngine::rotateView (float angle)
-    {
-        m_view.rotate(angle);
-    }
-
-    void GraphicEngine::moveView (sf::Vector2f offset)
-    {
-        m_view.move(offset);
-    }
 
     void GraphicEngine::draw (sf::RenderTarget& target)
     {
@@ -88,7 +51,7 @@ namespace sg
     *                     Draw Part                       *
     ******************************************************/
 
-    void GraphicEngine::draw (sf::RenderTarget& target, sf::Sprite& sprite)
+    void GraphicEngine::draw(sf::RenderTarget& target, sf::Sprite& sprite)
     {
         target.draw(sprite);
     }

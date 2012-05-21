@@ -25,40 +25,31 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef AUDIOENGINE_HPP_INCLUDED
-#define AUDIOENGINE_HPP_INCLUDED
+/*!
+*   \file Decor.cpp
+*   \brief Decor source code
+*   \version 0.1
+*   \author Xavier
+*/
 
-#include <Core/Singleton.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Resources/AudioResource.hpp>
-#include <SFML/Audio.hpp>
+#include <Elements/Decor.hpp>
+
+#include <Tools/Log.hpp>
 
 namespace sg
 {
-    class AudioEngine : public Singleton<AudioEngine>
+    Decor::Decor(const std::string &elementID)
+        : Element(elementID)
     {
-        friend class Singleton<AudioEngine>;
+    }
 
-        public :
+    Decor::~Decor()
+    {
+    }
 
-            void init();
+    sf::Vector2f Decor::getPosition() const {
+        return getCurrentSprite().getPosition();
+    }
 
-            void clear();
 
-            sf::Sound* getSound(const std::string &url);
-
-            void playSound (sf::Sound sound);
-
-        private :
-
-            AudioEngine();
-            ~AudioEngine();
-
-            std::vector<sf::Sound*> m_vSound;
-            std::vector<sf::Music*> m_vMusic;
-
-            ResourceManager<AudioResource> m_resourceManager;
-    };
-} // namespace sg
-
-#endif // AUDIOENGINE_HPP_INCLUDED
+}

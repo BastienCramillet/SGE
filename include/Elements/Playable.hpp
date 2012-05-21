@@ -42,7 +42,7 @@ namespace sg
 
             void play(std::string& id);
 
-            void addSound (std::string& id, sf::Sound* sound);
+            void addSound(const std::string& id, sf::Sound* sound);
 
             void setPosition(sf::Vector3f position);
 

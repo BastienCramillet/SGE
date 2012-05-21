@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
 *
-* SGE - Simple Game Engine
+* SE - Simple Engine
 *
 * Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
 *                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
@@ -26,59 +26,63 @@
 *
 *-----------------------------------------------------------------------------*/
 
+
 /*!
-*   \file GraphicEngine.hpp
-*   \brief Graphic Engine class header
-*   \version 0.1
-*   \author Bastien (Bigz) Cramillet
+*   \file MusicXmlLoader.hpp
+*   \version 1.0
 */
 
-#ifndef GRAPHICENGINE_HPP_INCLUDED
-#define GRAPHICENGINE_HPP_INCLUDED
+
+
+#ifndef MUSIC_XML_LOADER_HPP
+#define MUSIC_XML_LOADER_HPP
+
+
+#include <string>
+#include <map>
 
 #include <Core/Singleton.hpp>
-#include <SFML/Graphics.hpp>
 
-#include <Resources/ResourceManager.hpp>
-#include <Resources/GraphicResource.hpp>
+namespace sg {
 
 
-namespace sg
-{
-    class Drawable;
-
-    class GraphicEngine : public Singleton<GraphicEngine>
-    {
-        friend class Singleton<GraphicEngine>;
-
-        public :
-
-            void init();
-
-            void clear();
-
-            void update ();
+    /**
+        The datas which compose a music
+    */
+    struct MusicData {
+        std::string musicID;                //!< music ID
+        std::string url;                    //!< file url
+    };
 
 
-            void draw (sf::RenderTarget& target);
+    /**
+        \brief The MusicXmlManager is a manager based on musics.xml
+    */
+    class MusicXmlLoader : public Singleton<MusicXmlLoader> {
 
-            void draw (sf::RenderTarget& target, sf::Sprite& sprite);
+        friend class Singleton<MusicXmlLoader>;
 
-            sf::Sprite* getSprite(const std::string& url);
+    public :
 
-        private :
-
-            GraphicEngine ();
-
-            ~GraphicEngine ();
-
-            std::vector<sf::Drawable *> m_vDrawable;
-
-            ResourceManager<GraphicResource> m_resourceManager;
+        /**
+            Get images datas from image ID
+        */
+        const MusicData* getMusicData(const std::string &musicID);
 
 
+    private :
+
+        MusicXmlLoader();
+
+        ~MusicXmlLoader();
+
+        std::map<std::string, MusicData*> m_datas; // datas, loaded once from musics.xml
 
     };
-} // namespace sg
 
-#endif // GRAPHICENGINE_HPP_INCLUDED
+}
+
+
+
+#endif // MUSIC_XML_LOADER_HPP
+

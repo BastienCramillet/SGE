@@ -35,12 +35,17 @@
 
 #include <tinyxml.h>
 
-#include <Loaders/LevelLoader.hpp>
-#include <Level.hpp>
+#include "Level.hpp"
 
-#include <Elements/DynamicObject.hpp>
+#include "Loaders/LevelLoader.hpp"
 
-#include <Tools/Log.hpp>
+#include "Elements/StaticObject.hpp"
+#include "Elements/DynamicObject.hpp"
+#include "Elements/Decor.hpp"
+#include "Elements/Area.hpp"
+
+#include "Tools/Log.hpp"
+
 
 namespace sg {
 
@@ -81,10 +86,27 @@ namespace sg {
         m_name = "";
         m_height = 0;
         m_width = 0;
+
+        for (std::vector<StaticObject *>::iterator it = m_staticObjects.begin(); it != m_staticObjects.end(); ++it) {
+            delete *it;
+        }
+        m_staticObjects.clear();
+
         for (std::vector<DynamicObject *>::iterator it = m_vDynamics.begin(); it != m_vDynamics.end(); ++it) {
             delete *it;
         }
         m_vDynamics.clear();
+
+        for (std::vector<Decor *>::iterator it = m_vDecors.begin(); it != m_vDecors.end(); ++it) {
+            delete *it;
+        }
+        m_vDecors.clear();
+
+        for (std::vector<Area *>::iterator it = m_vAreas.begin(); it != m_vAreas.end(); ++it) {
+            delete *it;
+        }
+        m_vAreas.clear();
+
     }
 
 
