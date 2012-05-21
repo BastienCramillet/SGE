@@ -96,6 +96,7 @@
 			</Target>
 			<Target title="App test">
 				<Option output="2D Game Engine" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\..\run" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
@@ -115,6 +116,7 @@
 			</Target>
 			<Target title="App test debug">
 				<Option output="2D Game Engine" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\..\run" />
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -157,11 +159,14 @@
 		<Unit filename="..\..\include\Core\Position.hpp" />
 		<Unit filename="..\..\include\Core\Singleton.hpp" />
 		<Unit filename="..\..\include\Core\Thread.hpp" />
+		<Unit filename="..\..\include\Elements\Area.hpp" />
+		<Unit filename="..\..\include\Elements\Decor.hpp" />
 		<Unit filename="..\..\include\Elements\Drawable.hpp" />
 		<Unit filename="..\..\include\Elements\DynamicObject.hpp" />
 		<Unit filename="..\..\include\Elements\Element.hpp" />
 		<Unit filename="..\..\include\Elements\Physical.hpp" />
 		<Unit filename="..\..\include\Elements\Playable.hpp" />
+		<Unit filename="..\..\include\Elements\StaticObject.hpp" />
 		<Unit filename="..\..\include\Engines.hpp" />
 		<Unit filename="..\..\include\Engines\AudioEngine.hpp" />
 		<Unit filename="..\..\include\Engines\Engine.hpp" />
@@ -177,7 +182,9 @@
 		<Unit filename="..\..\include\Level.hpp" />
 		<Unit filename="..\..\include\Loaders\ImageXmlLoader.hpp" />
 		<Unit filename="..\..\include\Loaders\LevelLoader.hpp" />
+		<Unit filename="..\..\include\Loaders\MusicXmlLoader.hpp" />
 		<Unit filename="..\..\include\Loaders\ObjectXmlLoader.hpp" />
+		<Unit filename="..\..\include\Loaders\SoundXmlLoader.hpp" />
 		<Unit filename="..\..\include\Managers\Manager.hpp" />
 		<Unit filename="..\..\include\Managers\Settings.hpp" />
 		<Unit filename="..\..\include\Resources\AudioResource.hpp" />
@@ -191,14 +198,19 @@
 		<Unit filename="..\..\include\Tools\Log.hpp" />
 		<Unit filename="..\..\include\Tools\Log.inl" />
 		<Unit filename="..\..\include\Tools\Randomizer.hpp" />
+		<Unit filename="..\..\include\Views\DrunkerView.hpp" />
+		<Unit filename="..\..\include\Views\View.hpp" />
 		<Unit filename="..\..\include\core\Singleton.inl" />
 		<Unit filename="..\..\include\network\Client.hpp" />
 		<Unit filename="..\..\include\network\Server.hpp" />
 		<Unit filename="..\..\include\tools\Log.inl" />
+		<Unit filename="..\..\src\Elements\Area.cpp" />
+		<Unit filename="..\..\src\Elements\Decor.cpp" />
 		<Unit filename="..\..\src\Elements\Drawable.cpp" />
 		<Unit filename="..\..\src\Elements\DynamicObject.cpp" />
 		<Unit filename="..\..\src\Elements\Physical.cpp" />
 		<Unit filename="..\..\src\Elements\Playable.cpp" />
+		<Unit filename="..\..\src\Elements\StaticObject.cpp" />
 		<Unit filename="..\..\src\Engines\AudioEngine.cpp" />
 		<Unit filename="..\..\src\Engines\GraphicEngine.cpp" />
 		<Unit filename="..\..\src\Engines\PhysicEngine.cpp" />
@@ -209,11 +221,15 @@
 		<Unit filename="..\..\src\Level.cpp" />
 		<Unit filename="..\..\src\Loaders\ImageXmlLoader.cpp" />
 		<Unit filename="..\..\src\Loaders\LevelLoader.cpp" />
+		<Unit filename="..\..\src\Loaders\MusicXmlLoader.cpp" />
 		<Unit filename="..\..\src\Loaders\ObjectXmlLoader.cpp" />
+		<Unit filename="..\..\src\Loaders\SoundXmlLoader.cpp" />
 		<Unit filename="..\..\src\Managers\Settings.cpp" />
 		<Unit filename="..\..\src\Network\Server.cpp" />
 		<Unit filename="..\..\src\Tools\Log.cpp" />
 		<Unit filename="..\..\src\Tools\Randomizer.cpp" />
+		<Unit filename="..\..\src\Views\DrunkerView.cpp" />
+		<Unit filename="..\..\src\Views\View.cpp" />
 		<Unit filename="..\..\src\core\File.cpp" />
 		<Unit filename="..\..\src\core\MemoryManager.cpp" />
 		<Unit filename="..\..\src\main.cpp" />
