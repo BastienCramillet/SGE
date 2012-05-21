@@ -213,6 +213,7 @@
 		<Unit filename="..\..\src\Elements\StaticObject.cpp" />
 		<Unit filename="..\..\src\Engines\AudioEngine.cpp" />
 		<Unit filename="..\..\src\Engines\GraphicEngine.cpp" />
+		<Unit filename="..\..\src\Engines\NetworkEngine.cpp" />
 		<Unit filename="..\..\src\Engines\PhysicEngine.cpp" />
 		<Unit filename="..\..\src\Engines\WindowEngine.cpp" />
 		<Unit filename="..\..\src\Frame\Frame.cpp" />

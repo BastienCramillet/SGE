@@ -59,9 +59,9 @@ namespace sg
                 if (atoi(elem->Attribute("width")))
                 {
                     app_width = atoi(elem->Attribute("width"));
-                    Log::e("Settings.cpp") << "Application window width : " << app_width;
+                    Log::i("Settings.cpp") << "Application window width : " << app_width;
                     app_height = atoi(elem->Attribute("height"));
-                    Log::e("Settings.cpp") << "Application window height : " << app_height;
+                    Log::i("Settings.cpp") << "Application window height : " << app_height;
                 } // sinon on garde les valeurs par défaut définies plus haut
             }
 

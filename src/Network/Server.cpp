@@ -7,10 +7,12 @@ namespace sg
     {
     }
 
-    Server::Server(std::string address, int port, std::string pwd) :
+    Server::Server(const std::string& address, int port, std::string pwd) :
                     sg::Thread(), m_address(address), m_port(port), m_pwd(pwd)
     {
     }
+
+    Server::~Server() {}
 
     void Server::run ()
     {
