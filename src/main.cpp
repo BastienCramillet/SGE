@@ -5,15 +5,16 @@
 #include <fstream>
 
 
-#include <Core/MemoryManager.hpp>
-#include <Managers/Settings.hpp>
+#include "Core/MemoryManager.hpp"
+#include "Managers/Settings.hpp"
 
-#include <Frame/FrameManager.hpp>
-#include <Frame/GameFrame.hpp>
+#include "Frame/FrameManager.hpp"
+#include "Frame/GameFrame.hpp"
 
-#include <Elements/Decor.hpp>
+#include "Elements/Decor.hpp"
 
-#include <Views/DrunkerView.hpp>
+#include "Views/DrunkerView.hpp"
+#include "Views/AnimatedView.hpp"
 
 int main()
 {
@@ -45,7 +46,7 @@ int main()
     gameFrame->loadLevel("data/maps/demo_map.xml");
 
     gameFrame->addView(
-                "simple view",
+                "simple view demo",
                  new sg::View(
                            sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
                            sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
@@ -53,14 +54,30 @@ int main()
             );
 
     gameFrame->addView
-            ("drunker view",
+            ("drunker view demo",
              new sg::DrunkerView(
                            sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
                            sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
                     )
             );
 
-    gameFrame->setCurrentView("drunker view");
+    sg::AnimatedView *animatedView = new sg::AnimatedView(
+                sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
+                sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
+            );
+
+
+    animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0));
+
+    //animatedView->createStep(sf::seconds(7), sf::seconds(3)).moveCenter(sf::Vector2f(-800, 0));
+
+    //animatedView->createStep(sf::seconds(4), sf::seconds(4)).rotate(720);
+
+
+
+    gameFrame->addView("animated view demo", animatedView);
+
+    gameFrame->setCurrentView("animated view demo");
 
     int gameFrameID = frameManager.addFrame(gameFrame);
 

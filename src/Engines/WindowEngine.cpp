@@ -124,7 +124,7 @@ namespace sg
 
             m_window->clear();
             m_window->setView(*gf->getCurrentView());
-
+            Log::v() << gf->getCurrentView()->getCenter().x << " ," << gf->getCurrentView()->getCenter().y;
             gf->update();
 
             GraphicEngine::getInstance().draw(*m_window);
