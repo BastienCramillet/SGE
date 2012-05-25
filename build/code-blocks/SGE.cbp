@@ -195,9 +195,12 @@
 		<Unit filename="..\..\include\Resources\ResourceManager.inl" />
 		<Unit filename="..\..\include\Resources\ResourceSettings.hpp" />
 		<Unit filename="..\..\include\Ressources.hpp" />
+		<Unit filename="..\..\include\Tools\BezierCurve.hpp" />
 		<Unit filename="..\..\include\Tools\Log.hpp" />
 		<Unit filename="..\..\include\Tools\Log.inl" />
 		<Unit filename="..\..\include\Tools\Randomizer.hpp" />
+		<Unit filename="..\..\include\Views\AnimatedView.hpp" />
+		<Unit filename="..\..\include\Views\AnimatedViewStep.hpp" />
 		<Unit filename="..\..\include\Views\DrunkerView.hpp" />
 		<Unit filename="..\..\include\Views\View.hpp" />
 		<Unit filename="..\..\include\core\Singleton.inl" />
@@ -227,8 +230,11 @@
 		<Unit filename="..\..\src\Loaders\SoundXmlLoader.cpp" />
 		<Unit filename="..\..\src\Managers\Settings.cpp" />
 		<Unit filename="..\..\src\Network\Server.cpp" />
+		<Unit filename="..\..\src\Tools\BezierCurve.cpp" />
 		<Unit filename="..\..\src\Tools\Log.cpp" />
 		<Unit filename="..\..\src\Tools\Randomizer.cpp" />
+		<Unit filename="..\..\src\Views\AnimatedView.cpp" />
+		<Unit filename="..\..\src\Views\AnimatedViewStep.cpp" />
 		<Unit filename="..\..\src\Views\DrunkerView.cpp" />
 		<Unit filename="..\..\src\Views\View.cpp" />
 		<Unit filename="..\..\src\core\File.cpp" />

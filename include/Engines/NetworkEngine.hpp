@@ -27,7 +27,6 @@
 
 /*!
 *   \file NetworkEngine.hpp
-*   \brief Network engine header
 *   \version 0.1
 */
 
@@ -35,6 +34,7 @@
 #define NETWORKENGINE_HPP_INCLUDED
 
 #include <Core/Singleton.hpp>
+#include <SFML/Network.hpp>
 
 #include <string>
 
@@ -45,8 +45,6 @@ enum NETWORK_TYPE
     SERVER,
     BOTH
 };
-
-
 
 namespace sg
 {
@@ -59,6 +57,16 @@ namespace sg
 
         public :
 
+            /*!
+            *   \brief Get the local IP address of the machine
+            */
+            const sf::IpAddress getLocalAddress() const;
+
+            /*!
+            *   \brief Get the public IP address of the machine
+            */
+            const sf::IpAddress getPublicAddress() const;
+
             void createServer(const std::string& address, int port);
             void createClient(const std::string& address, int port);
 
@@ -68,13 +76,15 @@ namespace sg
 
         private :
 
-            sg::Server* m_server;
-            sg::Client* m_client;
+
 
             NetworkEngine ();
             ~NetworkEngine ();
 
             NETWORK_TYPE m_type;
+
+            sg::Server* m_server;
+            sg::Client* m_client;
     };
 }
 

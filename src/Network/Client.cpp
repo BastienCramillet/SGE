@@ -26,56 +26,31 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file DynamicObject.cpp
-*   \brief Dynamic object source code
+*   \file Client.cpp
+*   \brief Client class source code
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#include <Elements/DynamicObject.hpp>
-#include <Box2D.h>
-
-#include <Tools/Log.hpp>
+#include <Network/Client.hpp>
 
 namespace sg
 {
-    DynamicObject::DynamicObject(const std::string &elementID)
-        : Element(elementID)
+    Client::Client() : sg::Thread() {};
+
+    void Client::run()
     {
-    }
+                 // Create a socket and connect it to 192.168.1.50 on port 55001
+                 sf::TcpSocket socket;
+                 socket.connect("127.0.0.1", 55001);
 
-    DynamicObject::~DynamicObject ()
-    {
+                 // Send a message to the connected host
+                 std::string message = "Hi, I am a client";
+                 socket.send(message.c_str(), message.size() + 1);
 
-    }
-
-    sf::Vector2f DynamicObject::getPosition() const
-    {
-        return sf::Vector2f(getBodyPosition().x * 100, getBodyPosition().y * 100);
-    }
-
-    float DynamicObject::getRotation() const
-    {
-        return getBodyAngle() * 180.f / acos(-1.0);
-    }
-
-    void DynamicObject::update()
-    {
-        sf::Vector2f pos = getPosition();
-        float rot = getRotation();
-
-        if (m_currentSprite!=0)
-        {
-            m_currentSprite->setPosition(sf::Vector2f(pos.x, pos.y));
-            m_currentSprite->setRotation(rot);
-        }
-    }
-
-    void DynamicObject::play(std::string& id)
-    {
-        sf::Vector2f pos = getPosition();
-
-        m_mSound[id]->setPosition(sf::Vector3f(pos.x, pos.y, 1));
-        m_mSound[id]->play();
-    }
+                 // Receive an answer from the server
+                 char buffer[1024];
+                 std::size_t received = 0;
+                 socket.receive(buffer, sizeof(buffer), received);
+            }
 }

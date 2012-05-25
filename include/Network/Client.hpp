@@ -44,27 +44,15 @@ namespace sg
     {
         public :
 
-            Client() : sg::Thread() {};
+            Client();
 
-            void run ()
-            {
-                 // Create a socket and connect it to 192.168.1.50 on port 55001
-                 sf::TcpSocket socket;
-                 socket.connect("127.0.0.1", 55001);
-
-                 // Send a message to the connected host
-                 std::string message = "Hi, I am a client";
-                 socket.send(message.c_str(), message.size() + 1);
-
-                 // Receive an answer from the server
-                 char buffer[1024];
-                 std::size_t received = 0;
-                 socket.receive(buffer, sizeof(buffer), received);
-            }
+            void run ();
 
         private :
 
             std::string m_name;
+
+            std::vector<std::string> m_vClients;
     };
 }
 

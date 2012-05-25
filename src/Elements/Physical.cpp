@@ -56,4 +56,9 @@ namespace sg
     {
         return m_body->GetPosition();
     }
+
+    const float Physical::getBodyAngle() const
+    {
+        return m_body->GetAngle();
+    }
 }

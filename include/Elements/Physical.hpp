@@ -41,6 +41,7 @@ namespace sg
             ~Physical ();
 
             const b2Vec2& getBodyPosition() const;
+            const float getBodyAngle() const;
 
             void addBody(b2Body* body);
 

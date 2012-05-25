@@ -59,7 +59,24 @@ namespace sg
 
             void setPosition(sf::Vector2f position);
 
+            /*!
+            *   \brief Add a sprite loaded by the graphic engine to the drawable object
+            *
+            *   \param id The refered id of the image
+            *   \param drawable The sf::Sprite to add
+            */
             void addSprite (const std::string& id, sf::Sprite* drawable);
+
+            /*!
+            *   \brief Add a sprite loaded by the graphic engine to the drawable object
+            *           and set the origin of the sprite to correctly manage transformations
+            *
+            *   \param id The refered id of the image
+            *   \param drawable The sf::Sprite to add
+            *   \param width The width of the image
+            *   \param height The height of the image
+            */
+            void addSprite (const std::string& id, sf::Sprite* drawable, int width, int height);
 
 
         protected :

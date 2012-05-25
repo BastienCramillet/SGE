@@ -51,13 +51,11 @@ namespace sg
 
             /*!
             *   \brief Engine class constructor
-            *
-            *   \param game Parent object
             */
-            Engine (Game* game);
+            Engine ();
 
             /*!
-            *   \biref Engine class destructor
+            *   \brief Engine class destructor
             */
             virtual ~Engine ();
 
@@ -66,40 +64,20 @@ namespace sg
             *
             *   \param event The engine event to add
             */
-            void pushEvent (EngineEvent& event){
-                m_eventsQueue.push(event);
+            void sendMessage (EngineMessage& message){
+                m_qEngineMessage.push(message);
             }
 
-            /*!
-            *   \brief Treat the event queue
-            */
-            void processQueue ()
-            {
-                while (! m_eventsQueue.empty())
-                {
-                    EnginEvent event = m_eventsQueue.front();
-                    m_eventsQueue.pop();
 
-                    processEvent(event);
-                }
-            }
-
-            /*!
-            *  \brief Own engine treatment
-            */
-            virtual void frame() = 0;
 
         protected:
 
             /*!
-            *   \brief Own treatment of an event by the engine
-            *
-            *   \param event Event to treat
+            *   \brief Treat the message queue
             */
-            virtual void processEvent(EngineEvent& event) = 0;
+            virtual void processQueue () = 0;
 
-            Game                    *m_pParent;     //!< Pointer to the parent object
-            std::queue<EngineEvent> m_eventsQueue;  //!< Event queue to treat
+            std::queue<EngineMessage> m_qEngineMessage;  //!< The message queue to treat
 
 
     };

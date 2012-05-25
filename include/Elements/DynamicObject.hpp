@@ -59,6 +59,7 @@ namespace sg
                 Override Element::getPostion
             */
             sf::Vector2f getPosition() const;
+            float getRotation() const;
 
     };
 }

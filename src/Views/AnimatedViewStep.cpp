@@ -40,7 +40,7 @@ namespace sg {
 
 
     AnimatedViewStep::AnimatedViewStep(const sf::Time& start, const sf::Time& duration)
-        : m_start(start), m_duration(duration), m_center(0), m_size(0), m_rotation(0), m_animationPointCount(100)
+        : m_start(start), m_duration(duration), m_center(0), m_size(0), m_rotation(0), m_animationPointCount(10000)
     {
         m_end = m_start + m_duration;
     }

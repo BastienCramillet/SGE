@@ -51,5 +51,10 @@ namespace sg
         return getCurrentSprite().getPosition();
     }
 
+    float Decor::getRotation() const
+    {
+        return getCurrentSprite().getRotation();
+    }
+
 
 }

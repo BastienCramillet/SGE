@@ -31,7 +31,6 @@
 
 /*!
  * \file EngineEvent.hpp
- * \brief EngineEvent header
  * \version 1.0
  */
 
@@ -55,7 +54,8 @@ namespace sg
             */
             EngineEvent(std::string command, std::vector<std::string> args);
 
-            std::string                 m_sCommand; //!< The event command
+            std::string                 m_engine;
+            std::string                 m_command; //!< The event command
             std::vector<std::string>    m_vArgs;    //!< The command arguments
     };
 }

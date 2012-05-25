@@ -40,9 +40,15 @@ namespace sg
         m_currentSprite->setPosition(position);
     }
 
-
     void Drawable::addSprite(const std::string &url, sf::Sprite* sprite)
     {
+        m_mSprite[url] = sprite;
+    }
+
+
+    void Drawable::addSprite(const std::string &url, sf::Sprite* sprite, int width, int height)
+    {
+        sprite->setOrigin(sf::Vector2f(width / 2.f, height / 2.f));
         m_mSprite[url] = sprite;
     }
 

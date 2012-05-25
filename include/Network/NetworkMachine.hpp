@@ -26,56 +26,49 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file DynamicObject.cpp
-*   \brief Dynamic object source code
+*   \file NetworkMachine.hpp
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#include <Elements/DynamicObject.hpp>
-#include <Box2D.h>
+#ifndef NETWORKMACHINE_HPP_INCLUDED
+#define NETWORKMACHINE_HPP_INCLUDED
 
-#include <Tools/Log.hpp>
+#include <Core/Thread.hpp>
+#include <SFML/Network.hpp>
 
 namespace sg
 {
-    DynamicObject::DynamicObject(const std::string &elementID)
-        : Element(elementID)
+    /*!
+    *   \class NetworkMachine
+    *   \brief This class represent a basic machine on a network
+    */
+    class NetworkMachine : public sg::Thread
     {
-    }
+        public :
 
-    DynamicObject::~DynamicObject ()
-    {
+            /*!
+            *   \brief Constructor
+            */
+            NetworkMachine();
 
-    }
+            /*!
+            *   \brief Destructor
+            */
+            ~NetworkMachine();
 
-    sf::Vector2f DynamicObject::getPosition() const
-    {
-        return sf::Vector2f(getBodyPosition().x * 100, getBodyPosition().y * 100);
-    }
+            /*!
+            *   \brief Mandatory - See sg::Thread::run()
+            */
+            void run();
 
-    float DynamicObject::getRotation() const
-    {
-        return getBodyAngle() * 180.f / acos(-1.0);
-    }
 
-    void DynamicObject::update()
-    {
-        sf::Vector2f pos = getPosition();
-        float rot = getRotation();
 
-        if (m_currentSprite!=0)
-        {
-            m_currentSprite->setPosition(sf::Vector2f(pos.x, pos.y));
-            m_currentSprite->setRotation(rot);
-        }
-    }
+        private :
 
-    void DynamicObject::play(std::string& id)
-    {
-        sf::Vector2f pos = getPosition();
+            bool m_running; //!< A boolean used to let the main loop of the machine process or not
 
-        m_mSound[id]->setPosition(sf::Vector3f(pos.x, pos.y, 1));
-        m_mSound[id]->play();
-    }
-}
+    };
+} // namespace sg
+
+#endif // NETWORKMACHINE_HPP_INCLUDED
