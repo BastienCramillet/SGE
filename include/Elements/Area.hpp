@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -37,32 +38,32 @@
 
 #include <SFML/Graphics/Rect.hpp>
 
-#include "Elements/Element.hpp"
+#include <Elements/Element.hpp>
 
 namespace sg
 {
-    /**
-        \class Area
-        \brief An area is a zone of the map
+    /*!
+    *   \class Area
+    *   \brief An area is a zone of the map
     */
     class Area : public Element, public sf::FloatRect
     {
         public :
 
-            /**
-                Create an area
+            /*!
+            *   \brief Create an area
             */
             explicit Area(const sf::FloatRect &rect);
 
 
-            /**
-                Update the area (does nothing)
+            /*!
+            *   \brief Update the area (does nothing)
             */
             inline void update() {
             }
 
-            /**
-                Get the area position
+            /*!
+            *   \brief Get the area position
             */
             sf::Vector2f getPosition() const;
 

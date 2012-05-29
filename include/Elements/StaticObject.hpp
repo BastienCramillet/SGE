@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -39,15 +40,27 @@
 
 namespace sg
 {
+    /*!
+    *   \class StaticObject
+    *   \brief Represent a physical but static object.
+    *           Its position is just never updated and its body is set as static
+    */
     class StaticObject : public DynamicObject
     {
         public :
 
-            StaticObject(const std::string &elementID);
+            /*!
+            *   \brief Constructor
+            *
+            *   \param elementID The id of the element
+            */
+            StaticObject(const std::string& elementID);
 
+            /*!
+            *   \brief The never used update of the object
+            */
             inline void update() {
             }
-
     };
 }
 

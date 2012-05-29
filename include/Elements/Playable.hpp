@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -25,6 +26,13 @@
 *
 *-----------------------------------------------------------------------------*/
 
+/*!
+*   \file Playable.hpp
+*   \brief Playable object header
+*   \version 0.1
+*   \author Bastien (Bigz) Cramillet
+*/
+
 #ifndef PLAYABLE_HPP_INCLUDED
 #define PLAYABLE_HPP_INCLUDED
 
@@ -33,22 +41,46 @@
 
 namespace sg
 {
+    /*!
+    *   \class Playable
+    *   \brief Represent a playable object which can be played as different sounds
+    */
     class Playable
     {
         public :
 
+            /*!
+            *   \brief Constructor
+            */
             Playable ();
+
+            /*!
+            *   \brief Destructor
+            */
             ~Playable ();
 
+            /*!
+            *   \brief Play the sound of the given id
+            *
+            *   \param id The id of the sound
+            */
             void play(std::string& id);
 
+            /*!
+            *   \brief Add a sound to the playable object
+            */
             void addSound(const std::string& id, sf::Sound* sound);
 
-            void setPosition(sf::Vector3f position);
+            /*!
+            *   \brief Set the position of the object
+            *
+            *   \param position The new 3D position of the object
+            */
+            void setPosition(const sf::Vector3f& position);
 
         protected :
 
-            std::map<std::string, sf::Sound*> m_mSound;
+            std::map<std::string, sf::Sound*> m_mSound;     //!< All the different sounds of the playable and their id
     };
 }
 

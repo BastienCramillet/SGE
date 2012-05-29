@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -40,25 +41,40 @@
 
 namespace sg
 {
+    /*!
+    *   \class Decor
+    *   \brief Represent a simple visual decorative element
+    */
     class Decor : public Element, public Drawable
     {
         public :
 
-            Decor(const std::string &elementID);
+            /*!
+            *   \brief Constructor
+            *
+            *   \param elementID The id of the decor
+            */
+            Decor(const std::string& elementID);
 
+            /*!
+            *   \brief Destructor
+            */
             ~Decor();
 
-            /**
-              Update the decor
+            /*!
+            *   \brief Update the decor
             */
-            inline void update() {
-            }
+            inline void update() {}
 
 
-            /**
-                Override Element::getPostion
+            /*!
+            *   \brief Override Element::getPostion
             */
             sf::Vector2f getPosition() const;
+
+            /*!
+            *   \brief Get the rotation of the decor by the sprite
+            */
             float getRotation() const;
 
     };

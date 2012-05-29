@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -53,11 +54,24 @@ namespace sg
             */
             ~Drawable ();
 
+            /*!
+            *   \brief Get the current showed sprite of the drawable
+            */
             const sf::Sprite& getCurrentSprite() const;
 
+            /*!
+            *   \brief Set the current showed sprite of the drawable
+            *
+            *   \param id The id of the desired sprite
+            */
             void setCurrentSprite (const std::string& id);
 
-            void setPosition(sf::Vector2f position);
+            /*!
+            *   \brief Set the position of the current sprite
+            *
+            *   \param position The new position of the drawable
+            */
+            void setPosition(const sf::Vector2f& position);
 
             /*!
             *   \brief Add a sprite loaded by the graphic engine to the drawable object
@@ -81,9 +95,8 @@ namespace sg
 
         protected :
 
-            std::map<std::string, sf::Sprite*> m_mSprite;
-
-            sf::Sprite* m_currentSprite;
+            std::map<std::string, sf::Sprite*>  m_mSprite;          //!< All the different sprites of the drawable and their id
+            sf::Sprite*                         m_currentSprite;    //!< The current sprite of the drawable
     };
 
     /*
