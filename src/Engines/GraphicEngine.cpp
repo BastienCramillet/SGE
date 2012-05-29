@@ -13,6 +13,12 @@ namespace sg
         clear();
     }
 
+    void GraphicEngine::treatMessage (EngineMessage* message)
+    {
+
+        delete message;
+    }
+
     void GraphicEngine::init()
     {
 

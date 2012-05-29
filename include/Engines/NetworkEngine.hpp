@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -34,6 +35,7 @@
 #define NETWORKENGINE_HPP_INCLUDED
 
 #include <Core/Singleton.hpp>
+#include <Engines/Engine.hpp>
 #include <SFML/Network.hpp>
 
 #include <string>
@@ -51,7 +53,7 @@ namespace sg
     class Server;
     class Client;
 
-    class NetworkEngine : public Singleton<NetworkEngine>
+    class NetworkEngine : public Singleton<NetworkEngine>, public Engine
     {
         friend class Singleton<NetworkEngine>;
 
@@ -76,10 +78,9 @@ namespace sg
 
         private :
 
-
-
             NetworkEngine ();
             ~NetworkEngine ();
+            void treatMessage (EngineMessage* message);
 
             NETWORK_TYPE m_type;
 

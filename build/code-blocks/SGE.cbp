@@ -187,6 +187,7 @@
 		<Unit filename="..\..\include\Loaders\SoundXmlLoader.hpp" />
 		<Unit filename="..\..\include\Managers\Manager.hpp" />
 		<Unit filename="..\..\include\Managers\Settings.hpp" />
+		<Unit filename="..\..\include\Network\NetworkMachine.hpp" />
 		<Unit filename="..\..\include\Resources\AudioResource.hpp" />
 		<Unit filename="..\..\include\Resources\GraphicResource.hpp" />
 		<Unit filename="..\..\include\Resources\Resource.hpp" />
@@ -215,6 +216,7 @@
 		<Unit filename="..\..\src\Elements\Playable.cpp" />
 		<Unit filename="..\..\src\Elements\StaticObject.cpp" />
 		<Unit filename="..\..\src\Engines\AudioEngine.cpp" />
+		<Unit filename="..\..\src\Engines\Engine.cpp" />
 		<Unit filename="..\..\src\Engines\GraphicEngine.cpp" />
 		<Unit filename="..\..\src\Engines\NetworkEngine.cpp" />
 		<Unit filename="..\..\src\Engines\PhysicEngine.cpp" />
@@ -229,6 +231,7 @@
 		<Unit filename="..\..\src\Loaders\ObjectXmlLoader.cpp" />
 		<Unit filename="..\..\src\Loaders\SoundXmlLoader.cpp" />
 		<Unit filename="..\..\src\Managers\Settings.cpp" />
+		<Unit filename="..\..\src\Network\Client.cpp" />
 		<Unit filename="..\..\src\Network\Server.cpp" />
 		<Unit filename="..\..\src\Tools\BezierCurve.cpp" />
 		<Unit filename="..\..\src\Tools\Log.cpp" />

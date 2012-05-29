@@ -1,9 +1,9 @@
 /*------------------------------------------------------------------------------
 *
-* SE - Simple Engine
+* SGE - Simple Game Engine
 *
-* Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
+* Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -35,8 +35,12 @@
  * \version 1.0
  */
 
- #include <Engines/Engine.hpp>
-
+#include <Engines/Engine.hpp>
+#include <Engines/WindowEngine.hpp>
+#include <Engines/GraphicEngine.hpp>
+#include <Engines/AudioEngine.hpp>
+#include <Engines/PhysicEngine.hpp>
+#include <Engines/NetworkEngine.hpp>
 
 
 #endif // ENGINES_HPP_INCLUDED

@@ -49,6 +49,12 @@ namespace sg {
         clean();
     }
 
+    void NetworkEngine::treatMessage (EngineMessage* message)
+    {
+
+        delete message;
+    }
+
     void NetworkEngine::clean ()
     {
         if (m_server) delete m_server;

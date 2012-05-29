@@ -31,6 +31,13 @@ namespace sg
         }
     }
 
+    void WindowEngine::treatMessage (EngineMessage* message)
+    {
+
+        delete message;
+    }
+
+
     void WindowEngine::init()
     {
         Log::i("WindowEngine.cpp") << sg::Settings::getInstance().getAppWidth();

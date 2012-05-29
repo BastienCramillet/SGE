@@ -3,7 +3,6 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -26,44 +25,47 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef AUDIOENGINE_HPP_INCLUDED
-#define AUDIOENGINE_HPP_INCLUDED
+/*!
+*   \file Engine.cpp
+*   \version 0.1
+*   \author Bastien (Bigz) Cramillet
+*/
 
-#include <Core/Singleton.hpp>
-#include <Engines/Engine.hpp>
-#include <Resources/ResourceManager.hpp>
-#include <Resources/AudioResource.hpp>
-#include <SFML/Audio.hpp>
+#include <Engines.hpp>
 
 namespace sg
 {
-
-
-    class AudioEngine : public Singleton<AudioEngine>, public Engine
+    Engine::Engine ()
     {
-        friend class Singleton<AudioEngine>;
 
-        public :
+    }
 
-            void init();
+    Engine::~Engine ()
+    {
 
-            void clear();
+    }
 
-            sf::Sound* getSound(const std::string &url);
-
-            void playSound (sf::Sound sound);
-
-        private :
-
-            AudioEngine();
-            ~AudioEngine();
-            void treatMessage (EngineMessage* message);
-
-            std::vector<sf::Sound*> m_vSound;
-            std::vector<sf::Music*> m_vMusic;
-
-            ResourceManager<AudioResource> m_resourceManager;
-    };
-} // namespace sg
-
-#endif // AUDIOENGINE_HPP_INCLUDED
+    void Engine::sendMessage (std::string engine, EngineMessage* message)
+    {
+        if (engine == "physic")
+        {
+            PhysicEngine::getInstance().addMessage(message);
+        }
+        else if (engine == "network")
+        {
+            NetworkEngine::getInstance().addMessage(message);
+        }
+        else if (engine == "graphic")
+        {
+            GraphicEngine::getInstance().addMessage(message);
+        }
+        else if (engine == "window")
+        {
+            WindowEngine::getInstance().addMessage(message);
+        }
+        else if (engine == "audio")
+        {
+            AudioEngine::getInstance().addMessage(message);
+        }
+    }
+}
