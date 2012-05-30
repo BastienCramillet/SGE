@@ -33,6 +33,8 @@
 
 #include "Views/AnimatedView.hpp"
 
+#include <cmath>
+
 #include "Tools/Log.hpp"
 
 
@@ -102,7 +104,7 @@ namespace sg {
                 float t = (m_timer->getElapsedTime() - (*it)->m_start).asSeconds() / (*it)->m_duration.asSeconds();
 
                 // we're going to compute delta beetween last visited point and current point
-                sf::Vector2f lastVisitedPoint   = (*it)->m_computedPoints.front();
+                sf::Vector2f lastVisitedPoint   = (*it)->m_lastVisitedPoint;
                 sf::Vector2f currentPoint       = (*it)->m_computedPoints.front();
 
                 // find current point
@@ -118,18 +120,25 @@ namespace sg {
 
                 // calcule acceleration
                 float acceleration = currentPoint.y - lastVisitedPoint.y;
-
+/*
                 // interpolation if currentPoint == lastPoint
                 if (! pointDefined) {
-                    //acceleration = (*it)->m_lastAcceleration;
-                    //Log::v() << t << "extrapolation !";
-                    //acceleration = ((*it)->m_lastAcceleration*t)/(*it)->m_lastUpdateTime.asSeconds();
+
+                    const sf::Vector2f start = sf::Vector2f(0, 0);
+                    const sf::Vector2f diff  = sf::Vector2f(1, 1);
+
+                    currentPoint = start + t * diff;
+                    acceleration = currentPoint.y - lastVisitedPoint.y;
                 }
+*/                //else {
+                    //(*it)->m_lastAcceleration   = acceleration;
+                    //(*it)->m_lastUpdateTime     = sf::seconds(t);
+                    (*it)->m_lastVisitedPoint   = currentPoint;
+                    //Log::v() << acceleration;
+                //}
 
-                (*it)->m_lastAcceleration = acceleration;
-                (*it)->m_lastUpdateTime   = sf::seconds(t);
 
-                Log::v() << acceleration;
+                //Log::d() << acceleration;
 
                 // apply the move
                 applyView(*it, acceleration);

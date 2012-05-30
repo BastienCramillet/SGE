@@ -113,6 +113,8 @@ namespace sg {
         float m_lastAcceleration;                   //!< Last
 
         sf::Time m_lastUpdateTime;
+
+        sf::Vector2f m_lastVisitedPoint;
     };
 
 }
