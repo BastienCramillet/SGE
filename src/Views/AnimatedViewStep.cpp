@@ -78,9 +78,9 @@ namespace sg {
 
 
 
-    void AnimatedViewStep::computeAnimation()
+    void AnimatedViewStep::computeAnimation(const sf::Vector2f &start)
     {
-        sf::Vector2f p0(0, 0);
+        //sf::Vector2f p0(0, 0);
         //sf::Vector2f p1(0, 1);
         //sf::Vector2f p2(1, 0);
         //sf::Vector2f p1(0.25, 0.1);
@@ -88,7 +88,7 @@ namespace sg {
         sf::Vector2f p3(1, 1);
 
         std::vector<sf::Vector2f> l;
-        l.push_back(p0);
+        l.push_back(start);
         //l.push_back(p1);
         //l.push_back(p2);
         l.push_back(p3);

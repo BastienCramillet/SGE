@@ -41,14 +41,12 @@
 namespace sg {
 
     AnimatedView::AnimatedView(const sf::Vector2f &center, const sf::Vector2f &size)
-        : sg::View(center, size), m_timer(0)
+        : sg::View(center, size)
     {
     }
 
     AnimatedView::~AnimatedView()
     {
-        delete m_timer;
-
         for (std::vector<AnimatedViewStep *>::iterator it = m_steps.begin(); it != m_steps.end(); ++it) {
             delete *it;
         }
@@ -75,13 +73,13 @@ namespace sg {
             return;
         }
 
-        if (! m_timer) {
-            m_timer = new sf::Clock();
+        if (! m_watch.isRunning()) {
+            m_watch.start();
         }
 
         // finished views
         for (std::vector<AnimatedViewStep *>::iterator it = m_steps.begin(); it != m_steps.end(); ) {
-            if ((*it)->m_end <= m_timer->getElapsedTime()) {
+            if ((*it)->m_end <= m_watch.getElapsedTime()) {
 
                 // correcting delta, see bellow for more explications
                 sf::Vector2f lastVisitedPoint   = (*it)->m_computedPoints.front();
@@ -98,10 +96,10 @@ namespace sg {
 
         // non finished but current played views
         for (std::vector<AnimatedViewStep *>::iterator it = m_steps.begin(); it != m_steps.end(); ++it) {
-            if ((*it)->m_start <= m_timer->getElapsedTime()) {
+            if ((*it)->m_start <= m_watch.getElapsedTime()) {
 
                 // t is the current pourcent accomplish
-                float t = (m_timer->getElapsedTime() - (*it)->m_start).asSeconds() / (*it)->m_duration.asSeconds();
+                float t = (m_watch.getElapsedTime() - (*it)->m_start).asSeconds() / (*it)->m_duration.asSeconds();
 
                 // we're going to compute delta beetween last visited point and current point
                 sf::Vector2f lastVisitedPoint   = (*it)->m_lastVisitedPoint;
@@ -118,27 +116,25 @@ namespace sg {
                     currentPoint = (*it)->m_computedPoints.front();
                 }
 
-                // calcule acceleration
-                float acceleration = currentPoint.y - lastVisitedPoint.y;
-/*
-                // interpolation if currentPoint == lastPoint
+                // compute more points if currentPoint == lastPoint
                 if (! pointDefined) {
 
-                    const sf::Vector2f start = sf::Vector2f(0, 0);
-                    const sf::Vector2f diff  = sf::Vector2f(1, 1);
+                    Log::w("AnimatedView") << "It seems like you're animation need more points to be fluid. I've currently "
+                                           << (*it)->m_animationPointCount
+                                           << " and I'm going to recompute position. It can be bad for performances, and make the animation imprecise."
+                                           << "You should help me by giving me more pointCount (see AnimatedViewStep::setPointCount(int pointCount)";
 
-                    currentPoint = start + t * diff;
-                    acceleration = currentPoint.y - lastVisitedPoint.y;
+                    (*it)->m_animationPointCount *= 2;  // 2x more points on the curve !
+                    (*it)->computeAnimation(lastVisitedPoint);
+
+                    currentPoint = (*it)->m_computedPoints.front();
                 }
-*/                //else {
-                    //(*it)->m_lastAcceleration   = acceleration;
-                    //(*it)->m_lastUpdateTime     = sf::seconds(t);
-                    (*it)->m_lastVisitedPoint   = currentPoint;
-                    //Log::v() << acceleration;
-                //}
 
+                // calcule acceleration
+                float acceleration = currentPoint.y - lastVisitedPoint.y;
 
-                //Log::d() << acceleration;
+                // save last visited point
+                (*it)->m_lastVisitedPoint = currentPoint;
 
                 // apply the move
                 applyView(*it, acceleration);

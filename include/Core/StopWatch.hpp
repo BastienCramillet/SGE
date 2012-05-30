@@ -88,7 +88,7 @@ namespace sg
         private:
             sf::Clock   m_clock;    //!< The clock used by the StopWatch
             sf::Time    m_buffer;   //!< A buffer used to keep the elapsed time
-            bool        m_running;  //!< Represent if the StopWatch is running or stoped
+            bool        m_running;  //!< Represent if the StopWatch is running or stopped
     };
 }
 #endif // STOPWATCH_HPP_INCLUDED

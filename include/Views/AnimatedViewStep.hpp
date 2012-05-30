@@ -71,17 +71,11 @@ namespace sg {
         /**
             \brief Set the animation point count
 
-            The default value is 100
+            The default value is 10000
 
             More point there is, more precise will be the animation but this will take more time to calculate
         */
         AnimatedViewStep& setPointCount(int pointCount);
-
-
-        /**
-            \brief Destroy view step
-        */
-        ~AnimatedViewStep();
 
 
     private :
@@ -89,9 +83,18 @@ namespace sg {
         AnimatedViewStep(const sf::Time& start, const sf::Time& duration);
 
         /**
-            \brief Compute the animation points
+            \brief Destroy view step
         */
-        void computeAnimation();
+        ~AnimatedViewStep();
+
+        /**
+            \brief Compute (or recompute) the animation points
+
+            \param Start
+                        The start point of the animation. Initially, the value is (0, 0) but it can change if there is not enougth points
+        */
+        void computeAnimation(const sf::Vector2f& start = sf::Vector2f(0, 0));
+
 
 
         sf::Time m_start;                           //!< Start of the animation
@@ -110,11 +113,7 @@ namespace sg {
 
         std::queue<sf::Vector2f> m_computedPoints;  //!< Points on animation curve
 
-        float m_lastAcceleration;                   //!< Last
-
-        sf::Time m_lastUpdateTime;
-
-        sf::Vector2f m_lastVisitedPoint;
+        sf::Vector2f m_lastVisitedPoint;            //!< Last visited point
     };
 
 }

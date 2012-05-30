@@ -36,16 +36,13 @@
 #include <vector>
 #include <queue>
 
-#include <SFML/System/Clock.hpp>
-#include <SFML/System/Time.hpp>
+#include "Core/StopWatch.hpp"
 
 #include "Views/View.hpp"
 #include "Views/AnimatedViewStep.hpp"
 
 
 namespace sg {
-
-
 
     /*!
     *   \class AnimatedView
@@ -64,25 +61,25 @@ namespace sg {
     public :
 
         /**
-            Build some view, with initial values
+            \brief Build some view, with initial values
         */
         AnimatedView(const sf::Vector2f &center, const sf::Vector2f &size);
 
         /**
-            Destroy the view and steps
+            \brief Destroy the view and steps
         */
         ~AnimatedView();
 
         /**
-            Create a view step
+            \brief Create a view step
         */
         AnimatedViewStep& createStep(const sf::Time& start, const sf::Time& duration);
 
 
         /**
-            Override sg::View::update
+           \brief Update the view
 
-            Update the view
+           Override sg::View::update
         */
         void update();
 
@@ -90,7 +87,7 @@ namespace sg {
     private :
 
         /**
-            Apply the view transformation, with the given factor as mulitplicator
+            \brief Apply the view transformation, with the given factor as mulitplicator
         */
         void applyView(AnimatedViewStep *v, float factor = 1.f);
 
@@ -112,7 +109,7 @@ namespace sg {
         */
         std::vector<AnimatedViewStep*> m_steps;
 
-        sf::Clock *m_timer;                 //!< internal timer to know where we are in animation. This timer starts at the first call to method update
+        StopWatch m_watch;       //!< internal timer to know where we are in animation. This timer starts at the first call to method update
     };
 
 }
