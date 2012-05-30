@@ -48,6 +48,12 @@ namespace sg
         clear();
     }
 
+    void AudioEngine::treatMessage (EngineMessage* message)
+    {
+
+        delete message;
+    }
+
     void AudioEngine::init()
     {
         sf::Listener::setPosition(sf::Vector3f(sg::Settings::getInstance().getAppWidth() / 2.f, sg::Settings::getInstance().getAppHeight() / 2.f, 0.f));

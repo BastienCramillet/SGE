@@ -138,7 +138,9 @@ namespace sg {
                     sg::DynamicObject* obj = new sg::DynamicObject(objectData->objectID);
                     obj->addSprite(
                                 imageData->url,
-                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
+                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url),
+                                imageData->width,
+                                imageData->height
                                );
                     obj->setCurrentSprite(imageData->url);
 
@@ -163,7 +165,9 @@ namespace sg {
                     sg::StaticObject * obj = new sg::StaticObject(objectData->objectID);
                     obj->addSprite(
                                 imageData->url,
-                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
+                                GraphicEngine::getInstance().getSprite("data/images/" + imageData->url),
+                                imageData->width,
+                                imageData->height
                                 );
                     obj->setCurrentSprite(imageData->url);
 
@@ -187,7 +191,9 @@ namespace sg {
 
                 decor->addSprite(
                             imageData->url,
-                            GraphicEngine::getInstance().getSprite("data/images/" + imageData->url)
+                            GraphicEngine::getInstance().getSprite("data/images/" + imageData->url),
+                                imageData->width,
+                                imageData->height
                     );
 
                 decor->setCurrentSprite(imageData->url);

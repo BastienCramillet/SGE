@@ -3,7 +3,6 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -27,61 +26,49 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file Playable.hpp
-*   \brief Playable object header
+*   \file NetworkMachine.hpp
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#ifndef PLAYABLE_HPP_INCLUDED
-#define PLAYABLE_HPP_INCLUDED
+#ifndef NETWORKMACHINE_HPP_INCLUDED
+#define NETWORKMACHINE_HPP_INCLUDED
 
-#include <SFML/Audio.hpp>
-#include <map>
+#include <Core/Thread.hpp>
+#include <SFML/Network.hpp>
 
 namespace sg
 {
     /*!
-    *   \class Playable
-    *   \brief Represent a playable object which can be played as different sounds
+    *   \class NetworkMachine
+    *   \brief This class represent a basic machine on a network
     */
-    class Playable
+    class NetworkMachine : public sg::Thread
     {
         public :
 
             /*!
             *   \brief Constructor
             */
-            Playable ();
+            NetworkMachine();
 
             /*!
             *   \brief Destructor
             */
-            ~Playable ();
+            ~NetworkMachine();
 
             /*!
-            *   \brief Play the sound of the given id
-            *
-            *   \param id The id of the sound
+            *   \brief Mandatory - See sg::Thread::run()
             */
-            void play(std::string& id);
+            void run();
 
-            /*!
-            *   \brief Add a sound to the playable object
-            */
-            void addSound(const std::string& id, sf::Sound* sound);
 
-            /*!
-            *   \brief Set the position of the object
-            *
-            *   \param position The new 3D position of the object
-            */
-            void setPosition(const sf::Vector3f& position);
 
-        protected :
+        private :
 
-            std::map<std::string, sf::Sound*> m_mSound;     //!< All the different sounds of the playable and their id
+            bool m_running; //!< A boolean used to let the main loop of the machine process or not
+
     };
-}
+} // namespace sg
 
-#endif // PLAYABLE_HPP_INCLUDED
+#endif // NETWORKMACHINE_HPP_INCLUDED

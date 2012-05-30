@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -38,7 +39,7 @@
 
 namespace sg
 {
-    Decor::Decor(const std::string &elementID)
+    Decor::Decor(const std::string& elementID)
         : Element(elementID)
     {
     }
@@ -47,8 +48,14 @@ namespace sg
     {
     }
 
-    sf::Vector2f Decor::getPosition() const {
+    sf::Vector2f Decor::getPosition() const
+    {
         return getCurrentSprite().getPosition();
+    }
+
+    float Decor::getRotation() const
+    {
+        return getCurrentSprite().getRotation();
     }
 
 

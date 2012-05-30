@@ -3,7 +3,6 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -27,45 +26,46 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file Playable.cpp
-*   \brief Playable object source code
+*   \file Engine.cpp
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#include <Elements/Playable.hpp>
+#include <Engines.hpp>
 
 namespace sg
 {
-    Playable::Playable()
+    Engine::Engine ()
     {
 
     }
 
-    Playable::~Playable()
+    Engine::~Engine ()
     {
-        for(std::map<std::string, sf::Sound*>::iterator it = m_mSound.begin(); it != m_mSound.end(); ++it)
+
+    }
+
+    void Engine::sendMessage (std::string engine, EngineMessage* message)
+    {
+        if (engine == "physic")
         {
-            it->second = 0;
+            PhysicEngine::getInstance().addMessage(message);
         }
-        m_mSound.clear();
-    }
-
-    void Playable::play(std::string& id)
-    {
-        m_mSound[id]->play();
-    }
-
-    void Playable::addSound(const std::string& id, sf::Sound* sound)
-    {
-        m_mSound[id] = sound;
-    }
-
-    void Playable::setPosition(const sf::Vector3f& position)
-    {
-        for(std::map<std::string, sf::Sound*>::iterator it = m_mSound.begin(); it != m_mSound.end(); ++it)
+        else if (engine == "network")
         {
-            it->second->setPosition(position);
+            NetworkEngine::getInstance().addMessage(message);
+        }
+        else if (engine == "graphic")
+        {
+            GraphicEngine::getInstance().addMessage(message);
+        }
+        else if (engine == "window")
+        {
+            WindowEngine::getInstance().addMessage(message);
+        }
+        else if (engine == "audio")
+        {
+            AudioEngine::getInstance().addMessage(message);
         }
     }
 }

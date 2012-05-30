@@ -27,61 +27,58 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file Playable.hpp
-*   \brief Playable object header
+*   \file StopWatch.cpp
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#ifndef PLAYABLE_HPP_INCLUDED
-#define PLAYABLE_HPP_INCLUDED
-
-#include <SFML/Audio.hpp>
-#include <map>
+#include <Core/StopWatch.hpp>
 
 namespace sg
 {
-    /*!
-    *   \class Playable
-    *   \brief Represent a playable object which can be played as different sounds
-    */
-    class Playable
+    StopWatch::StopWatch(bool initRunning) : m_buffer(sf::Time::Zero), m_running(initRunning)
     {
-        public :
+    }
 
-            /*!
-            *   \brief Constructor
-            */
-            Playable ();
+    StopWatch::~StopWatch()
+    {
+    }
 
-            /*!
-            *   \brief Destructor
-            */
-            ~Playable ();
+    sf::Time StopWatch::getElapsedTime() const
+    {
+        if(m_running)
+            return (m_buffer + m_clock.getElapsedTime());
 
-            /*!
-            *   \brief Play the sound of the given id
-            *
-            *   \param id The id of the sound
-            */
-            void play(std::string& id);
+        return m_buffer;
+    }
 
-            /*!
-            *   \brief Add a sound to the playable object
-            */
-            void addSound(const std::string& id, sf::Sound* sound);
+    bool StopWatch::isRunning() const
+    {
+        return m_running;
+    }
 
-            /*!
-            *   \brief Set the position of the object
-            *
-            *   \param position The new 3D position of the object
-            */
-            void setPosition(const sf::Vector3f& position);
+    void StopWatch::start()
+    {
+        if(!m_running)
+        {
+            m_running = true;
+            m_clock.restart();
+        }
+    }
 
-        protected :
+    void StopWatch::stop()
+    {
+        if(m_running)
+        {
+            m_buffer += m_clock.getElapsedTime();
+            m_running = false;
+        }
+    }
 
-            std::map<std::string, sf::Sound*> m_mSound;     //!< All the different sounds of the playable and their id
-    };
+    void StopWatch::restart(bool stillRunning)
+    {
+        m_buffer = sf::Time::Zero;
+        m_running = stillRunning;
+        m_clock.restart();
+    }
 }
-
-#endif // PLAYABLE_HPP_INCLUDED

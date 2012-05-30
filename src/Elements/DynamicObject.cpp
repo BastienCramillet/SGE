@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -39,7 +40,7 @@
 
 namespace sg
 {
-    DynamicObject::DynamicObject(const std::string &elementID)
+    DynamicObject::DynamicObject(const std::string& elementID)
         : Element(elementID)
     {
     }
@@ -49,16 +50,26 @@ namespace sg
 
     }
 
-    sf::Vector2f DynamicObject::getPosition() const {
+    sf::Vector2f DynamicObject::getPosition() const
+    {
         return sf::Vector2f(getBodyPosition().x * 100, getBodyPosition().y * 100);
+    }
+
+    float DynamicObject::getRotation() const
+    {
+        return getBodyAngle() * 180.f / acos(-1.0);
     }
 
     void DynamicObject::update()
     {
         sf::Vector2f pos = getPosition();
+        float rot = getRotation();
 
         if (m_currentSprite!=0)
+        {
             m_currentSprite->setPosition(sf::Vector2f(pos.x, pos.y));
+            m_currentSprite->setRotation(rot);
+        }
     }
 
     void DynamicObject::play(std::string& id)

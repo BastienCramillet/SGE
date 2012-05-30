@@ -3,7 +3,6 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -27,45 +26,31 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file Playable.cpp
-*   \brief Playable object source code
+*   \file Client.cpp
+*   \brief Client class source code
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#include <Elements/Playable.hpp>
+#include <Network/Client.hpp>
 
 namespace sg
 {
-    Playable::Playable()
-    {
+    Client::Client() : sg::Thread() {};
 
-    }
-
-    Playable::~Playable()
+    void Client::run()
     {
-        for(std::map<std::string, sf::Sound*>::iterator it = m_mSound.begin(); it != m_mSound.end(); ++it)
-        {
-            it->second = 0;
-        }
-        m_mSound.clear();
-    }
+                 // Create a socket and connect it to 192.168.1.50 on port 55001
+                 sf::TcpSocket socket;
+                 socket.connect("127.0.0.1", 55001);
 
-    void Playable::play(std::string& id)
-    {
-        m_mSound[id]->play();
-    }
+                 // Send a message to the connected host
+                 std::string message = "Hi, I am a client";
+                 socket.send(message.c_str(), message.size() + 1);
 
-    void Playable::addSound(const std::string& id, sf::Sound* sound)
-    {
-        m_mSound[id] = sound;
-    }
-
-    void Playable::setPosition(const sf::Vector3f& position)
-    {
-        for(std::map<std::string, sf::Sound*>::iterator it = m_mSound.begin(); it != m_mSound.end(); ++it)
-        {
-            it->second->setPosition(position);
-        }
-    }
+                 // Receive an answer from the server
+                 char buffer[1024];
+                 std::size_t received = 0;
+                 socket.receive(buffer, sizeof(buffer), received);
+            }
 }

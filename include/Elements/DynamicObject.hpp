@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -37,28 +38,48 @@
 
 #include <Elements/Element.hpp>
 #include <Elements/Drawable.hpp>
-
 #include <Elements/Playable.hpp>
 #include <Elements/Physical.hpp>
 
 namespace sg
 {
+    /*!
+    *   \class DynamicObject
+    *   \brief Represent a fully dynamic object, with a physical, drawable and playable aspect
+    */
     class DynamicObject : public Element, public Drawable, public Playable, public Physical
     {
         public :
 
-            DynamicObject(const std::string &elementID);
+            /*!
+            *   \brief Constructor
+            *
+            *   \param elementID The id of the element
+            */
+            DynamicObject(const std::string& elementID);
 
+            /*!
+            *   \brief Destructor
+            */
             virtual ~DynamicObject();
 
+            /*!
+            *   \brief Update the dynamic object
+            */
             virtual void update();
 
+            // Pas à sa place
             void play(std::string& id);
 
-            /**
-                Override Element::getPostion
+            /*!
+            *   \brief Override Element::getPostion
             */
             sf::Vector2f getPosition() const;
+
+            /*!
+            *   \brief Get the rotation of the object by the physical object
+            */
+            float getRotation() const;
 
     };
 }

@@ -27,61 +27,68 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file Playable.hpp
-*   \brief Playable object header
+*   \file StopWatch.hpp
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#ifndef PLAYABLE_HPP_INCLUDED
-#define PLAYABLE_HPP_INCLUDED
+#ifndef STOPWATCH_HPP_INCLUDED
+#define STOPWATCH_HPP_INCLUDED
 
-#include <SFML/Audio.hpp>
-#include <map>
+#include <SFML/System.hpp>
 
 namespace sg
 {
     /*!
-    *   \class Playable
-    *   \brief Represent a playable object which can be played as different sounds
+    *   \class StopWatch
+    *   \brief Represent a pausable clock
     */
-    class Playable
+    class StopWatch
     {
-        public :
-
+        public:
             /*!
             *   \brief Constructor
+            *
+            *   \param initRunning True if the Stop Watch has to start at its creation
             */
-            Playable ();
+            StopWatch(bool initRunning = false);
 
             /*!
             *   \brief Destructor
             */
-            ~Playable ();
+            virtual ~StopWatch();
 
             /*!
-            *   \brief Play the sound of the given id
+            *   \brief Return the elapsed time since the start or last reset
+            */
+            sf::Time getElapsedTime() const;
+
+            /*!
+            *   \brief Return if the StopWatch is running
+            */
+            bool isRunning() const;
+
+            /*!
+            *   \brief Start the StopWatch
+            */
+            void start();
+
+            /*!
+            *   \brief Stop the StopWatch
+            */
+            void stop();
+
+            /*!
+            *   \brief Reset the StopWatch
             *
-            *   \param id The id of the sound
+            *   \param stillrunning If true, the StopWatch will keep running, by default it stops !
             */
-            void play(std::string& id);
+            void restart(bool stillrunning = false);
 
-            /*!
-            *   \brief Add a sound to the playable object
-            */
-            void addSound(const std::string& id, sf::Sound* sound);
-
-            /*!
-            *   \brief Set the position of the object
-            *
-            *   \param position The new 3D position of the object
-            */
-            void setPosition(const sf::Vector3f& position);
-
-        protected :
-
-            std::map<std::string, sf::Sound*> m_mSound;     //!< All the different sounds of the playable and their id
+        private:
+            sf::Clock   m_clock;    //!< The clock used by the StopWatch
+            sf::Time    m_buffer;   //!< A buffer used to keep the elapsed time
+            bool        m_running;  //!< Represent if the StopWatch is running or stoped
     };
 }
-
-#endif // PLAYABLE_HPP_INCLUDED
+#endif // STOPWATCH_HPP_INCLUDED

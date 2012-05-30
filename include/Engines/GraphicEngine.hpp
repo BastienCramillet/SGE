@@ -2,8 +2,8 @@
 *
 * SGE - Simple Game Engine
 *
-* Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
+* Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -37,6 +37,7 @@
 #define GRAPHICENGINE_HPP_INCLUDED
 
 #include <Core/Singleton.hpp>
+#include <Engines/Engine.hpp>
 #include <SFML/Graphics.hpp>
 
 #include <Resources/ResourceManager.hpp>
@@ -47,7 +48,7 @@ namespace sg
 {
     class Drawable;
 
-    class GraphicEngine : public Singleton<GraphicEngine>
+    class GraphicEngine : public Singleton<GraphicEngine>, public Engine
     {
         friend class Singleton<GraphicEngine>;
 
@@ -71,6 +72,8 @@ namespace sg
             GraphicEngine ();
 
             ~GraphicEngine ();
+
+            void treatMessage (EngineMessage* message);
 
             std::vector<sf::Drawable *> m_vDrawable;
 

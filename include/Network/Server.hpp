@@ -59,6 +59,7 @@ namespace sg
             std::string m_pwd;
 
             std::vector<std::string> m_vClients;
+            std::vector<sf::TcpSocket*> clients;
     };
 
 }

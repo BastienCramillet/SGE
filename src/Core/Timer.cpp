@@ -26,56 +26,69 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#include <Elements/Drawable.hpp>
-#include <Engines/GraphicEngine.hpp>
+/*!
+*   \file Timer.cpp
+*   \version 0.1
+*   \author Bastien (Bigz) Cramillet
+*/
 
-#include <Core/DebugNew.hpp>
+#include <Core/Timer.hpp>
+#include <assert.h>
 
 namespace sg
 {
-    Drawable::Drawable()
+    Timer::Timer() : m_clock(), m_timeLimit(sf::Time::Zero)
     {
-        m_currentSprite = 0;
+
     }
 
-    Drawable::~Drawable ()
+    Timer::Timer(sf::Time timeLimit, bool initRunning) : m_clock(initRunning), m_timeLimit(timeLimit)
     {
-        m_currentSprite = 0;
-        for(std::map<std::string, sf::Sprite*>::iterator it = m_mSprite.begin(); it != m_mSprite.end(); ++it)
-        {
-            it->second = 0;
-        }
-        m_mSprite.clear();
+        assert(timeLimit > sf::Time::Zero);
     }
 
-    const sf::Sprite& Drawable::getCurrentSprite() const
+    Timer::~Timer()
     {
-        if (! m_currentSprite) {
-            Log::w("Drawable") << "No sprite selected";
-        }
-        return *m_currentSprite;
+
     }
 
-    void Drawable::setCurrentSprite (const std::string &id)
+    sf::Time Timer::getRemainingTime() const
     {
-        m_currentSprite = m_mSprite[id];
+        // Le temps restant est soit zéro, soit le temps limite - le temps écoulé.
+        // Si la soustraction donne un résultat négatif, zéro sera plus grand, sinon on renvoie le résultat de cette soustraction
+        return std::max((m_timeLimit - m_clock.getElapsedTime()), sf::Time::Zero);
     }
 
-    void Drawable::setPosition(const sf::Vector2f& position)
+    bool Timer::isRunning() const
     {
-        m_currentSprite->setPosition(position);
+        return (m_clock.isRunning() && !isExpired());
     }
 
-    void Drawable::addSprite(const std::string &url, sf::Sprite* sprite)
+    bool Timer::isExpired() const
     {
-        m_mSprite[url] = sprite;
+        return (m_clock.getElapsedTime() > m_timeLimit);
     }
 
-
-    void Drawable::addSprite(const std::string &url, sf::Sprite* sprite, int width, int height)
+    void Timer::start()
     {
-        sprite->setOrigin(sf::Vector2f(width / 2.f, height / 2.f));
-        m_mSprite[url] = sprite;
+        m_clock.start();
     }
 
-} // namespace sg
+    void Timer::stop()
+    {
+        m_clock.stop();
+    }
+
+    void Timer::restart(sf::Time timeLimit, bool continueRunning)
+    {
+        assert(timeLimit > sf::Time::Zero);
+
+        m_timeLimit = timeLimit;
+        m_clock.restart(continueRunning);
+    }
+
+    void Timer::restart(bool continueRunning)
+    {
+        m_clock.restart(continueRunning);
+    }
+}

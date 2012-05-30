@@ -187,6 +187,7 @@
 		<Unit filename="..\..\include\Loaders\SoundXmlLoader.hpp" />
 		<Unit filename="..\..\include\Managers\Manager.hpp" />
 		<Unit filename="..\..\include\Managers\Settings.hpp" />
+		<Unit filename="..\..\include\Network\NetworkMachine.hpp" />
 		<Unit filename="..\..\include\Resources\AudioResource.hpp" />
 		<Unit filename="..\..\include\Resources\GraphicResource.hpp" />
 		<Unit filename="..\..\include\Resources\Resource.hpp" />
@@ -195,9 +196,12 @@
 		<Unit filename="..\..\include\Resources\ResourceManager.inl" />
 		<Unit filename="..\..\include\Resources\ResourceSettings.hpp" />
 		<Unit filename="..\..\include\Ressources.hpp" />
+		<Unit filename="..\..\include\Tools\BezierCurve.hpp" />
 		<Unit filename="..\..\include\Tools\Log.hpp" />
 		<Unit filename="..\..\include\Tools\Log.inl" />
 		<Unit filename="..\..\include\Tools\Randomizer.hpp" />
+		<Unit filename="..\..\include\Views\AnimatedView.hpp" />
+		<Unit filename="..\..\include\Views\AnimatedViewStep.hpp" />
 		<Unit filename="..\..\include\Views\DrunkerView.hpp" />
 		<Unit filename="..\..\include\Views\View.hpp" />
 		<Unit filename="..\..\include\core\Singleton.inl" />
@@ -212,6 +216,7 @@
 		<Unit filename="..\..\src\Elements\Playable.cpp" />
 		<Unit filename="..\..\src\Elements\StaticObject.cpp" />
 		<Unit filename="..\..\src\Engines\AudioEngine.cpp" />
+		<Unit filename="..\..\src\Engines\Engine.cpp" />
 		<Unit filename="..\..\src\Engines\GraphicEngine.cpp" />
 		<Unit filename="..\..\src\Engines\NetworkEngine.cpp" />
 		<Unit filename="..\..\src\Engines\PhysicEngine.cpp" />
@@ -226,9 +231,13 @@
 		<Unit filename="..\..\src\Loaders\ObjectXmlLoader.cpp" />
 		<Unit filename="..\..\src\Loaders\SoundXmlLoader.cpp" />
 		<Unit filename="..\..\src\Managers\Settings.cpp" />
+		<Unit filename="..\..\src\Network\Client.cpp" />
 		<Unit filename="..\..\src\Network\Server.cpp" />
+		<Unit filename="..\..\src\Tools\BezierCurve.cpp" />
 		<Unit filename="..\..\src\Tools\Log.cpp" />
 		<Unit filename="..\..\src\Tools\Randomizer.cpp" />
+		<Unit filename="..\..\src\Views\AnimatedView.cpp" />
+		<Unit filename="..\..\src\Views\AnimatedViewStep.cpp" />
 		<Unit filename="..\..\src\Views\DrunkerView.cpp" />
 		<Unit filename="..\..\src\Views\View.cpp" />
 		<Unit filename="..\..\src\core\File.cpp" />

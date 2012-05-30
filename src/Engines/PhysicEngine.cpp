@@ -54,6 +54,12 @@ namespace sg
         clear();
     }
 
+    void PhysicEngine::treatMessage (EngineMessage* message)
+    {
+
+        delete message;
+    }
+
     void PhysicEngine::clear ()
     {
         if (m_world != 0)

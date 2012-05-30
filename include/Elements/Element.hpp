@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -25,6 +26,13 @@
 *
 *-----------------------------------------------------------------------------*/
 
+/*!
+*   \file Element.hpp
+*   \brief Element header
+*   \version 0.1
+*   \author Bastien (Bigz) Cramillet
+*/
+
 #ifndef ELEMENT_HPP_INCLUDED
 #define ELEMENT_HPP_INCLUDED
 
@@ -34,26 +42,46 @@
 
 namespace sg
 {
+    /*!
+    *   \class Element
+    *   \brief Base class of all the different elements which compose a level
+    */
     class Element
     {
         public :
 
-            Element(const std::string &id) {
+            /*!
+            *   \brief Constructor
+            *
+            *   \param id The element id
+            */
+            Element(const std::string& id)
+            {
                 m_elementID = id;
             }
 
+            /*!
+            *   \brief Destructor
+            */
             virtual ~Element() {
             }
 
-            std::string getElementID() {
+            /*!
+            *   \brief Get the element id
+            */
+            const std::string& getElementID() const
+            {
                 return m_elementID;
             }
 
+            /*!
+            *   \brief Pure virtual method to get the element position
+            */
             virtual sf::Vector2f getPosition() const = 0;
 
     private :
 
-        std::string m_elementID;
+        std::string m_elementID;    //!< The element id
 
     };
 } // namespace sg

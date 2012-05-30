@@ -1,9 +1,9 @@
 /*------------------------------------------------------------------------------
 *
-* SE - Simple Engine
+* SGE - Simple Game Engine
 *
-* Copyright (c) 2010-2011 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
-*                         Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
+* Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -31,75 +31,89 @@
 
 /*!
 *   \file Engine.hpp
-*   \brief Engines mother class header
 *   \version 1.0
 */
 
-// includes
+#include <queue>
+#include <string>
+#include <map>
 
 namespace sg
 {
-
     /*!
     *   \class Engine
-    *   \brief Engine mother class
+    *   \brief Engine mother class with the engine messages managment
     */
-
     class Engine
     {
         public :
 
-            /*!
-            *   \brief Engine class constructor
-            *
-            *   \param game Parent object
-            */
-            Engine (Game* game);
+            struct EngineMessage
+            {
+                std::string                 command;    //!< The desired command
+                std::map<int, int>          i_data;     //!< The integer arguments
+                std::map<int, float>        f_data;     //!< The floating arguments
+                std::map<int, std::string>  s_data;     //!< The string arguments
+            };
 
             /*!
-            *   \biref Engine class destructor
+            *   \brief Engine class constructor
+            */
+            Engine ();
+
+            /*!
+            *   \brief Engine class destructor
             */
             virtual ~Engine ();
 
             /*!
-            *   \brief Add an event to the engine event queue
-            *
-            *   \param event The engine event to add
+            *   \brief Update the engine
             */
-            void pushEvent (EngineEvent& event){
-                m_eventsQueue.push(event);
-            }
-
-            /*!
-            *   \brief Treat the event queue
-            */
-            void processQueue ()
+            virtual void update ()
             {
-                while (! m_eventsQueue.empty())
-                {
-                    EnginEvent event = m_eventsQueue.front();
-                    m_eventsQueue.pop();
-
-                    processEvent(event);
-                }
+                processQueue();
             }
 
             /*!
-            *  \brief Own engine treatment
+            *   \brief Add a message to the engine message queue
+            *
+            *   \param message The engine message to add
             */
-            virtual void frame() = 0;
+            void addMessage (EngineMessage* message)
+            {
+                m_qEngineMessage.push(message);
+            }
+
+            /*!
+            *   \brief Send a message to another engine
+            *
+            *   \param engine The receiver engine
+            *   \param message The message to send
+            */
+            void sendMessage (std::string engine, EngineMessage* message);
 
         protected:
 
             /*!
-            *   \brief Own treatment of an event by the engine
-            *
-            *   \param event Event to treat
+            *   \brief Treat the message queue
             */
-            virtual void processEvent(EngineEvent& event) = 0;
+            void processQueue ()
+            {
+                while(!m_qEngineMessage.empty())
+                {
+                    treatMessage(m_qEngineMessage.front());
+                    m_qEngineMessage.pop();
+                }
+            }
 
-            Game                    *m_pParent;     //!< Pointer to the parent object
-            std::queue<EngineEvent> m_eventsQueue;  //!< Event queue to treat
+            /*!
+            *   \brief Treat the given message
+            *
+            *   \param message The message to treat
+            */
+            virtual void treatMessage (EngineMessage* message) = 0;
+
+            std::queue<EngineMessage*> m_qEngineMessage;  //!< The message queue to treat
 
 
     };
