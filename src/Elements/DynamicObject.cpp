@@ -67,12 +67,12 @@ namespace sg
 
         if (m_currentSprite!=0)
         {
-            m_currentSprite->setPosition(sf::Vector2f(pos.x, pos.y));
+            m_currentSprite->setPosition(pos);
             m_currentSprite->setRotation(rot);
         }
     }
 
-    void DynamicObject::play(std::string& id)
+    void DynamicObject::play(const std::string& id)
     {
         sf::Vector2f pos = getPosition();
 

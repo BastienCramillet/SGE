@@ -41,7 +41,7 @@
 namespace sg {
 
     AnimatedView::AnimatedView(const sf::Vector2f &center, const sf::Vector2f &size)
-        : sg::View(center, size)
+        : sg::View(center, size), m_zoomSum(0)
     {
     }
 
@@ -55,15 +55,10 @@ namespace sg {
 
 
     AnimatedViewStep& AnimatedView::createStep(const sf::Time& start, const sf::Time& duration) {
-        addStep(new AnimatedViewStep(start, duration));
-        return *m_steps.back();
-    }
-
-
-    void AnimatedView::addStep(AnimatedViewStep *step)
-    {
+        AnimatedViewStep *step = new AnimatedViewStep(start, duration, m_zoomSum, this);
         step->computeAnimation();
         m_steps.push_back(step);
+        return *step;
     }
 
 
@@ -128,6 +123,7 @@ namespace sg {
                     (*it)->computeAnimation(lastVisitedPoint);
 
                     currentPoint = (*it)->m_computedPoints.front();
+                    (*it)->m_computedPoints.pop();
                 }
 
                 // calcule acceleration
@@ -151,13 +147,18 @@ namespace sg {
             this->move(*v->m_center * factor);
         }
 
-        if (v->m_size) {
-            this->reset(sf::FloatRect(this->getCenter().x, this->getCenter().y, this->getSize().x * factor, this->getSize().y * factor));
+        if (v->m_zoomFactor) {
+            this->zoom(1-(*v->m_zoomFactor * factor));
         }
 
         if (v->m_rotation) {
             this->rotate(*v->m_rotation * factor);
         }
+    }
+
+
+    void AnimatedView::addToBaseZoom(float factor) {
+        m_zoomSum += factor;
     }
 
 }

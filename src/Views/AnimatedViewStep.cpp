@@ -33,14 +33,17 @@
 
 #include "Views/AnimatedViewStep.hpp"
 
+#include "Views/AnimatedView.hpp"
+
 #include "Tools/Log.hpp"
 
 
 namespace sg {
 
 
-    AnimatedViewStep::AnimatedViewStep(const sf::Time& start, const sf::Time& duration)
-        : m_start(start), m_duration(duration), m_center(0), m_size(0), m_rotation(0), m_animationPointCount(10000)
+    AnimatedViewStep::AnimatedViewStep(const sf::Time& start, const sf::Time& duration,  float baseZoom, AnimatedView *parent)
+        : m_start(start), m_duration(duration), m_center(0), m_size(0), m_rotation(0), m_animationPointCount(10000),
+          m_zoomFactor(0), m_baseZoom(baseZoom), m_parent(parent)
     {
         m_end = m_start + m_duration;
     }
@@ -48,34 +51,51 @@ namespace sg {
 
     AnimatedViewStep::~AnimatedViewStep() {
         delete m_center;
-        delete m_size;
+        delete m_zoomFactor;
         delete m_rotation;
     }
 
 
     AnimatedViewStep& AnimatedViewStep::moveCenter(const sf::Vector2f& center) {
+        if (m_center) {
+            Log::w("AnimatedViewStep") << "Re-define target center";
+            delete m_center;
+        }
         m_center = new sf::Vector2f(center);
         return *this;
     }
 
 
-    AnimatedViewStep& AnimatedViewStep::moveSize(const sf::Vector2f& size) {
-        m_size = new sf::Vector2f(size);
-        return *this;
-    }
-
-
     AnimatedViewStep& AnimatedViewStep::rotate(float rotation) {
+        if (m_rotation) {
+            Log::w("AnimatedViewStep") << "Re-define target rotation";
+            delete m_rotation;
+        }
         m_rotation = new float(rotation);
         return *this;
     }
 
+
+    AnimatedViewStep& AnimatedViewStep::zoom(float factor) {
+        if (m_zoomFactor) {
+            Log::w("AnimatedViewStep") << "Re-define target zoom";
+            m_parent->addToBaseZoom(-*m_zoomFactor);
+            delete m_zoomFactor;
+        }
+        m_parent->addToBaseZoom(factor);
+        m_zoomFactor = new float(factor);
+        return *this;
+    }
 
     AnimatedViewStep& AnimatedViewStep::setPointCount(int pointCount) {
         m_animationPointCount = pointCount;
         return *this;
     }
 
+
+    AnimatedViewStep& AnimatedViewStep::backToBaseZoom() {
+        return zoom(-m_baseZoom);
+    }
 
 
     void AnimatedViewStep::computeAnimation(const sf::Vector2f &start)

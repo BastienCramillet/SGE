@@ -20,7 +20,7 @@ int main()
 {
     //std::ofstream file("logs.txt");
     //Log::setOutput(file);   // écrire les messages de log dans un fichier
-    //Log::setLogLevel(DEBUG);
+    Log::setLogLevel(INFO);
 
     Log::i("main") << "SGE started !";
 
@@ -66,13 +66,20 @@ int main()
                 sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
             );
 
-
+    // move left
     animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0));
 
-    //animatedView->createStep(sf::seconds(7), sf::seconds(3)).moveCenter(sf::Vector2f(-800, 0));
+    // zoom at the end
+    animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5);
 
-    //animatedView->createStep(sf::seconds(4), sf::seconds(4)).rotate(720);
+    // unzoom
+    animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1);
 
+    // rotate
+    animatedView->createStep(sf::seconds(15), sf::seconds(2)).rotate(360);
+
+    // come back to normal zoom
+    animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom();
 
 
     gameFrame->addView("animated view demo", animatedView);

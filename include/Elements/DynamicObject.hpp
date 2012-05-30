@@ -69,7 +69,7 @@ namespace sg
             virtual void update();
 
             // Pas à sa place
-            void play(std::string& id);
+            void play(const std::string& id);
 
             /*!
             *   \brief Override Element::getPostion

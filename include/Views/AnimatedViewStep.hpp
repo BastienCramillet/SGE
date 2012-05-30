@@ -43,9 +43,13 @@
 
 namespace sg {
 
+    class AnimatedView;
+
     /**
         \class ViewStep
         \brief A view step, a state at a moment
+
+        \sa AnimatedView
     */
     class AnimatedViewStep {
 
@@ -58,29 +62,45 @@ namespace sg {
         */
         AnimatedViewStep& moveCenter(const sf::Vector2f& center);
 
-        /**
-            \brief Set the target size
-        */
-        AnimatedViewStep& moveSize(const sf::Vector2f& size);
 
         /**
             \brief Set the target rotation
+
+            Angle must be given in degrees
         */
         AnimatedViewStep& rotate(float rotation);
+
+
+        /**
+            \brief Apply a zoom
+
+            \a factor is a multiplier:
+            \li 0 keeps the size unchanged
+            \li > 0 execute a zoom (objects appear bigger)
+            \li < 0 unzoom (objects appear smaller)
+        */
+        AnimatedViewStep& zoom(float factor);
 
         /**
             \brief Set the animation point count
 
-            The default value is 10000
+            The default value is 10 000
 
             More point there is, more precise will be the animation but this will take more time to calculate
+            If there is not enought points, the animatedView will calcul more points during the animation
         */
         AnimatedViewStep& setPointCount(int pointCount);
 
 
+        /**
+            \brief Return to the zoom defined at the beginin of the animation
+        */
+        AnimatedViewStep& backToBaseZoom();
+
+
     private :
 
-        AnimatedViewStep(const sf::Time& start, const sf::Time& duration);
+        AnimatedViewStep(const sf::Time& start, const sf::Time& duration, float baseZoom, AnimatedView *parent);
 
         /**
             \brief Destroy view step
@@ -111,9 +131,15 @@ namespace sg {
 
         int m_animationPointCount;                  //!< Number of point for calculating animation
 
+        float *m_zoomFactor;                        //!< Zoom factor
+
+        float m_baseZoom;                           //!< Zoom factor to came back to the zoom factor at the animation start
+
         std::queue<sf::Vector2f> m_computedPoints;  //!< Points on animation curve
 
-        sf::Vector2f m_lastVisitedPoint;            //!< Last visited point
+        sf::Vector2f m_lastVisitedPoint;            //!< Last visited point on curve
+
+        AnimatedView *m_parent;                     //!< The one who create me, I will comunicate changes to back to base view
     };
 
 }

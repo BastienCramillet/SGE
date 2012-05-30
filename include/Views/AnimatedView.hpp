@@ -45,16 +45,45 @@
 namespace sg {
 
     /*!
-    *   \class AnimatedView
-    *   \brief The animated view is a view which is really customizable, by using view steps
-    *
-    *   The first call to update will lauch view timer
-    *
-    *   Animated steps positions are computed when step is added in this view
-    *
-    *   TIMES ARE DEFINED IN SECONDS
-    *
-    *   \sa AnimatedViewStep
+        \class AnimatedView
+        \brief The animated view is a view which is really customizable, by using view steps
+
+        The first call to update will lauch view timer
+
+        Animated steps positions are computed when step is added in this view
+
+        \b TIMES ARE DEFINED IN SECONDS
+
+        \sa AnimatedViewStep
+
+        Usage example :
+        \code
+            sg::GameFrame *gameFrame = new sg::GameFrame();
+            gameFrame->loadLevel("data/maps/demo_map.xml");
+
+            sg::AnimatedView *animatedView = new sg::AnimatedView(400, 300, 800, 600));
+
+            // move left
+            animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0));
+
+            // zoom at the end
+            animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5);
+
+            // unzoom
+            animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1);
+
+            // rotate
+            animatedView->createStep(sf::seconds(15), sf::seconds(2)).rotate(360);
+
+            // come back to normal zoom
+            animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom();
+
+            // apply the view
+            gameFrame->addView("animated view demo", animatedView);
+
+            gameFrame->setCurrentView("animated view demo");
+        \endcode
+
     */
     class AnimatedView : public sg::View {
 
@@ -88,16 +117,10 @@ namespace sg {
 
         /**
             \brief Apply the view transformation, with the given factor as mulitplicator
+
+            The final factor is 1, to complete animation
         */
         void applyView(AnimatedViewStep *v, float factor = 1.f);
-
-
-        /**
-            \brief Add some step in the animated view
-
-            The step will be automaticly managed by this view, you don't need to worry about memory management
-        */
-        void addStep(AnimatedViewStep *step);
 
 
         /**
@@ -109,7 +132,24 @@ namespace sg {
         */
         std::vector<AnimatedViewStep*> m_steps;
 
+
+
+        // ------------------------------------------
+        // functions defined to back to initial state
+
+        /**
+            \brief Is used to compute base zoom
+        */
+        void addToBaseZoom(float factor);
+
+        friend AnimatedViewStep& AnimatedViewStep::zoom(float);
+        // ------------------------------------------
+
+
+
         StopWatch m_watch;       //!< internal timer to know where we are in animation. This timer starts at the first call to method update
+
+        float m_zoomSum;         //!< This sum corresponds to the sum of applied zooms (to come back to base zoom)
     };
 
 }
