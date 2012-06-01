@@ -151,6 +151,7 @@
 			<Add directory="F:\Developpement\Box2D_v2.2.1\lib" />
 			<Add directory="F:\Developpement\tinyxml\lib" />
 		</Linker>
+		<Unit filename="..\..\include\Animations\AnimatedSprite.hpp" />
 		<Unit filename="..\..\include\Constants.hpp" />
 		<Unit filename="..\..\include\Core\DebugNew.hpp" />
 		<Unit filename="..\..\include\Core\DebugNewOff.hpp" />

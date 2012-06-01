@@ -76,6 +76,9 @@ namespace sg
 
             void clean();
 
+            void sendToServer();
+            sf::Packet createPacket(EngineMessage);
+
         private :
 
             NetworkEngine ();

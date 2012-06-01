@@ -94,6 +94,8 @@ namespace sg
 
             b2Body* createDynamicPolygon();
 
+            void move (const std::string& id, float xMove, float yMove);
+
         private :
 
             PhysicEngine();
@@ -101,6 +103,7 @@ namespace sg
             void treatMessage (EngineMessage* message);
 
             b2World* m_world;
+            std::map<std::string, b2Body*> m_mBody;
             int m_velocityIterations;
             int m_positionIterations;
 
