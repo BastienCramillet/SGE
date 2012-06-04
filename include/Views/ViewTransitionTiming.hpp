@@ -52,6 +52,8 @@ namespace sg
         /**
             \struct AbstractAnimationTiming
             \brief Define the base for animation timing
+
+            \sa http://www.the-art-of-web.com/css/timing-function/
         */
         struct AbstractAnimationTiming {
 
