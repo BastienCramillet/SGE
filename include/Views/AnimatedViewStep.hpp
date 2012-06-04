@@ -37,6 +37,7 @@
 
 #include "Tools/BezierCurve.hpp"
 
+
 /**
   \author Xavier
 */
@@ -44,6 +45,9 @@
 namespace sg {
 
     class AnimatedView;
+    namespace AnimationTiming {
+        class AbstractAnimationTiming;
+    }
 
     /**
         \class ViewStep
@@ -98,6 +102,13 @@ namespace sg {
         AnimatedViewStep& backToBaseZoom();
 
 
+        /**
+            \brief Define animation timing function
+            \sa AbstractAnimationTiming
+        */
+        AnimatedViewStep& setAnimationTiming(AnimationTiming::AbstractAnimationTiming &timing);
+
+
     private :
 
         AnimatedViewStep(const sf::Time& start, const sf::Time& duration, float baseZoom, AnimatedView *parent);
@@ -140,6 +151,8 @@ namespace sg {
         sf::Vector2f m_lastVisitedPoint;            //!< Last visited point on curve
 
         AnimatedView *m_parent;                     //!< The one who create me, I will comunicate changes to back to base view
+
+        AnimationTiming::AbstractAnimationTiming *m_animationTiming; //!< My animation timing
     };
 
 }

@@ -37,6 +37,7 @@
 
 #include "Tools/Log.hpp"
 
+#include "Views/ViewTransitionTiming.hpp"
 
 namespace sg {
 
@@ -45,6 +46,7 @@ namespace sg {
         : m_start(start), m_duration(duration), m_center(0), m_size(0), m_rotation(0), m_animationPointCount(10000),
           m_zoomFactor(0), m_baseZoom(baseZoom), m_parent(parent)
     {
+        m_animationTiming = &sg::AnimationTiming::DEFAULT_TIMING;
         m_end = m_start + m_duration;
     }
 
@@ -98,20 +100,20 @@ namespace sg {
     }
 
 
+    AnimatedViewStep& AnimatedViewStep::setAnimationTiming(AnimationTiming::AbstractAnimationTiming &timing) {
+        m_animationTiming = &timing;
+    }
+
+
     void AnimatedViewStep::computeAnimation(const sf::Vector2f &start)
     {
-        //sf::Vector2f p0(0, 0);
-        //sf::Vector2f p1(0, 1);
-        //sf::Vector2f p2(1, 0);
-        //sf::Vector2f p1(0.25, 0.1);
-        //sf::Vector2f p2(0.25, 1);
-        sf::Vector2f p3(1, 1);
-
         std::vector<sf::Vector2f> l;
         l.push_back(start);
-        //l.push_back(p1);
-        //l.push_back(p2);
-        l.push_back(p3);
+
+        for (int i=0; i<m_animationTiming->getPointsOnCurve().size(); ++i) {
+            l.push_back(m_animationTiming->getPointsOnCurve().at(i));
+        }
+        l.push_back(sf::Vector2f(1.f, 1.f));
 
         m_computedPoints = BezierCurve::computeBezierCurve(l, m_animationPointCount);
     }
