@@ -42,11 +42,11 @@
 namespace sg {
 
 
-    AnimatedViewStep::AnimatedViewStep(const sf::Time& start, const sf::Time& duration,  float baseZoom, AnimatedView *parent)
+    AnimatedViewStep::AnimatedViewStep(const sf::Time& start, const sf::Time& duration,  float baseZoom, const sf::Vector2f &baseCenter, AnimatedView *parent)
         : m_start(start), m_duration(duration), m_center(0), m_size(0), m_rotation(0), m_animationPointCount(10000),
-          m_zoomFactor(0), m_baseZoom(baseZoom), m_parent(parent)
+          m_zoomFactor(0), m_baseZoom(baseZoom), m_parent(parent), m_animationTiming(&sg::TransitionTiming::DEFAULT),
+          m_initialCenter(baseCenter)
     {
-        m_animationTiming = &sg::TransitionTiming::DEFAULT;
         m_end = m_start + m_duration;
     }
 
@@ -63,6 +63,7 @@ namespace sg {
             Log::w("AnimatedViewStep") << "Re-define target center";
             delete m_center;
         }
+        m_parent->addToBaseCenter(center);
         m_center = new sf::Vector2f(center);
         return *this;
     }
@@ -100,19 +101,24 @@ namespace sg {
     }
 
 
-    AnimatedViewStep& AnimatedViewStep::setAnimationTiming(TransitionTiming::AbstractTransitionTiming &timing) {
+    AnimatedViewStep& AnimatedViewStep::backToInitialCenter() {
+        return moveCenter(-m_initialCenter);
+    }
+
+
+    AnimatedViewStep& AnimatedViewStep::setTransitionTiming(TransitionTiming::AbstractTransitionTiming &timing) {
         m_animationTiming = &timing;
         return *this;
     }
 
 
-    void AnimatedViewStep::computeAnimation(const sf::Vector2f &start)
+    void AnimatedViewStep::computeTransition(const sf::Vector2f &start)
     {
         std::vector<sf::Vector2f> l;
         l.push_back(start);
 
-        for (int i=0; i<m_animationTiming->getPointsOnCurve().size(); ++i) {
-            l.push_back(m_animationTiming->getPointsOnCurve().at(i));
+        for (std::vector<sf::Vector2f>::const_iterator it = m_animationTiming->getPointsOnCurve().begin(); it != m_animationTiming->getPointsOnCurve().end(); ++it) {
+            l.push_back(*it);
         }
         l.push_back(sf::Vector2f(1.f, 1.f));
 

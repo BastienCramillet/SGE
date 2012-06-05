@@ -32,6 +32,8 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/View.hpp>
 
+#include "Frame/Frame.hpp"
+
 namespace sg {
 
     /*!
@@ -43,11 +45,23 @@ namespace sg {
     public :
 
         /**
-            Create a view with a focuse on center and a size of size
+            \brief Create a view with a focuse on center and a size of size
         */
         View(const sf::Vector2f &center, const sf::Vector2f &size);
 
         virtual ~View();
+
+
+        /**
+            \brief Initialize the view (computes...)
+
+            If there is something to compute before adding a view in a frame, it's here.
+
+            This method will be call once time
+        */
+        virtual void initialize() {
+        }
+
 
         /**
             If there is some automatic action in the child view, this method should be override
@@ -56,6 +70,27 @@ namespace sg {
         */
         virtual void update() {
         }
+
+
+        /**
+            \brief Is this view initialized
+        */
+        bool isInitialized() const;
+
+
+    private :
+
+        /**
+            \brief Mark initialization as done
+
+            Access reserved to Frame
+        */
+        void markAsInitialized();
+
+        friend void Frame::addView(const std::string &, View *);
+
+
+        bool m_isInitialized;
 
     };
 

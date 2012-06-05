@@ -20,7 +20,7 @@ int main()
 {
     //std::ofstream file("logs.txt");
     //Log::setOutput(file);   // écrire les messages de log dans un fichier
-    Log::setLogLevel(INFO);
+    Log::setLogLevel(DEBUG);
 
     Log::i("main") << "SGE started !";
 
@@ -67,19 +67,22 @@ int main()
             );
 
     // move left
-    animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setAnimationTiming(sg::TransitionTiming::EASE_OUT);
+    animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setTransitionTiming(sg::TransitionTiming::EASE_OUT);
 
     // zoom at the end
-    animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setAnimationTiming(sg::TransitionTiming::EASE_IN);
+    animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setTransitionTiming(sg::TransitionTiming::EASE_IN);
 
     // unzoom
-    animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setAnimationTiming(sg::TransitionTiming::CUBIC_BEZIER);
+    animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setTransitionTiming(sg::TransitionTiming::CUBIC_BEZIER);
 
     // rotate
     animatedView->createStep(sf::seconds(15), sf::seconds(2)).rotate(360);  // default timing
 
     // come back to normal zoom
-    animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setAnimationTiming(sg::TransitionTiming::LINEAR);
+    animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setTransitionTiming(sg::TransitionTiming::LINEAR);
+
+    // back to initial position
+    animatedView->createStep(sf::seconds(20), sf::seconds(3)).backToInitialCenter().setTransitionTiming(sg::TransitionTiming::EASE_IN_OUT);
 
 
     gameFrame->addView("animated view demo", animatedView);

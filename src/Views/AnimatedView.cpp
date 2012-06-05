@@ -54,11 +54,22 @@ namespace sg {
     }
 
 
+    void AnimatedView::initialize() {
+        computeTransitions();
+    }
+
+
     AnimatedViewStep& AnimatedView::createStep(const sf::Time& start, const sf::Time& duration) {
-        AnimatedViewStep *step = new AnimatedViewStep(start, duration, m_zoomSum, this);
-        step->computeAnimation();
+        AnimatedViewStep *step = new AnimatedViewStep(start, duration, m_zoomSum, m_centerMovesSum, this);
         m_steps.push_back(step);
         return *step;
+    }
+
+
+    void AnimatedView::computeTransitions() {
+        for (std::vector<AnimatedViewStep *>::iterator it = m_steps.begin(); it != m_steps.end(); ++it) {
+            (*it)->computeTransition();
+        }
     }
 
 
@@ -93,6 +104,14 @@ namespace sg {
         for (std::vector<AnimatedViewStep *>::iterator it = m_steps.begin(); it != m_steps.end(); ++it) {
             if ((*it)->m_start <= m_watch.getElapsedTime()) {
 
+                if ( (*it)->m_computedPoints.size() == 0 ) {
+                    Log::w("AnimatedView") << "It seems like you're transition have not initially compute point positions "
+                                           << "This mistake can lead to very low performances"
+                                           << "I'm going to do it but you should make it when you create AnimatedView, by calling computeTransitions()"
+                                           << "when you're creating the animation (loading screen)";
+                    (*it)->computeTransition();
+                }
+
                 // t is the current pourcent accomplish
                 float t = (m_watch.getElapsedTime() - (*it)->m_start).asSeconds() / (*it)->m_duration.asSeconds();
 
@@ -116,12 +135,14 @@ namespace sg {
 
                     Log::w("AnimatedView") << "It seems like you're animation need more points to be fluid. I've currently "
                                            << (*it)->m_animationPointCount
-                                           << " and I'm going to recompute position. It can be bad for performances, and make the animation imprecise."
-                                           << "You should help me by giving me more pointCount (see AnimatedViewStep::setPointCount(int pointCount)";
+                                           << " and I'm going to recompute position. It can lead to verry bad performances."
+                                           << "You should give me more pointCount (see AnimatedViewStep::setPointCount(int pointCount)";
 
                     (*it)->m_animationPointCount *= 2;  // 2x more points on the curve !
-                    (*it)->computeAnimation(lastVisitedPoint);
+                    (*it)->computeTransition(lastVisitedPoint);
 
+                    // ignore the first (our position)
+                    (*it)->m_computedPoints.pop();
                     currentPoint = (*it)->m_computedPoints.front();
                     (*it)->m_computedPoints.pop();
                 }
@@ -159,6 +180,11 @@ namespace sg {
 
     void AnimatedView::addToBaseZoom(float factor) {
         m_zoomSum += factor;
+    }
+
+
+    void AnimatedView::addToBaseCenter(const sf::Vector2f &center) {
+        m_centerMovesSum += center;
     }
 
 }

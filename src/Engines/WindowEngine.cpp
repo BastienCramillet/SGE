@@ -15,6 +15,8 @@
 
 #include <Tools/Randomizer.hpp>
 
+#include "Views/View.hpp"
+
 namespace sg
 {
     WindowEngine::WindowEngine ()

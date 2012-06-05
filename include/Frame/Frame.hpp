@@ -37,7 +37,6 @@
 #include <string>
 #include <map>
 
-#include "Views/View.hpp"
 
 namespace sg
 {
@@ -51,10 +50,7 @@ namespace sg
     {
         public :
 
-            /**
-                \param v
-                           The frame view
-            */
+
             Frame();
 
 
@@ -62,29 +58,32 @@ namespace sg
 
 
             /**
-              Returns the current frame view
+                \brief Returns the current frame view
             */
             View* getCurrentView();
 
+
             /**
-              Add some view
-              \param key
+                \brief Initialize and attache some view to this Frame
+
+                \param key
                             The view name
-              \param view
+                \param view
                             the new view
 
               The added view will be automaticly managed and freed from memory
             */
             void addView(const std::string &key, View *v);
 
+
             /**
-              Set the current view
+                \brief Set the current view
             */
             void setCurrentView(const std::string &key);
 
 
             /**
-              Update elements in the frame
+                \brief Update elements in the frame
             */
             virtual void update();
 

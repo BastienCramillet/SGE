@@ -26,7 +26,7 @@
 *-----------------------------------------------------------------------------*/
 
 
-#include "../../include/Frame/Frame.hpp"
+#include "Frame/Frame.hpp"
 
 #include "Views/View.hpp"
 
@@ -57,6 +57,10 @@ namespace sg {
 
 
     void Frame::addView(const std::string &key, View *v) {
+        if (! v->isInitialized() ) { // call once
+            v->initialize();
+            v->markAsInitialized();
+        }
         m_views[key] = v;
     }
 

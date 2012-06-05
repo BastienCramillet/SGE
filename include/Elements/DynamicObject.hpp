@@ -68,7 +68,7 @@ namespace sg
             */
             virtual void update();
 
-            // Pas à sa place
+            // Pas Ã  sa place
             void play(const std::string& id);
 
             /*!

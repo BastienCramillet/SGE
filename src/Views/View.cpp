@@ -31,11 +31,20 @@
 namespace sg {
 
     View::View(const sf::Vector2f &center, const sf::Vector2f &size)
-        : sf::View(center, size)
+        : sf::View(center, size), m_isInitialized(false)
     {
     }
 
     View::~View() {
+    }
+
+
+    bool View::isInitialized() const {
+        return m_isInitialized;
+    }
+
+    void View::markAsInitialized() {
+        m_isInitialized = true;
     }
 
 }

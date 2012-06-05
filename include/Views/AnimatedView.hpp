@@ -63,20 +63,25 @@ namespace sg {
 
             sg::AnimatedView *animatedView = new sg::AnimatedView(400, 300, 800, 600));
 
+
             // move left
-            animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setAnimationTiming(sg::TransitionTiming::EASE_OUT);
+            animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setTransitionTiming(sg::TransitionTiming::EASE_OUT);
 
             // zoom at the end
-            animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setAnimationTiming(sg::TransitionTiming::EASE_IN);
+            animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setTransitionTiming(sg::TransitionTiming::EASE_IN);
 
             // unzoom
-            animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setAnimationTiming(sg::TransitionTiming::CUBIC_BEZIER);
+            animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setTransitionTiming(sg::TransitionTiming::CUBIC_BEZIER);
 
             // rotate
             animatedView->createStep(sf::seconds(15), sf::seconds(2)).rotate(360);  // default timing
 
             // come back to normal zoom
-            animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setAnimationTiming(sg::TransitionTiming::LINEAR);
+            animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setTransitionTiming(sg::TransitionTiming::LINEAR);
+
+            // back to initial position
+            animatedView->createStep(sf::seconds(20), sf::seconds(3)).backToInitialCenter().setTransitionTiming(sg::TransitionTiming::EASE_IN_OUT);
+
 
             gameFrame->setCurrentView("animated view demo");
         \endcode
@@ -110,7 +115,22 @@ namespace sg {
         void update();
 
 
+
+        /**
+            \brief Initialyse the view
+
+            During this, transitions are computed
+        */
+        virtual void initialize();
+
+
     private :
+
+        /**
+            \brief Compute all transitions
+        */
+        void computeTransitions();
+
 
         /**
             \brief Apply the view transformation, with the given factor as mulitplicator
@@ -140,13 +160,24 @@ namespace sg {
         void addToBaseZoom(float factor);
 
         friend AnimatedViewStep& AnimatedViewStep::zoom(float);
+
+
+        /**
+            \brief Is used to compute base center
+        */
+        void addToBaseCenter(const sf::Vector2f &center);
+
+        friend AnimatedViewStep& AnimatedViewStep::moveCenter(const sf::Vector2f&);
+
         // ------------------------------------------
 
 
 
-        StopWatch m_watch;       //!< internal timer to know where we are in animation. This timer starts at the first call to method update
+        StopWatch m_watch;              //!< internal timer to know where we are in animation. This timer starts at the first call to method update
 
-        float m_zoomSum;         //!< This sum corresponds to the sum of applied zooms (to come back to base zoom)
+        float m_zoomSum;                //!< This sum corresponds to the sum of applied zooms (to come back to base zoom)
+
+        sf::Vector2f m_centerMovesSum;  //!< This sum corresponds to the sum if applied moves (to come back to initial position)
     };
 
 }

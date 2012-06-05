@@ -103,15 +103,21 @@ namespace sg {
 
 
         /**
+            \brief Back to initial center position
+        */
+        AnimatedViewStep& backToInitialCenter();
+
+
+        /**
             \brief Define animation timing function
             \sa AbstractAnimationTiming
         */
-        AnimatedViewStep& setAnimationTiming(TransitionTiming::AbstractTransitionTiming &timing);
+        AnimatedViewStep& setTransitionTiming(TransitionTiming::AbstractTransitionTiming &timing);
 
 
     private :
 
-        AnimatedViewStep(const sf::Time& start, const sf::Time& duration, float baseZoom, AnimatedView *parent);
+        AnimatedViewStep(const sf::Time& start, const sf::Time& duration, float baseZoom, const sf::Vector2f& baseCenter, AnimatedView *parent);
 
         /**
             \brief Destroy view step
@@ -124,7 +130,7 @@ namespace sg {
             \param Start
                         The start point of the animation. Initially, the value is (0, 0) but it can change if there is not enougth points
         */
-        void computeAnimation(const sf::Vector2f& start = sf::Vector2f(0, 0));
+        void computeTransition(const sf::Vector2f& start = sf::Vector2f(0, 0));
 
 
 
@@ -153,6 +159,8 @@ namespace sg {
         AnimatedView *m_parent;                     //!< The one who create me, I will comunicate changes to back to base view
 
         TransitionTiming::AbstractTransitionTiming *m_animationTiming; //!< My animation timing
+
+        sf::Vector2f m_initialCenter;               //!< Center to come back to the initial center
     };
 
 }
