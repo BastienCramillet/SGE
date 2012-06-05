@@ -46,6 +46,8 @@ namespace sg
     /**
         \class BezierCurve
         \brief This class provides tools for computing bezier *2D* curve
+
+        \sa http://www.codeproject.com/Articles/25237/Bezier-Curves-Made-Simple
     */
     class BezierCurve
     {
@@ -71,6 +73,11 @@ namespace sg
                     return computeBezierCurveDegree1(points, nb_points);
                 }
 
+                // degree 2
+                if (points.size() == 3) {
+                    return computeBezierCurveDegree2(points, nb_points);
+                }
+
                 // degree 3
                 if (points.size() == 4) {
                     return computeBezierCurveDegree3(points, nb_points);
@@ -84,15 +91,19 @@ namespace sg
     private :
 
             /**
-                \brief Compute bezier curve of degree 1 (2 points)
+                \brief Compute linear bezier curve of degree 1 (2 points)
             */
             static std::queue<sf::Vector2f> computeBezierCurveDegree1(const std::vector<sf::Vector2f> &points, float nb_points);
 
             /**
-                \brief Compute bezier curve of degree 3 (4 points)
+                \brief Compute quadratic bezier curve of degree 2 (3 points)
+            */
+            static std::queue<sf::Vector2f> computeBezierCurveDegree2(const std::vector<sf::Vector2f> &points, float nb_points);
+
+            /**
+                \brief Compute cubic bezier curve of degree 3 (4 points)
             */
             static std::queue<sf::Vector2f> computeBezierCurveDegree3(const std::vector<sf::Vector2f> &points, float nb_points);
-
 
             /**
                 \brief Compute bezier curve of degree n (n-1 points)

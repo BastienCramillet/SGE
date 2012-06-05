@@ -29,12 +29,11 @@
 #define FRAME_MANAGER_HPP_INCLUDED
 
 /*!
-*   \file
-*   \brief
+*   \file FrameManager.hpp
+*   \author Xavier
 *   \version 0.1
 */
 
-#include <string>
 #include <vector>
 
 namespace sg
@@ -42,36 +41,65 @@ namespace sg
 
     class Frame;
 
+    /**
+        \class FrameManger
+        \brief This manager manage a list of frame
 
+        Example :
+        \code
+
+            sg::FrameManager frameManager;
+
+            sg::GameFrame *gameFrame = new sg::GameFrame();
+            sg::GameFrame *loadingFrame = new LoadingFrame(); // just imagine
+
+            int loadingFrame = frameManager.addFrame(loadingFrame);
+            int gameFrameID  = frameManager.addFrame(gameFrame);
+
+            // when frameManager is destroyed, all attached frames are destroyed too
+
+        \endcode
+    */
     class FrameManager
     {
 
         public :
 
+            /**
+                \brief Create a manager
+            */
             FrameManager();
 
+            /**
+                \brief Kill this manager
+            */
             ~FrameManager();
 
             /**
-              Add some frame into the frame manager
+                \brief Add some frame into the frame manager
             */
             int addFrame(Frame *frame);
 
             /**
-              Unload some frame. It won't change ID's of previous loaded frames
+                \brief Unload some frame. It won't change ID's of previous loaded frames
             */
             void unloadFrame(int frameID);
 
-
-        protected :
+            /**
+                \brief Get a frame from the frame id
+            */
+            Frame* getFrame(int frameID);
 
 
         private :
 
             /**
-                The managed frames
+                \brief Does the frame at the given index is valid ?
             */
-            std::vector<Frame *> m_frames;
+            bool frameExists(int index);
+
+
+            std::vector<Frame *> m_frames;  //!< The managed frames
 
     };
 } // namespace sg

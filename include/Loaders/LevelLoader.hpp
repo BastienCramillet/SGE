@@ -42,13 +42,16 @@ namespace sg {
 
     class Level;
 
-
+    /**
+        \class LevelLoader
+        \brief Contains helpers for loading levels
+    */
     class LevelLoader {
 
     public :
 
         /**
-          Load some map and the attached resources
+            \brief Load some map and the attached resources
         */
         static void loadLevel(const std::string &filePath, Level *level);
 

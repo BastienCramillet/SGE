@@ -54,7 +54,7 @@ namespace sg
             Thread ()
             {
                 m_thread = new sf::Thread(&sg::Thread::run, this);
-            };
+            }
 
             /*!
             *   \brief Destructor
@@ -77,7 +77,7 @@ namespace sg
             void start()
             {
                 m_thread->launch();
-            };
+            }
 
         protected :
 

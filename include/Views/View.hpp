@@ -38,7 +38,7 @@ namespace sg {
 
     /*!
     *   \class View
-    *   \brief A view
+    *   \brief A abstract view
     */
     class View : public sf::View {
 
@@ -57,14 +57,14 @@ namespace sg {
 
             If there is something to compute before adding a view in a frame, it's here.
 
-            This method will be call once time
+            This method will be call once time when the view will be attached to a frame
         */
         virtual void initialize() {
         }
 
 
         /**
-            If there is some automatic action in the child view, this method should be override
+            \brief If there is some automatic action in the child view, this method should be override
 
             There is no stuff here
         */
@@ -90,7 +90,7 @@ namespace sg {
         friend void Frame::addView(const std::string &, View *);
 
 
-        bool m_isInitialized;
+        bool m_isInitialized;       //!< Is the view initialized ?
 
     };
 

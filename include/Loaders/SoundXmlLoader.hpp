@@ -47,7 +47,8 @@ namespace sg {
 
 
     /**
-        The datas which compose a sound
+        \struct SoundData
+        \brief Data which compose a sound
     */
     struct SoundData {
         std::string soundID;                //!< sound ID
@@ -65,7 +66,7 @@ namespace sg {
     public :
 
         /**
-            Get images datas from image ID
+            \brief Get images datas from image ID
         */
         const SoundData* getSoundData(const std::string &soundID);
 

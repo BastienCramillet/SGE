@@ -48,66 +48,65 @@ namespace sg {
 
 
         /**
-            Override sg::View::update
+            \brief Update the view (automatics randomizedmoves)
 
-            Update the view (automatics randomizedmoves)
+            Override sg::View::update
         */
         void update();
 
 
         /**
-            Fix the min & max rotation speed
+            \brief Fix the min & max rotation speed
 
             Default values are 0 .. 0.05
         */
         void setOffsetRotationLimit(const sf::Vector2f &limits);
 
         /**
-          Fix the min & max rotation (in degrees)
+            \brief Fix the min & max rotation (in degrees)
 
-          Default values are -30 .. 22
+            Default values are -30 .. 22
         */
         void setRotationLimits(const sf::Vector2f &limits);
 
         /**
-            Fix the min & max x growing speed
+            \brief Fix the min & max x growing speed
 
             Default values are 1.5 .. 4.5
         */
         void setOffsetGrowX(const sf::Vector2f &limits);
 
         /**
-            Fix the min & max y growing speed
+            \brief Fix the min & max y growing speed
 
             Default values are 1.5 .. 2.5
         */
         void setOffsetGrowY(const sf::Vector2f &limits);
 
         /**
-          Fix the min & max x growing
+            \brief Fix the min & max x growing
 
-          Default values are -150 .. 250
+            Default values are -150 .. 250
         */
         void setXGrowingLimits(const sf::Vector2f &limits);
 
         /**
-          Fix the min & max x growing
+            \brief Fix the min & max x growing
 
-          Default values are -300 .. 200
+            Default values are -300 .. 200
         */
         void setYGrowingLimits(const sf::Vector2f &limits);
 
 
     private :
 
-        bool m_viewRotatePositif;
+        bool m_viewRotatePositif;               //!< current rotation direction
 
-        bool m_viewXGrowing;
+        bool m_viewXGrowing;                    //!< current width modification direction (growing or not)
 
-        bool m_viewYGrowing;
+        bool m_viewYGrowing;                    //!< current height modification direction (growing or not)
 
-        sf::Vector2f m_saveViewInitialSize;
-
+        sf::Vector2f m_saveViewInitialSize;     //!< Initial view size
 
         sf::Vector2f m_offsetRotationLimits;    //!< min and max rotation offset
 

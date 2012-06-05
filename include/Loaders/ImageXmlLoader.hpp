@@ -52,7 +52,8 @@ namespace sg {
 
 
     /**
-        The datas which compose an image
+        \struct ImageData
+        \brief Data which compose an image
     */
     struct ImageData {
         std::string imageID;                //!< image ID
@@ -69,6 +70,7 @@ namespace sg {
 
 
     /**
+        \class ImageXmlLoader
         \brief The LevelImageManger is a manager based on images.xml
     */
     class ImageXmlLoader : public Singleton<ImageXmlLoader> {
@@ -78,7 +80,7 @@ namespace sg {
     public :
 
         /**
-            Get images datas from image ID
+            \brief Get images datas from image ID
         */
         const ImageData* getImageData(const std::string &imageID);
 

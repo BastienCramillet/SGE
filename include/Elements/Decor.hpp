@@ -54,7 +54,7 @@ namespace sg
             *
             *   \param elementID The id of the decor
             */
-            Decor(const std::string& elementID);
+            explicit Decor(const std::string& elementID);
 
             /*!
             *   \brief Destructor

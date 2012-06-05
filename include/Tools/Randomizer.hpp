@@ -36,7 +36,10 @@ namespace sg
 {
 
 /**
-    This class provide random tools. It's based on SFML1 randomizer (https://github.com/LaurentGomila/SFML/blob/sfml1/include/SFML/System/Randomizer.hpp)
+    \class
+    \brief This class provide random tools. It's based on SFML1 randomizer
+
+    \sa https://github.com/LaurentGomila/SFML/blob/sfml1/include/SFML/System/Randomizer.hpp
 */
 class Randomizer
 {

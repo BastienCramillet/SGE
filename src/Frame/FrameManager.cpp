@@ -65,10 +65,24 @@ namespace sg {
 
     void FrameManager::unloadFrame(int frameID) {
         Log::v("FrameManager") << "Unloading frame #" << frameID;
-        if (m_frames[frameID] != 0) {
+        if (frameExists(frameID)) {
             delete m_frames[frameID];
             m_frames[frameID] = 0;
         }
+    }
+
+
+    Frame* FrameManager::getFrame(int frameID) {
+        if (! frameExists(frameID)) {
+            Log::e("FrameManager") << "Trying to access to a non existing frame, id = " << frameID;
+        }
+        return m_frames[frameID];
+    }
+
+
+    bool FrameManager::frameExists(int index)
+    {
+        return (index < m_frames.size() && m_frames[index]);
     }
 
 }

@@ -47,7 +47,8 @@ namespace sg {
 
 
     /**
-        The datas which compose a music
+        \struct MusicData
+        \brief Data which compose a music
     */
     struct MusicData {
         std::string musicID;                //!< music ID
@@ -56,6 +57,7 @@ namespace sg {
 
 
     /**
+        \class MusicXmlLoader
         \brief The MusicXmlManager is a manager based on musics.xml
     */
     class MusicXmlLoader : public Singleton<MusicXmlLoader> {
@@ -65,7 +67,7 @@ namespace sg {
     public :
 
         /**
-            Get images datas from image ID
+            \brief Get images datas from image ID
         */
         const MusicData* getMusicData(const std::string &musicID);
 
@@ -76,7 +78,7 @@ namespace sg {
 
         ~MusicXmlLoader();
 
-        std::map<std::string, MusicData*> m_datas; // datas, loaded once from musics.xml
+        std::map<std::string, MusicData*> m_datas; //!< datas, loaded once from musics.xml
 
     };
 

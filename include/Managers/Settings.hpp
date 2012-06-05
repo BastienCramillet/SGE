@@ -39,6 +39,10 @@
 
 namespace sg
 {
+    /**
+        \class Settings
+        \brief Get and set application settings
+    */
     class Settings : public Singleton<Settings>
     {
         friend class Singleton<Settings>;

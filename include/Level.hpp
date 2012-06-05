@@ -62,7 +62,10 @@ namespace sg {
         */
         Level();
 
-        ~Level();
+        /**
+            \brief Destroy the level
+        */
+        virtual ~Level();
 
         /*!
             \brief Build the Level and load the given file

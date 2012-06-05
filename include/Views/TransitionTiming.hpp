@@ -50,12 +50,14 @@ namespace sg
     namespace TransitionTiming {
 
         /**
-            \struct AbstractAnimationTiming
+            \class AbstractAnimationTiming
             \brief Define the base for animation timing
 
             \sa http://www.the-art-of-web.com/css/timing-function/
         */
-        struct AbstractTransitionTiming {
+        class AbstractTransitionTiming {
+
+            public :
 
             /**
                 \brief Get points which compose the bezier curve
@@ -77,18 +79,9 @@ namespace sg
             }
 
 
-            void addPoints(int lenght, int tab[][2]) {
-                for (int i = 0; i<lenght; ++i) {
-                    addPoint(tab[i][0], tab[i][1]);
-                }
-            }
-
-
             private :
-                /**
-                    \brief The vector is used to keep a cache of points
-                */
-                std::vector<sf::Vector2f> m_points;
+
+                std::vector<sf::Vector2f> m_points;     //!< The vector is used to keep a cache of points
         };
 
 

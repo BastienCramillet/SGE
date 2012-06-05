@@ -62,6 +62,23 @@ namespace sg {
     }
 
 
+    std::queue<sf::Vector2f> BezierCurve::computeBezierCurveDegree2(const std::vector<sf::Vector2f> &points, float nb_points)
+    {
+        const sf::Vector2f &p0 = points[0];
+        const sf::Vector2f &p1 = points[1];
+        const sf::Vector2f &p2 = points[2];
+
+        std::queue<sf::Vector2f> computedPoints;
+        for (float t = 0.0f; t < 1.0f; t += 1.f / nb_points)
+        {
+            float x = SGE_POW_2(1-t)*p0.x + 2*t*(1-t)*p1.x + SGE_POW_2(t)*p2.x;
+            float y = SGE_POW_2(1-t)*p0.y + 2*t*(1-t)*p1.y + SGE_POW_2(t)*p2.y;
+            computedPoints.push(sf::Vector2f(x, y));
+        }
+        return computedPoints;
+    }
+
+
     std::queue<sf::Vector2f> BezierCurve::computeBezierCurveDegree3(const std::vector<sf::Vector2f> &points, float nb_points)
     {
         const sf::Vector2f &p0 = points[0];

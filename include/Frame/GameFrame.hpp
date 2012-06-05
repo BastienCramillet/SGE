@@ -43,6 +43,10 @@ namespace sg
 {
     class Level;
 
+    /**
+        \class GameFrame
+        \brief A game frame is a frame which contains a level
+    */
     class GameFrame : public Frame
     {
         public :
@@ -52,17 +56,14 @@ namespace sg
             ~GameFrame();
 
             /**
-              Load the given level
+                \brief Load the given level
             */
             void loadLevel(const std::string &levelFile);
 
             /**
-                Update the game frame (refresh object positions...)
+                \brief Update the game frame (refresh object positions...)
             */
             void update();
-
-
-        protected :
 
 
         private :

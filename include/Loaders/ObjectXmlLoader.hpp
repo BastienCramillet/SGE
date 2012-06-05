@@ -45,7 +45,8 @@
 namespace sg {
 
     /**
-      Datas which compose an object
+        \struct ObjectData
+        \brief Data which compose an object
     */
     struct ObjectData {
         std::string objectID;                                       //!< Object ID
@@ -57,28 +58,35 @@ namespace sg {
     };
 
 
+    /**
+        \class ObjectXmlLoader
+        \brief Load and store objects from xml files
+    */
     class ObjectXmlLoader : public Singleton<ObjectXmlLoader> {
 
         friend class Singleton<ObjectXmlLoader>;
 
     public :
 
+        /**
+            \brief Get object data attached to the given object id
+        */
         const ObjectData* getObjectData(const std::string& objectID);
 
         /**
-            return a possible sound for the given trigger
+            \brief return a possible sound for the given trigger
         */
         std::string getSoundID(const std::string &objectID, const std::string &trigger);
 
 
         /**
-            return a possible image for the given trigger
+            \brief return a possible image for the given trigger
         */
         std::string getImageID(const std::string &objectID, const std::string &trigger);
 
 
         /**
-            return a possible ephemeral for the given trigger
+            \brief return a possible ephemeral for the given trigger
         */
         std::string getEphemeralID(const std::string &objectID, const std::string &trigger);
 
@@ -89,7 +97,7 @@ namespace sg {
 
         ~ObjectXmlLoader();
 
-        std::map<std::string, ObjectData*> m_datas; // datas, loaded once from objects.xml
+        std::map<std::string, ObjectData*> m_datas; //!< datas, loaded once from objects.xml
     };
 
 }
