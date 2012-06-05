@@ -45,8 +45,8 @@
 namespace sg {
 
     class AnimatedView;
-    namespace AnimationTiming {
-        class AbstractAnimationTiming;
+    namespace TransitionTiming {
+        class AbstractTransitionTiming;
     }
 
     /**
@@ -106,7 +106,7 @@ namespace sg {
             \brief Define animation timing function
             \sa AbstractAnimationTiming
         */
-        AnimatedViewStep& setAnimationTiming(AnimationTiming::AbstractAnimationTiming &timing);
+        AnimatedViewStep& setAnimationTiming(TransitionTiming::AbstractTransitionTiming &timing);
 
 
     private :
@@ -152,7 +152,7 @@ namespace sg {
 
         AnimatedView *m_parent;                     //!< The one who create me, I will comunicate changes to back to base view
 
-        AnimationTiming::AbstractAnimationTiming *m_animationTiming; //!< My animation timing
+        TransitionTiming::AbstractTransitionTiming *m_animationTiming; //!< My animation timing
     };
 
 }

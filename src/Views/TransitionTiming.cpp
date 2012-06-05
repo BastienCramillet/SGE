@@ -33,25 +33,25 @@
     \version 1.0
 */
 
-#include "Views/ViewTransitionTiming.hpp"
+#include "Views/TransitionTiming.hpp"
 
 
 namespace sg
 {
-    namespace AnimationTiming
+    namespace TransitionTiming
     {
 
-        DefaultTiming DEFAULT_TIMING;
+        DefaultTiming DEFAULT;
 
-        LinearTiming LINEAR_TIMING;
+        LinearTiming LINEAR;
 
-        EaseInTiming EASE_IN_TIMING;
+        EaseInTiming EASE_IN;
 
-        EaseOutTiming EASE_OUT_TIMING;
+        EaseOutTiming EASE_OUT;
 
-        EaseInOutTiming EASE_IN_OUT_TIMING;
+        EaseInOutTiming EASE_IN_OUT;
 
-        CubicBezierTiming CUBIC_BEZIER_TIMING;
+        CubicBezierTiming CUBIC_BEZIER;
 
     }
 }

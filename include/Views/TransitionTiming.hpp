@@ -29,12 +29,12 @@
 
 /**
     \author Xavier
-    \brief This file contains default view animation timings
+    \brief This file contains pre-defined transitions timings
     \version 1.0
 */
 
-#ifndef VIEW_TRANSITION_TIMING_HPP
-#define VIEW_TRANSITION_TIMING_HPP
+#ifndef TRANSITION_TIMING_HPP
+#define TRANSITION_TIMING_HPP
 
 #include <vector>
 #include <SFML/System/Vector2.hpp>
@@ -47,7 +47,7 @@ namespace sg
         \namespace AnimationTiming
         \brief Contains default animations timing
     */
-    namespace AnimationTiming {
+    namespace TransitionTiming {
 
         /**
             \struct AbstractAnimationTiming
@@ -55,7 +55,7 @@ namespace sg
 
             \sa http://www.the-art-of-web.com/css/timing-function/
         */
-        struct AbstractAnimationTiming {
+        struct AbstractTransitionTiming {
 
             /**
                 \brief Get points which compose the bezier curve
@@ -99,14 +99,14 @@ namespace sg
             \struct DefaultTiming
             \brief Default animation timing
         */
-        struct DefaultTiming : public AbstractAnimationTiming {
+        struct DefaultTiming : public AbstractTransitionTiming {
             DefaultTiming() {
                 addPoint(0.25, 0.1);
                 addPoint(0.25, 1);
             }
         };
         // is declared in .cpp
-        extern DefaultTiming DEFAULT_TIMING;
+        extern DefaultTiming DEFAULT;
 
 
 
@@ -114,26 +114,26 @@ namespace sg
             \struct LinearTiming
             \brief Linear timing
         */
-        struct LinearTiming : public AbstractAnimationTiming {
+        struct LinearTiming : public AbstractTransitionTiming {
             LinearTiming() {
             }
         };
         // is declared in .cpp
-        extern LinearTiming LINEAR_TIMING;
+        extern LinearTiming LINEAR;
 
 
         /**
             \struct EaseInTiming
             \brief Ease-in function
         */
-        struct EaseInTiming : public AbstractAnimationTiming {
+        struct EaseInTiming : public AbstractTransitionTiming {
             EaseInTiming() {
                 addPoint(0.42, 0.f);
                 addPoint(1.f, 1.f);
             }
         };
         // is declared in .cpp
-        extern EaseInTiming EASE_IN_TIMING;
+        extern EaseInTiming EASE_IN;
 
 
 
@@ -141,14 +141,14 @@ namespace sg
             \struct EaseOutTiming
             \brief Ease-out function
         */
-        struct EaseOutTiming : public AbstractAnimationTiming {
+        struct EaseOutTiming : public AbstractTransitionTiming {
             EaseOutTiming() {
                 addPoint(0.f, 0.f);
                 addPoint(0.58, 1.f);
             }
         };
         // is declared in .cpp
-        extern EaseOutTiming EASE_OUT_TIMING;
+        extern EaseOutTiming EASE_OUT;
 
 
 
@@ -156,14 +156,14 @@ namespace sg
             \struct EaseInOutTiming
             \brief Ease-in-out function
         */
-        struct EaseInOutTiming : public AbstractAnimationTiming {
+        struct EaseInOutTiming : public AbstractTransitionTiming {
             EaseInOutTiming() {
                 addPoint(0.42, 0.f);
                 addPoint(0.58, 1.f);
             }
         };
         // is declared in .cpp
-        extern EaseInOutTiming EASE_IN_OUT_TIMING;
+        extern EaseInOutTiming EASE_IN_OUT;
 
 
 
@@ -171,14 +171,14 @@ namespace sg
             \struct CubicBezierTiming
             \brief Bezier cubic timing
         */
-        struct CubicBezierTiming : public AbstractAnimationTiming {
+        struct CubicBezierTiming : public AbstractTransitionTiming {
             CubicBezierTiming() {
                 addPoint(0.f, 1.f);
                 addPoint(1.f, 0.f);
             }
         };
         // is declared in .cpp
-        extern CubicBezierTiming CUBIC_BEZIER_TIMING;
+        extern CubicBezierTiming CUBIC_BEZIER;
 
 
     }

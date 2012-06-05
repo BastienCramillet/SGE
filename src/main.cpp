@@ -67,19 +67,19 @@ int main()
             );
 
     // move left
-    animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setAnimationTiming(sg::AnimationTiming::EASE_OUT_TIMING);
+    animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setAnimationTiming(sg::TransitionTiming::EASE_OUT);
 
     // zoom at the end
-    animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setAnimationTiming(sg::AnimationTiming::EASE_IN_TIMING);
+    animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setAnimationTiming(sg::TransitionTiming::EASE_IN);
 
     // unzoom
-    animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setAnimationTiming(sg::AnimationTiming::CUBIC_BEZIER_TIMING);
+    animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setAnimationTiming(sg::TransitionTiming::CUBIC_BEZIER);
 
     // rotate
     animatedView->createStep(sf::seconds(15), sf::seconds(2)).rotate(360);  // default timing
 
     // come back to normal zoom
-    animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setAnimationTiming(sg::AnimationTiming::LINEAR_TIMING);
+    animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setAnimationTiming(sg::TransitionTiming::LINEAR);
 
 
     gameFrame->addView("animated view demo", animatedView);

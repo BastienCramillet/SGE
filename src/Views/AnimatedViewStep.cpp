@@ -37,7 +37,7 @@
 
 #include "Tools/Log.hpp"
 
-#include "Views/ViewTransitionTiming.hpp"
+#include "Views/TransitionTiming.hpp"
 
 namespace sg {
 
@@ -46,7 +46,7 @@ namespace sg {
         : m_start(start), m_duration(duration), m_center(0), m_size(0), m_rotation(0), m_animationPointCount(10000),
           m_zoomFactor(0), m_baseZoom(baseZoom), m_parent(parent)
     {
-        m_animationTiming = &sg::AnimationTiming::DEFAULT_TIMING;
+        m_animationTiming = &sg::TransitionTiming::DEFAULT;
         m_end = m_start + m_duration;
     }
 
@@ -100,8 +100,9 @@ namespace sg {
     }
 
 
-    AnimatedViewStep& AnimatedViewStep::setAnimationTiming(AnimationTiming::AbstractAnimationTiming &timing) {
+    AnimatedViewStep& AnimatedViewStep::setAnimationTiming(TransitionTiming::AbstractTransitionTiming &timing) {
         m_animationTiming = &timing;
+        return *this;
     }
 
 
