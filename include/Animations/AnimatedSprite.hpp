@@ -44,19 +44,43 @@ namespace sg
     *   \brief Represent a complex sprite composed of many other subsprites
     *           The drew sub sprite change over the time to simulate an animation
     */
-    class AnimatedSprite : public sf::Sprite
+    class AnimatedSprite
     {
+        public :
+
+            AnimatedSprite ();
+
+            AnimatedSprite (sf::Sprite* sprite, int frameCount, int frequency,
+                            sf::Vector2i gridSize, sf::Vector2i frameSize, bool isLooping);
+
+            void play ();
+
+            void update ();
+
+            void stop ();
+
+            void pause ();
+
+            void reset ();
+
+            void nextFrame ();
+
         private :
 
-            int m_rowCount;
-            int m_columnCount;
+            sf::Sprite* m_sprite;
+
             int m_frameCount;
-            int m_frameWidth;
-            int m_frameHeight;
             int m_frequency;
-            sg::StopWatch m_stopWatch;
+
+            sf::Vector2i m_gridSize;
+            sf::Vector2i m_frameSize;
+
             bool m_isLooping;
-            bool m_isPlaying
+            bool m_isPlaying;
+
+            sg::StopWatch m_stopWatch;
+            int m_currentFrame;
+            float m_delay;
 
     };
 } // namespace sg
