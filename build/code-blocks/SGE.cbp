@@ -189,6 +189,7 @@
 		<Unit filename="..\..\include\Managers\Manager.hpp" />
 		<Unit filename="..\..\include\Managers\Settings.hpp" />
 		<Unit filename="..\..\include\Network\NetworkMachine.hpp" />
+		<Unit filename="..\..\include\Resources.hpp" />
 		<Unit filename="..\..\include\Resources\AudioResource.hpp" />
 		<Unit filename="..\..\include\Resources\GraphicResource.hpp" />
 		<Unit filename="..\..\include\Resources\Resource.hpp" />
@@ -196,7 +197,6 @@
 		<Unit filename="..\..\include\Resources\ResourceManager.hpp" />
 		<Unit filename="..\..\include\Resources\ResourceManager.inl" />
 		<Unit filename="..\..\include\Resources\ResourceSettings.hpp" />
-		<Unit filename="..\..\include\Ressources.hpp" />
 		<Unit filename="..\..\include\Tools\BezierCurve.hpp" />
 		<Unit filename="..\..\include\Tools\Log.hpp" />
 		<Unit filename="..\..\include\Tools\Log.inl" />
@@ -209,6 +209,7 @@
 		<Unit filename="..\..\include\network\Client.hpp" />
 		<Unit filename="..\..\include\network\Server.hpp" />
 		<Unit filename="..\..\include\tools\Log.inl" />
+		<Unit filename="..\..\src\Animation\AnimatedSprite.cpp" />
 		<Unit filename="..\..\src\Elements\Area.cpp" />
 		<Unit filename="..\..\src\Elements\Decor.cpp" />
 		<Unit filename="..\..\src\Elements\Drawable.cpp" />

@@ -119,7 +119,7 @@ namespace sg {
         std::vector<sf::Vector2f> newPoints;
         newPoints.resize(points.size()-1);
 
-        for(int i=0; i<points.size()-1; i++) {
+        for(unsigned int i = 0; i<points.size()-1; i++) {
             newPoints[i] = points[i] * (1-param) + points[i+1] * param;
         }
 

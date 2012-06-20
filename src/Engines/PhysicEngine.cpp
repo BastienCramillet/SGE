@@ -213,7 +213,7 @@ namespace sg
     b2Body* PhysicEngine::createStaticEdge (float xFirstPosition, float yFirstPosition, float xSecondPosition, float ySecondPosition,
                                           float density, float friction, float restitution)
     {
-
+        return 0;
     }
 
     b2Body* PhysicEngine::createStaticChainShape (std::vector<std::pair<float,float> > vpCoord,
@@ -247,12 +247,12 @@ namespace sg
 
     b2Body* PhysicEngine::createStaticPolygon()
     {
-
+        return 0;
     }
 
     b2Body* PhysicEngine::createDynamicPolygon()
     {
-
+        return 0;
     }
 
 } // namespace sg

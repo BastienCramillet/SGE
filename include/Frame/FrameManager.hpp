@@ -96,7 +96,7 @@ namespace sg
             /**
                 \brief Does the frame at the given index is valid ?
             */
-            bool frameExists(int index);
+            bool frameExists(unsigned int index);
 
 
             std::vector<Frame *> m_frames;  //!< The managed frames

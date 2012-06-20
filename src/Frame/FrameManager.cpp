@@ -80,7 +80,7 @@ namespace sg {
     }
 
 
-    bool FrameManager::frameExists(int index)
+    bool FrameManager::frameExists(unsigned int index)
     {
         return (index < m_frames.size() && m_frames[index]);
     }
