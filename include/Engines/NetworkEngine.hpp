@@ -53,6 +53,10 @@ namespace sg
     class Server;
     class Client;
 
+    /*!
+    *   \class NetworkEngine
+    *   \brief The engine which magane all the network part
+    */
     class NetworkEngine : public Singleton<NetworkEngine>, public Engine
     {
         friend class Singleton<NetworkEngine>;
@@ -81,7 +85,14 @@ namespace sg
 
         private :
 
+            /*!
+            *   \brief Constructor
+            */
             NetworkEngine ();
+
+            /*!
+            *   \brief Destructor
+            */
             ~NetworkEngine ();
             void treatMessage (EngineMessage* message);
 

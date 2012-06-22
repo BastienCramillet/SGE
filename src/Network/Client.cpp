@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -36,7 +37,11 @@
 
 namespace sg
 {
-    Client::Client() : sg::Thread() {};
+    Client::Client(std::string name) : m_name(name)
+    {
+    }
+
+    Client::~Client() {}
 
     void Client::run()
     {
@@ -53,4 +58,9 @@ namespace sg
                  std::size_t received = 0;
                  socket.receive(buffer, sizeof(buffer), received);
             }
+
+    void Client::connectTo(sf::IpAddress ipAddress, int port)
+    {
+        m_tcpSocket.connect(ipAddress, port);
+    }
 }

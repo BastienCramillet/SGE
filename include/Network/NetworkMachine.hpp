@@ -50,23 +50,59 @@ namespace sg
             /*!
             *   \brief Constructor
             */
-            NetworkMachine();
+            NetworkMachine() {}
 
             /*!
             *   \brief Destructor
             */
-            ~NetworkMachine();
+            ~NetworkMachine()
+            {
+                if (m_running) forceStop();
+            }
+
+            bool isRunning();
 
             /*!
             *   \brief Mandatory - See sg::Thread::run()
             */
-            void run();
+            virtual void run() = 0;
+
+            /*!
+            *   \brief Start the network machine
+            */
+            void start()
+            {
+                if (!m_running)
+                {
+                    m_running = true;
+                    run();
+                }
+            }
+
+            /*!
+            *   \brief Stop the network machine
+            */
+            void shutdown()
+            {
+                m_running = false;
+                wait();
+            }
+
+            /*!
+            *   \brief Restart the network machine by shuting it down and starting it again
+            */
+            void restart()
+            {
+                shutdown();
+                start();
+
+            }
 
 
+        protected :
 
-        private :
-
-            bool m_running; //!< A boolean used to let the main loop of the machine process or not
+            bool            m_running; //!< A boolean used to let the main loop of the machine process or not
+            sf::IpAddress   m_address; //!< The IP address of the machine
 
     };
 } // namespace sg

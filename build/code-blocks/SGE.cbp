@@ -159,7 +159,9 @@
 		<Unit filename="..\..\include\Core\MemoryManager.hpp" />
 		<Unit filename="..\..\include\Core\Position.hpp" />
 		<Unit filename="..\..\include\Core\Singleton.hpp" />
+		<Unit filename="..\..\include\Core\StopWatch.hpp" />
 		<Unit filename="..\..\include\Core\Thread.hpp" />
+		<Unit filename="..\..\include\Core\Timer.hpp" />
 		<Unit filename="..\..\include\Elements\Area.hpp" />
 		<Unit filename="..\..\include\Elements\Decor.hpp" />
 		<Unit filename="..\..\include\Elements\Drawable.hpp" />
@@ -204,12 +206,15 @@
 		<Unit filename="..\..\include\Views\AnimatedView.hpp" />
 		<Unit filename="..\..\include\Views\AnimatedViewStep.hpp" />
 		<Unit filename="..\..\include\Views\DrunkerView.hpp" />
+		<Unit filename="..\..\include\Views\TransitionTiming.hpp" />
 		<Unit filename="..\..\include\Views\View.hpp" />
 		<Unit filename="..\..\include\core\Singleton.inl" />
 		<Unit filename="..\..\include\network\Client.hpp" />
 		<Unit filename="..\..\include\network\Server.hpp" />
 		<Unit filename="..\..\include\tools\Log.inl" />
 		<Unit filename="..\..\src\Animation\AnimatedSprite.cpp" />
+		<Unit filename="..\..\src\Core\StopWatch.cpp" />
+		<Unit filename="..\..\src\Core\Timer.cpp" />
 		<Unit filename="..\..\src\Elements\Area.cpp" />
 		<Unit filename="..\..\src\Elements\Decor.cpp" />
 		<Unit filename="..\..\src\Elements\Drawable.cpp" />
@@ -241,6 +246,7 @@
 		<Unit filename="..\..\src\Views\AnimatedView.cpp" />
 		<Unit filename="..\..\src\Views\AnimatedViewStep.cpp" />
 		<Unit filename="..\..\src\Views\DrunkerView.cpp" />
+		<Unit filename="..\..\src\Views\TransitionTiming.cpp" />
 		<Unit filename="..\..\src\Views\View.cpp" />
 		<Unit filename="..\..\src\core\File.cpp" />
 		<Unit filename="..\..\src\core\MemoryManager.cpp" />

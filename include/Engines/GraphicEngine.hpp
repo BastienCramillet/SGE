@@ -67,6 +67,8 @@ namespace sg
 
             sf::Sprite* getSprite(const std::string& url);
 
+            void destroySprite(sf::Sprite* sprite);
+
         private :
 
             GraphicEngine ();

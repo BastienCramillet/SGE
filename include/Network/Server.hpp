@@ -36,11 +36,12 @@
 
 #include <Core/Thread.hpp>
 #include <SFML/Network.hpp>
+#include <Network/NetworkMachine.hpp>
 
 namespace sg
 {
 
-    class Server : public sg::Thread
+    class Server : public sg::NetworkMachine
     {
         public :
 
@@ -58,8 +59,11 @@ namespace sg
             int m_port;
             std::string m_pwd;
 
-            std::vector<std::string> m_vClients;
-            std::vector<sf::TcpSocket*> clients;
+            sf::TcpListener m_listener;
+            sf::SocketSelector m_selector;
+
+            //std::vector<std::string> m_vClients;
+            std::vector<sf::TcpSocket*> m_vClients;
     };
 
 }

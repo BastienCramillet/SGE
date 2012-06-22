@@ -36,8 +36,12 @@
 #ifndef PHYSICAL_HPP_INCLUDED
 #define PHYSICAL_HPP_INCLUDED
 
+#include <map>
+#include <string>
+
 class b2Body;
 class b2Vec2;
+class b2Shape;
 
 namespace sg
 {
@@ -79,6 +83,7 @@ namespace sg
         protected :
 
             b2Body* m_body;     //!< The Box2D body of the physical object
+            std::map<std::string, b2Shape*> m_mShapes;
     };
 } // namespace sg
 

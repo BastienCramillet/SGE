@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -34,23 +35,54 @@
 #ifndef CLIENT_HPP_INCLUDED
 #define CLIENT_HPP_INCLUDED
 
-#include <Core/Thread.hpp>
+#include <Network/NetworkMachine.hpp>
 #include <SFML/Network.hpp>
 
 namespace sg
 {
-
-    class Client : public sg::Thread
+    /*!
+    *   \class Client
+    *   \brief Represent a network client
+    */
+    class Client : public sg::NetworkMachine
     {
         public :
 
-            Client();
+            /*!
+            *   \brief Default constructor
+            *
+            *   \param name The name of the client
+            */
+            Client(std::string name);
 
+            /*!
+            *   \brief Default destructor
+            */
+            ~Client();
+
+            /*!
+            *   \brief Get the name of the client
+            */
+            const std::string& getName() const;
+
+            /*!
+            *   \brief Mandatory - See sg::Thread::run()
+            */
             void run ();
+
+            /*!
+            *   \brief Try to connect the client to a server at the given address and port
+            *
+            *   \param ipAddress The IP address of the server
+            *   \param port The port listened by the server
+            */
+            void connectTo(sf::IpAddress ipAddress, int port);
 
         private :
 
-            std::string m_name;
+            std::string m_name;         //!< The name of the client
+            sf::TcpSocket m_tcpSocket;
+            sf::UdpSocket m_udpSocket;
 
             std::vector<std::string> m_vClients;
     };

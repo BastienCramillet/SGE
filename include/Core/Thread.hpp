@@ -79,6 +79,22 @@ namespace sg
                 m_thread->launch();
             }
 
+            /*!
+            *   \brief Wait for the end of the thread
+            */
+            void wait()
+            {
+                m_thread->wait();
+            }
+
+            /*!
+            *   \brief Force the stop of the thread
+            */
+            void forceStop()
+            {
+                m_thread->terminate();
+            }
+
         protected :
 
             sf::Thread*    m_thread;    //!< The SFML thread
