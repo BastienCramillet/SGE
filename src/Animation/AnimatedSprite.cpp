@@ -64,7 +64,7 @@ namespace sg
                 nextFrame();
                 if (m_currentFrame == m_frameCount && m_isLooping)
                     m_stopWatch.restart();
-                else
+                else if (m_currentFrame == m_frameCount && !m_isLooping)
                     m_stopWatch.stop();
             }
         }
@@ -90,6 +90,36 @@ namespace sg
 
     void AnimatedSprite::nextFrame ()
     {
+        ++m_currentFrame;
 
+        unsigned int xOffset;
+        unsigned int yOffset;
+
+
+        if (m_currentFrame != m_frameCount)
+        {
+            xOffset = (m_currentFrame) % m_gridSize.x;
+            yOffset = (int)((m_currentFrame) / m_gridSize.x) + 1;
+        }
+        else
+        {
+            if (m_currentFrame == m_frameCount && m_isLooping)
+            {
+                m_currentFrame = 0;
+                xOffset = 0;
+                yOffset = 0;
+            }
+            else if (m_currentFrame == m_frameCount && !m_isLooping)
+            {
+                --m_currentFrame;
+                return;
+            }
+        }
+
+
+        m_sprite->setTextureRect(sf::IntRect(xOffset * m_frameSize.x,
+                                             yOffset * m_frameSize.y,
+                                             (xOffset + 1) * m_frameSize.x,
+                                             (yOffset + 1) * m_frameSize.y));
     }
 }
