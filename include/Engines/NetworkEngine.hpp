@@ -76,6 +76,13 @@ namespace sg
             void createServer(const std::string& address, int port);
             void createClient(const std::string& address, int port);
 
+            /*!
+            *   \brief Add a packet to the packet queue
+            *
+            *   \param packet A sf::Packet to add to the queue
+            */
+            void addPacket(sf::Packet* packet);
+
             NETWORK_TYPE getType();
 
             void clean();
@@ -95,6 +102,8 @@ namespace sg
             */
             ~NetworkEngine ();
             void treatMessage (EngineMessage* message);
+
+            std::vector<sf::Packet*> m_vPacket;
 
             NETWORK_TYPE m_type;
 

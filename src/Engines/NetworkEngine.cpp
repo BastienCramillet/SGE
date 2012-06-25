@@ -49,16 +49,30 @@ namespace sg {
         clean();
     }
 
-    void NetworkEngine::treatMessage (EngineMessage* message)
-    {
-
-        delete message;
-    }
-
     void NetworkEngine::clean ()
     {
         if (m_server) delete m_server;
         if (m_server) delete m_client;
+        if (!m_vPacket.empty())
+        {
+            int size = m_vPacket.size();
+            for (int i = 0; i < size; ++i)
+            {
+                delete m_vPacket[i];
+                m_vPacket[i] = 0;
+            }
+        }
+    }
+
+    void NetworkEngine::addPacket(sf::Packet* packet)
+    {
+        m_vPacket.push_back(packet);
+    }
+
+    void NetworkEngine::treatMessage (EngineMessage* message)
+    {
+
+        delete message;
     }
 
     NETWORK_TYPE NetworkEngine::getType()

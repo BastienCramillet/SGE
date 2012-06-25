@@ -34,6 +34,9 @@
 */
 
 #include <Network/Client.hpp>
+#include <Engines/NetworkEngine.hpp>
+
+#include <Tools/Log.hpp>
 
 namespace sg
 {
@@ -45,22 +48,24 @@ namespace sg
 
     void Client::run()
     {
-                 // Create a socket and connect it to 192.168.1.50 on port 55001
-                 sf::TcpSocket socket;
-                 socket.connect("127.0.0.1", 55001);
-
-                 // Send a message to the connected host
-                 std::string message = "Hi, I am a client";
-                 socket.send(message.c_str(), message.size() + 1);
-
-                 // Receive an answer from the server
-                 char buffer[1024];
-                 std::size_t received = 0;
-                 socket.receive(buffer, sizeof(buffer), received);
-            }
+        while(m_running)
+        {
+            sf::Packet* packet = new sf::Packet();
+            m_tcpSocket.receive(*packet);
+            sg::NetworkEngine::getInstance().addPacket(packet);
+        }
+    }
 
     void Client::connectTo(sf::IpAddress ipAddress, int port)
     {
         m_tcpSocket.connect(ipAddress, port);
+    }
+
+    void Client::send(sf::Packet packet)
+    {
+        if (m_tcpSocket.send(packet) != sf::Socket::Done)
+        {
+            Log::w("Client") << "The TCP socket has not sent the data";
+        }
     }
 }

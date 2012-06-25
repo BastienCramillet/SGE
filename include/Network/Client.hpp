@@ -78,6 +78,13 @@ namespace sg
             */
             void connectTo(sf::IpAddress ipAddress, int port);
 
+            /*!
+            *   \brief Send a packet to the connected TCP Socket
+            *
+            *   \param packet The sf::Packet to send
+            */
+            void send(sf::Packet packet);
+
         private :
 
             std::string m_name;         //!< The name of the client
