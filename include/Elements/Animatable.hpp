@@ -27,62 +27,66 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file DynamicObject.hpp
-*   \brief Dynamic object header
+*   \file Animatable.hpp
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
-#ifndef DYNAMICOBJECT_HPP_INCLUDED
-#define DYNAMICOBJECT_HPP_INCLUDED
+#ifndef ANIMATABLE_HPP_INCLUDED
+#define ANIMATABLE_HPP_INCLUDED
 
-#include <Elements/Element.hpp>
-#include <Elements/Animatable.hpp>
-#include <Elements/Playable.hpp>
-#include <Elements/Physical.hpp>
+#include <Elements/Drawable.hpp>
+#include <Animations/AnimatedSprite.hpp>
 
 namespace sg
 {
     /*!
-    *   \class DynamicObject
-    *   \brief Represent a fully dynamic object, with a physical, drawable and playable aspect
+    *   \class Animatable
+    *   \brief A animatable object is composed of animated sprites
     */
-    class DynamicObject : public Element, public Animatable, public Playable, public Physical
+    class Animatable : public sg::Drawable
     {
         public :
 
             /*!
             *   \brief Constructor
-            *
-            *   \param elementID The id of the element
             */
-            DynamicObject(const std::string& elementID);
+            Animatable();
 
             /*!
             *   \brief Destructor
             */
-            virtual ~DynamicObject();
+            ~Animatable();
 
             /*!
-            *   \brief Update the dynamic object
+            *   \brief Add a new animated sprite
+            *
+            *   \param id The id of the animation
+            *   \param sprite The sprite composed b the frames of the animation
+            *   \param frameCount The number of frame in the animation
+            *   \param frequency The number of frames per seconds
+            *   \param gridSize The matrix of the animation
+            *   \param frameSize The size of a unique frame
+            *   \param isLooping Should the animation loop ?
             */
-            virtual void update();
-
-            // Pas à sa place
-            void play(const std::string& id);
+            void addAnimatedSprite(const std::string& id, sf::Sprite* sprite, int frameCount, int frequency,
+                            sf::Vector2i gridSize, sf::Vector2i frameSize, bool isLooping);
 
             /*!
-            *   \brief Override Element::getPostion
+            *   \brief Set the current animated sprite
+            *
+            *   \param id The id of the whished animation
             */
-            sf::Vector2f getPosition() const;
+            void setSprite(std::string& id);
 
-            /*!
-            *   \brief Get the rotation of the object by the physical object
-            */
-            float getRotation() const;
+        protected :
+
+            sg::AnimatedSprite* m_currentAnimatedSprite;
+
+            std::map<std::string, sg::AnimatedSprite*> m_mAnimatedSprite;
 
     };
-}
 
+} // namespace
 
-#endif // DYNAMICOBJECT_HPP_INCLUDED
+#endif // ANIMATABLE_HPP_INCLUDED

@@ -3,6 +3,7 @@
 * SGE - Simple Game Engine
 *
 * Copyright (c) 2012 Bastien Cramillet (Bigz)(bastien.cramillet@gmail.com)
+*                    Xavier Michel (Saffir)(xavier.michel.mx440@gmail.com)
 *
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
@@ -32,6 +33,7 @@
 */
 
 #include <Animations/AnimatedSprite.hpp>
+#include <iostream>
 
 namespace sg
 {
@@ -45,14 +47,26 @@ namespace sg
                             : m_sprite(sprite), m_frameCount(frameCount), m_frequency(frequency),
                             m_gridSize(gridSize), m_frameSize(frameSize), m_isLooping(isLooping)
     {
+        m_currentFrame = 0;
         m_isPlaying = false;
         m_delay = (1.f/(float)m_frequency);
+        m_sprite->setTextureRect(sf::IntRect(0, 0, m_frameSize.x, m_frameSize.y));
+    }
+
+    AnimatedSprite::~AnimatedSprite ()
+    {
+        m_sprite = 0;
+    }
+
+    sf::Sprite* AnimatedSprite::getAnimatedSprite()
+    {
+        return m_sprite;
     }
 
     void AnimatedSprite::play ()
     {
         m_isPlaying = true;
-        m_stopWatch.restart();
+        m_stopWatch.start();
     }
 
     void AnimatedSprite::update ()
@@ -82,10 +96,17 @@ namespace sg
         m_stopWatch.stop();
     }
 
-    void AnimatedSprite::reset ()
+    void AnimatedSprite::restart ()
     {
         m_currentFrame = 0;
         m_stopWatch.restart();
+        play();
+    }
+
+    void AnimatedSprite::reset ()
+    {
+        m_currentFrame = 0;
+        stop();
     }
 
     void AnimatedSprite::nextFrame ()
@@ -116,10 +137,9 @@ namespace sg
             }
         }
 
-
         m_sprite->setTextureRect(sf::IntRect(xOffset * m_frameSize.x,
                                              yOffset * m_frameSize.y,
-                                             (xOffset + 1) * m_frameSize.x,
-                                             (yOffset + 1) * m_frameSize.y));
+                                             m_frameSize.x,
+                                             m_frameSize.y));
     }
 }

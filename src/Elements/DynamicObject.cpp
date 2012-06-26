@@ -62,6 +62,7 @@ namespace sg
 
     void DynamicObject::update()
     {
+        m_currentAnimatedSprite->update();
         sf::Vector2f pos = getPosition();
         float rot = getRotation();
 

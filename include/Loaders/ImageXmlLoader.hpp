@@ -61,6 +61,7 @@ namespace sg {
         int height;                         //!< image height
         int rowCount;                       //!< row count (tileset)
         int columnCount;                    //!< column count (tileset)
+        int frameCount;                     //!< Number of frame which compose the tile
         bool isOneShotAnim;                 //!< This image should be played only one time (explosion for example)
         int fps;                            //!< Image FPS
         std::string url;                    //!< Image url

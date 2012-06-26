@@ -53,6 +53,10 @@ namespace sg
             AnimatedSprite (sf::Sprite* sprite, int frameCount, int frequency,
                             sf::Vector2i gridSize, sf::Vector2i frameSize, bool isLooping);
 
+            ~AnimatedSprite();
+
+            sf::Sprite* getAnimatedSprite();
+
             void play ();
 
             void update ();
@@ -60,6 +64,8 @@ namespace sg
             void stop ();
 
             void pause ();
+
+            void restart ();
 
             void reset ();
 

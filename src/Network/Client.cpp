@@ -65,7 +65,7 @@ namespace sg
     {
         if (m_tcpSocket.send(packet) != sf::Socket::Done)
         {
-            Log::w("Client") << "The TCP socket has not sent the data";
+            Log::w("Client") << "The TCP socket has not sent the data : " << packet.getData();
         }
     }
 }

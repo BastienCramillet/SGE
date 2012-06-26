@@ -75,6 +75,8 @@ namespace sg {
             id->height         = atoi(image->Attribute("height"));
             id->rowCount       = atoi(image->Attribute("rowCount"));
             id->columnCount    = atoi(image->Attribute("columnCount"));
+            id->frameCount     = atoi(image->Attribute("frameCount"));
+            id->fps            = atoi(image->Attribute("fps"));
             id->isOneShotAnim  = (image->Attribute("isOneShotAnim") == std::string("true"));
             id->url            = std::string(image->Attribute("url"));
             id->isRectangular  = (image->Attribute("isRectangular") == std::string("true"));

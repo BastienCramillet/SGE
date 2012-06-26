@@ -136,11 +136,14 @@ namespace sg {
                 if (objectOnMap->Attribute("isMovable") == std::string("true")) {
 
                     sg::DynamicObject* obj = new sg::DynamicObject(objectData->objectID);
-                    obj->addSprite(
+                    obj->addAnimatedSprite(
                                 imageData->url,
                                 GraphicEngine::getInstance().getSprite("data/images/" + imageData->url),
-                                imageData->width,
-                                imageData->height
+                                imageData->frameCount,
+                                imageData->fps,
+                                sf::Vector2i(imageData->columnCount, imageData->rowCount),
+                                sf::Vector2i(imageData->width, imageData->height),
+                                true
                                );
                     obj->setCurrentSprite(imageData->url);
 

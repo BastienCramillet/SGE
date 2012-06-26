@@ -43,7 +43,7 @@ int main()
     obj2->setPosition(sf::Vector2f(-200, -1170));
 
     sg::GameFrame *gameFrame = new sg::GameFrame();
-    gameFrame->loadLevel("data/maps/demo_map.xml");
+    gameFrame->loadLevel("data/maps/map_animation.xml");
 
     gameFrame->addView(
                 "simple view demo",
@@ -53,41 +53,43 @@ int main()
                     )
             );
 
-    gameFrame->addView
-            ("drunker view demo",
-             new sg::DrunkerView(
-                           sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
-                           sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
-                    )
-            );
+//    gameFrame->addView
+//            ("drunker view demo",
+//             new sg::DrunkerView(
+//                           sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
+//                           sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
+//                    )
+//            );
+//
+//    sg::AnimatedView *animatedView = new sg::AnimatedView(
+//                sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
+//                sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
+//            );
+//
+//    // move left
+//    animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setTransitionTiming(sg::TransitionTiming::EASE_OUT);
+//
+//    // zoom at the end
+//    animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setTransitionTiming(sg::TransitionTiming::EASE_IN);
+//
+//    // unzoom
+//    animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setTransitionTiming(sg::TransitionTiming::CUBIC_BEZIER);
+//
+//    // rotate
+//    animatedView->createStep(sf::seconds(15), sf::seconds(2)).rotate(360);  // default timing
+//
+//    // come back to normal zoom
+//    animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setTransitionTiming(sg::TransitionTiming::LINEAR);
+//
+//    // back to initial position
+//    animatedView->createStep(sf::seconds(20), sf::seconds(3)).backToInitialCenter().setTransitionTiming(sg::TransitionTiming::EASE_IN_OUT);
+//
+//
+//    gameFrame->addView("animated view demo", animatedView);
+//
+//    gameFrame->setCurrentView("animated view demo");
 
-    sg::AnimatedView *animatedView = new sg::AnimatedView(
-                sf::Vector2f(sg::Settings::getInstance().getAppWidth() / 2,sg::Settings::getInstance().getAppHeight() / 2),
-                sf::Vector2f(sg::Settings::getInstance().getAppWidth(),sg::Settings::getInstance().getAppHeight())
-            );
-
-    // move left
-    animatedView->createStep(sf::seconds(3), sf::seconds(10)).moveCenter(sf::Vector2f(2000, 0)).setTransitionTiming(sg::TransitionTiming::EASE_OUT);
-
-    // zoom at the end
-    animatedView->createStep(sf::seconds(10), sf::seconds(3)).zoom(0.5).setTransitionTiming(sg::TransitionTiming::EASE_IN);
-
-    // unzoom
-    animatedView->createStep(sf::seconds(15), sf::seconds(2)).zoom(-1).setTransitionTiming(sg::TransitionTiming::CUBIC_BEZIER);
-
-    // rotate
-    animatedView->createStep(sf::seconds(15), sf::seconds(2)).rotate(360);  // default timing
-
-    // come back to normal zoom
-    animatedView->createStep(sf::seconds(17), sf::seconds(2)).backToBaseZoom().setTransitionTiming(sg::TransitionTiming::LINEAR);
-
-    // back to initial position
-    animatedView->createStep(sf::seconds(20), sf::seconds(3)).backToInitialCenter().setTransitionTiming(sg::TransitionTiming::EASE_IN_OUT);
-
-
-    gameFrame->addView("animated view demo", animatedView);
-
-    gameFrame->setCurrentView("animated view demo");
+    gameFrame->setCurrentView("simple view demo");
 
     int gameFrameID = frameManager.addFrame(gameFrame);
 

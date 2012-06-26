@@ -51,7 +51,7 @@ namespace sg
                                                       sg::Settings::getInstance().getAppHeight()),
                                         "Simple Game Engine",
                                         sf::Style::Close, sf::ContextSettings(0, 0, 4, 2, 0) );
-        m_window->setFramerateLimit(100);
+        m_window->setFramerateLimit(20);
         Log::i("WindowEngine.cpp") << "Creation of the window";
     }
 
