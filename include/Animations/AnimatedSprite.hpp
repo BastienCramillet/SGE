@@ -48,45 +48,88 @@ namespace sg
     {
         public :
 
+            /*!
+            *   \brief Default constructor
+            */
             AnimatedSprite ();
 
+            /*!
+            *   \brief Full constructor
+            *
+            *   \param sprite The sprite composed b the frames of the animation
+            *   \param frameCount The number of frame in the animation
+            *   \param frequency The number of frames per seconds
+            *   \param gridSize The matrix of the animation
+            *   \param frameSize The size of a unique frame
+            *   \param isLooping Should the animation loop ?
+            */
             AnimatedSprite (sf::Sprite* sprite, int frameCount, int frequency,
                             sf::Vector2i gridSize, sf::Vector2i frameSize, bool isLooping);
 
+            /*!
+            *   \brief Destructor
+            */
             ~AnimatedSprite();
 
+            /*!
+            *   \brief Get the animated sprite
+            *
+            *   \return sf::Sprite
+            */
             sf::Sprite* getAnimatedSprite();
 
+            /*!
+            *   \brief Play the animation
+            */
             void play ();
 
+            /*!
+            *   \brief Update the animation
+            */
             void update ();
 
+            /*!
+            *   \brief Stop the animation
+            */
             void stop ();
 
+            /*!
+            *   \brief Pause the animation
+            */
             void pause ();
 
+            /*!
+            *   \brief Restart the animation
+            */
             void restart ();
 
+            /*!
+            *   \brief Reset the animation
+            */
             void reset ();
 
+            /*!
+            *   \brief Change the current frame of the animation to the next one
+            */
             void nextFrame ();
 
         private :
 
             sf::Sprite* m_sprite;
 
-            int m_frameCount;
-            int m_frequency;
+            bool            m_isLooping;    //!< Should the animation loop ?
+            bool            m_isPlaying;    //!< Is the animation currently playing ?
 
-            sf::Vector2i m_gridSize;
-            sf::Vector2i m_frameSize;
+            int             m_frameCount;   //!< The amount of frames which compose the animation
+            int             m_frequency;    //!< FPS of the animation
+            int             m_currentFrame; //!< The index of the current frame
 
-            bool m_isLooping;
-            bool m_isPlaying;
+            float           m_delay;        //!< Duration in seconds between two frames
 
-            sg::StopWatch m_stopWatch;
-            int m_currentFrame;
-            float m_delay;
+            sf::Vector2i    m_gridSize;     //!< The matrix of the animation
+            sf::Vector2i    m_frameSize;    //!< The size of a unique frame
+
+            sg::StopWatch   m_stopWatch;    //!< A stop watch used for the timing of the animation
 
     };
 } // namespace sg

@@ -81,9 +81,10 @@ namespace sg
 
         protected :
 
-            sg::AnimatedSprite* m_currentAnimatedSprite;
+            sg::AnimatedSprite*                         m_currentAnimatedSprite; //!< The current animated sprite
 
-            std::map<std::string, sg::AnimatedSprite*> m_mAnimatedSprite;
+            std::map<std::string, sg::AnimatedSprite*>  m_mAnimatedSprite;       //!< All the different animated sprites of
+                                                                                 //!< the animatable object and their id
 
     };
 

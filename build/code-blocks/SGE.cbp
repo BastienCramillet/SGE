@@ -162,6 +162,7 @@
 		<Unit filename="..\..\include\Core\StopWatch.hpp" />
 		<Unit filename="..\..\include\Core\Thread.hpp" />
 		<Unit filename="..\..\include\Core\Timer.hpp" />
+		<Unit filename="..\..\include\Elements\Animatable.hpp" />
 		<Unit filename="..\..\include\Elements\Area.hpp" />
 		<Unit filename="..\..\include\Elements\Decor.hpp" />
 		<Unit filename="..\..\include\Elements\Drawable.hpp" />
@@ -215,6 +216,7 @@
 		<Unit filename="..\..\src\Animation\AnimatedSprite.cpp" />
 		<Unit filename="..\..\src\Core\StopWatch.cpp" />
 		<Unit filename="..\..\src\Core\Timer.cpp" />
+		<Unit filename="..\..\src\Elements\Animatable.cpp" />
 		<Unit filename="..\..\src\Elements\Area.cpp" />
 		<Unit filename="..\..\src\Elements\Decor.cpp" />
 		<Unit filename="..\..\src\Elements\Drawable.cpp" />
