@@ -27,10 +27,7 @@ namespace sg
 
     WindowEngine::~WindowEngine ()
     {
-        if (m_window != 0)
-        {
-            delete m_window;
-        }
+        clear();
     }
 
     void WindowEngine::treatMessage (EngineMessage* message)
@@ -45,14 +42,27 @@ namespace sg
         Log::i("WindowEngine.cpp") << sg::Settings::getInstance().getAppWidth();
     }
 
+    void WindowEngine::clear()
+    {
+        delete m_window;
+    }
+
     void WindowEngine::createWindow ()
     {
         m_window = new sf::RenderWindow(sf::VideoMode(sg::Settings::getInstance().getAppWidth(),
                                                       sg::Settings::getInstance().getAppHeight()),
                                         "Simple Game Engine",
                                         sf::Style::Close, sf::ContextSettings(0, 0, 4, 2, 0) );
-        m_window->setFramerateLimit(20);
+        m_window->setFramerateLimit(60);
         Log::i("WindowEngine.cpp") << "Creation of the window";
+    }
+
+    void WindowEngine::createSplashScreen ()
+    {
+        m_window = new sf::RenderWindow(sf::VideoMode(sg::Settings::getInstance().getAppWidth(),
+                                                      sg::Settings::getInstance().getAppHeight()),
+                                        "Simple Game Engine",
+                                        sf::Style::None, sf::ContextSettings(0, 0, 4, 2, 0) );
     }
 
     void WindowEngine::run ()

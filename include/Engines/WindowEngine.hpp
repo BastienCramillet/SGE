@@ -42,6 +42,10 @@
 
 namespace sg
 {
+    /*!
+    *   \class WindowEngine
+    *   \brief This engine manage all the windowing part, including keyboard and mouse events
+    */
     class WindowEngine : public Singleton<WindowEngine>, public Engine
     {
         friend class Singleton<WindowEngine>;
@@ -50,7 +54,15 @@ namespace sg
 
             void init();
 
+            void clear();
+
             void createWindow ();
+
+            void createSplashScreen();
+
+            void setWindowResolution (sf::Vector2i resolution);
+
+
 
             void run ();
 
