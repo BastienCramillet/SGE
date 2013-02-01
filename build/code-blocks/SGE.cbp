@@ -4,14 +4,14 @@
 	<Project>
 		<Option title="2D Game Engine" />
 		<Option pch_mode="2" />
-		<Option compiler="gcc" />
+		<Option compiler="gnu_gcc_compiler_462" />
 		<Build>
 			<Target title="Debug Static">
-				<Option output="libsge-s-d" prefix_auto="1" extension_auto="1" />
+				<Option output="sge-s-d" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output="obj\Debug\" />
+				<Option object_output="obj/Debug/" />
 				<Option type="2" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_462" />
 				<Option createDefFile="1" />
 				<Compiler>
 					<Add option="-Wall" />
@@ -30,11 +30,11 @@
 				</Linker>
 			</Target>
 			<Target title="Release Static">
-				<Option output="libsge-s" prefix_auto="1" extension_auto="1" />
+				<Option output="sge-s" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output="obj\Release\" />
+				<Option object_output="obj/Release/" />
 				<Option type="2" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_462" />
 				<Option createDefFile="1" />
 				<Compiler>
 					<Add option="-O2" />
@@ -55,9 +55,9 @@
 			</Target>
 			<Target title="Debug Dynamic">
 				<Option output="sge-d" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option object_output="obj/Debug/" />
 				<Option type="3" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_462" />
 				<Option createDefFile="1" />
 				<Compiler>
 					<Add option="-Wall" />
@@ -75,9 +75,9 @@
 			</Target>
 			<Target title="Release Dynamic">
 				<Option output="sge" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option object_output="obj/Release/" />
 				<Option type="3" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_462" />
 				<Option createDefFile="1" />
 				<Compiler>
 					<Add option="-O2" />
@@ -96,9 +96,9 @@
 			</Target>
 			<Target title="App test">
 				<Option output="2D Game Engine" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\run" />
+				<Option working_dir="../../run" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_462" />
 				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-DSFML_STATIC" />
@@ -116,10 +116,10 @@
 			</Target>
 			<Target title="App test debug">
 				<Option output="2D Game Engine" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\run" />
-				<Option object_output="obj\Debug\" />
+				<Option working_dir="../../run" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_462" />
 				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-Wall" />
@@ -140,122 +140,135 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add directory="F:\Developpement\Travaux\Prog\SGE\include" />
-			<Add directory="F:\Developpement\SFML_git\include" />
-			<Add directory="F:\Developpement\Box2D_v2.2.1\Box2D" />
-			<Add directory="F:\Developpement\Box2D_v2.2.1" />
-			<Add directory="F:\Developpement\tinyxml" />
+			<Add directory="F:/Developpement/Travaux/Prog/SGE/include" />
+			<Add directory="F:/Developpement/SFML_git/include" />
+			<Add directory="F:/Developpement/Box2D_v2.2.1/Box2D" />
+			<Add directory="F:/Developpement/Box2D_v2.2.1" />
+			<Add directory="F:/Developpement/tinyxml" />
 		</Compiler>
 		<Linker>
-			<Add directory="F:\Developpement\SFML_git\lib" />
-			<Add directory="F:\Developpement\Box2D_v2.2.1\lib" />
-			<Add directory="F:\Developpement\tinyxml\lib" />
+			<Add directory="F:/Developpement/SFML_git/lib" />
+			<Add directory="F:/Developpement/Box2D_v2.2.1/lib" />
+			<Add directory="F:/Developpement/tinyxml/lib" />
 		</Linker>
-		<Unit filename="..\..\include\Animations\AnimatedSprite.hpp" />
-		<Unit filename="..\..\include\Constants.hpp" />
-		<Unit filename="..\..\include\Core\DebugNew.hpp" />
-		<Unit filename="..\..\include\Core\DebugNewOff.hpp" />
-		<Unit filename="..\..\include\Core\File.hpp" />
-		<Unit filename="..\..\include\Core\MemoryManager.hpp" />
-		<Unit filename="..\..\include\Core\Position.hpp" />
-		<Unit filename="..\..\include\Core\Singleton.hpp" />
-		<Unit filename="..\..\include\Core\StopWatch.hpp" />
-		<Unit filename="..\..\include\Core\Thread.hpp" />
-		<Unit filename="..\..\include\Core\Timer.hpp" />
-		<Unit filename="..\..\include\Elements\Animatable.hpp" />
-		<Unit filename="..\..\include\Elements\Area.hpp" />
-		<Unit filename="..\..\include\Elements\Decor.hpp" />
-		<Unit filename="..\..\include\Elements\Drawable.hpp" />
-		<Unit filename="..\..\include\Elements\DynamicObject.hpp" />
-		<Unit filename="..\..\include\Elements\Element.hpp" />
-		<Unit filename="..\..\include\Elements\Physical.hpp" />
-		<Unit filename="..\..\include\Elements\Playable.hpp" />
-		<Unit filename="..\..\include\Elements\StaticObject.hpp" />
-		<Unit filename="..\..\include\Engines.hpp" />
-		<Unit filename="..\..\include\Engines\AudioEngine.hpp" />
-		<Unit filename="..\..\include\Engines\Engine.hpp" />
-		<Unit filename="..\..\include\Engines\EngineEvent.hpp" />
-		<Unit filename="..\..\include\Engines\GraphicEngine.hpp" />
-		<Unit filename="..\..\include\Engines\IGraphicEngine.hpp" />
-		<Unit filename="..\..\include\Engines\NetworkEngine.hpp" />
-		<Unit filename="..\..\include\Engines\PhysicEngine.hpp" />
-		<Unit filename="..\..\include\Engines\WindowEngine.hpp" />
-		<Unit filename="..\..\include\Frame\Frame.hpp" />
-		<Unit filename="..\..\include\Frame\FrameManager.hpp" />
-		<Unit filename="..\..\include\Frame\GameFrame.hpp" />
-		<Unit filename="..\..\include\Level.hpp" />
-		<Unit filename="..\..\include\Loaders\ImageXmlLoader.hpp" />
-		<Unit filename="..\..\include\Loaders\LevelLoader.hpp" />
-		<Unit filename="..\..\include\Loaders\MusicXmlLoader.hpp" />
-		<Unit filename="..\..\include\Loaders\ObjectXmlLoader.hpp" />
-		<Unit filename="..\..\include\Loaders\SoundXmlLoader.hpp" />
-		<Unit filename="..\..\include\Managers\Manager.hpp" />
-		<Unit filename="..\..\include\Managers\Settings.hpp" />
-		<Unit filename="..\..\include\Network\NetworkMachine.hpp" />
-		<Unit filename="..\..\include\Resources.hpp" />
-		<Unit filename="..\..\include\Resources\AudioResource.hpp" />
-		<Unit filename="..\..\include\Resources\GraphicResource.hpp" />
-		<Unit filename="..\..\include\Resources\Resource.hpp" />
-		<Unit filename="..\..\include\Resources\Resource.inl" />
-		<Unit filename="..\..\include\Resources\ResourceManager.hpp" />
-		<Unit filename="..\..\include\Resources\ResourceManager.inl" />
-		<Unit filename="..\..\include\Resources\ResourceSettings.hpp" />
-		<Unit filename="..\..\include\Tools\BezierCurve.hpp" />
-		<Unit filename="..\..\include\Tools\Log.hpp" />
-		<Unit filename="..\..\include\Tools\Log.inl" />
-		<Unit filename="..\..\include\Tools\Randomizer.hpp" />
-		<Unit filename="..\..\include\Views\AnimatedView.hpp" />
-		<Unit filename="..\..\include\Views\AnimatedViewStep.hpp" />
-		<Unit filename="..\..\include\Views\DrunkerView.hpp" />
-		<Unit filename="..\..\include\Views\TransitionTiming.hpp" />
-		<Unit filename="..\..\include\Views\View.hpp" />
-		<Unit filename="..\..\include\core\Singleton.inl" />
-		<Unit filename="..\..\include\network\Client.hpp" />
-		<Unit filename="..\..\include\network\Server.hpp" />
-		<Unit filename="..\..\include\tools\Log.inl" />
-		<Unit filename="..\..\src\Animation\AnimatedSprite.cpp" />
-		<Unit filename="..\..\src\Core\StopWatch.cpp" />
-		<Unit filename="..\..\src\Core\Timer.cpp" />
-		<Unit filename="..\..\src\Elements\Animatable.cpp" />
-		<Unit filename="..\..\src\Elements\Area.cpp" />
-		<Unit filename="..\..\src\Elements\Decor.cpp" />
-		<Unit filename="..\..\src\Elements\Drawable.cpp" />
-		<Unit filename="..\..\src\Elements\DynamicObject.cpp" />
-		<Unit filename="..\..\src\Elements\Physical.cpp" />
-		<Unit filename="..\..\src\Elements\Playable.cpp" />
-		<Unit filename="..\..\src\Elements\StaticObject.cpp" />
-		<Unit filename="..\..\src\Engines\AudioEngine.cpp" />
-		<Unit filename="..\..\src\Engines\Engine.cpp" />
-		<Unit filename="..\..\src\Engines\GraphicEngine.cpp" />
-		<Unit filename="..\..\src\Engines\NetworkEngine.cpp" />
-		<Unit filename="..\..\src\Engines\PhysicEngine.cpp" />
-		<Unit filename="..\..\src\Engines\WindowEngine.cpp" />
-		<Unit filename="..\..\src\Frame\Frame.cpp" />
-		<Unit filename="..\..\src\Frame\FrameManager.cpp" />
-		<Unit filename="..\..\src\Frame\GameFrame.cpp" />
-		<Unit filename="..\..\src\Level.cpp" />
-		<Unit filename="..\..\src\Loaders\ImageXmlLoader.cpp" />
-		<Unit filename="..\..\src\Loaders\LevelLoader.cpp" />
-		<Unit filename="..\..\src\Loaders\MusicXmlLoader.cpp" />
-		<Unit filename="..\..\src\Loaders\ObjectXmlLoader.cpp" />
-		<Unit filename="..\..\src\Loaders\SoundXmlLoader.cpp" />
-		<Unit filename="..\..\src\Managers\Settings.cpp" />
-		<Unit filename="..\..\src\Network\Client.cpp" />
-		<Unit filename="..\..\src\Network\Server.cpp" />
-		<Unit filename="..\..\src\Tools\BezierCurve.cpp" />
-		<Unit filename="..\..\src\Tools\Log.cpp" />
-		<Unit filename="..\..\src\Tools\Randomizer.cpp" />
-		<Unit filename="..\..\src\Views\AnimatedView.cpp" />
-		<Unit filename="..\..\src\Views\AnimatedViewStep.cpp" />
-		<Unit filename="..\..\src\Views\DrunkerView.cpp" />
-		<Unit filename="..\..\src\Views\TransitionTiming.cpp" />
-		<Unit filename="..\..\src\Views\View.cpp" />
-		<Unit filename="..\..\src\core\File.cpp" />
-		<Unit filename="..\..\src\core\MemoryManager.cpp" />
-		<Unit filename="..\..\src\main.cpp" />
+		<Unit filename="../../include/Animations/AnimatedSprite.hpp" />
+		<Unit filename="../../include/Constants.hpp" />
+		<Unit filename="../../include/Core/DebugNew.hpp" />
+		<Unit filename="../../include/Core/DebugNewOff.hpp" />
+		<Unit filename="../../include/Core/File.hpp" />
+		<Unit filename="../../include/Core/MemoryManager.hpp" />
+		<Unit filename="../../include/Core/Position.hpp" />
+		<Unit filename="../../include/Core/Singleton.hpp" />
+		<Unit filename="../../include/Core/Singleton.inl" />
+		<Unit filename="../../include/Core/StopWatch.hpp" />
+		<Unit filename="../../include/Core/Thread.hpp" />
+		<Unit filename="../../include/Core/Timer.hpp" />
+		<Unit filename="../../include/Elements/Animatable.hpp" />
+		<Unit filename="../../include/Elements/Area.hpp" />
+		<Unit filename="../../include/Elements/Decor.hpp" />
+		<Unit filename="../../include/Elements/Drawable.hpp" />
+		<Unit filename="../../include/Elements/DynamicObject.hpp" />
+		<Unit filename="../../include/Elements/Element.hpp" />
+		<Unit filename="../../include/Elements/Physical.hpp" />
+		<Unit filename="../../include/Elements/Playable.hpp" />
+		<Unit filename="../../include/Elements/StaticObject.hpp" />
+		<Unit filename="../../include/Engines.hpp" />
+		<Unit filename="../../include/Engines/AudioEngine.hpp" />
+		<Unit filename="../../include/Engines/Engine.hpp" />
+		<Unit filename="../../include/Engines/EngineEvent.hpp" />
+		<Unit filename="../../include/Engines/GraphicEngine.hpp" />
+		<Unit filename="../../include/Engines/IGraphicEngine.hpp" />
+		<Unit filename="../../include/Engines/NetworkEngine.hpp" />
+		<Unit filename="../../include/Engines/PhysicEngine.hpp" />
+		<Unit filename="../../include/Engines/WindowEngine.hpp" />
+		<Unit filename="../../include/Frame/Frame.hpp" />
+		<Unit filename="../../include/Frame/FrameManager.hpp" />
+		<Unit filename="../../include/Frame/GameFrame.hpp" />
+		<Unit filename="../../include/Level.hpp" />
+		<Unit filename="../../include/Loaders/ImageXmlLoader.hpp" />
+		<Unit filename="../../include/Loaders/LevelLoader.hpp" />
+		<Unit filename="../../include/Loaders/MusicXmlLoader.hpp" />
+		<Unit filename="../../include/Loaders/ObjectXmlLoader.hpp" />
+		<Unit filename="../../include/Loaders/SoundXmlLoader.hpp" />
+		<Unit filename="../../include/Managers/Manager.hpp" />
+		<Unit filename="../../include/Managers/Settings.hpp" />
+		<Unit filename="../../include/Network/Client.hpp" />
+		<Unit filename="../../include/Network/NetworkMachine.hpp" />
+		<Unit filename="../../include/Network/Server.hpp" />
+		<Unit filename="../../include/Resources.hpp" />
+		<Unit filename="../../include/Resources/AudioResource.hpp" />
+		<Unit filename="../../include/Resources/GraphicResource.hpp" />
+		<Unit filename="../../include/Resources/Resource.hpp" />
+		<Unit filename="../../include/Resources/Resource.inl" />
+		<Unit filename="../../include/Resources/ResourceManager.hpp" />
+		<Unit filename="../../include/Resources/ResourceManager.inl" />
+		<Unit filename="../../include/Resources/ResourceSettings.hpp" />
+		<Unit filename="../../include/Tools/BezierCurve.hpp" />
+		<Unit filename="../../include/Tools/BezierCurveUtil.hpp" />
+		<Unit filename="../../include/Tools/CurveFactory.hpp" />
+		<Unit filename="../../include/Tools/Log.hpp" />
+		<Unit filename="../../include/Tools/Log.inl" />
+		<Unit filename="../../include/Tools/Randomizer.hpp" />
+		<Unit filename="../../include/Views/AnimatedView.hpp" />
+		<Unit filename="../../include/Views/AnimatedViewStep.hpp" />
+		<Unit filename="../../include/Views/DrunkerView.hpp" />
+		<Unit filename="../../include/Views/TransitionTiming.hpp" />
+		<Unit filename="../../include/Views/View.hpp" />
+		<Unit filename="../../src/Animation/AnimatedSprite.cpp" />
+		<Unit filename="../../src/Core/File.cpp" />
+		<Unit filename="../../src/Core/MemoryManager.cpp" />
+		<Unit filename="../../src/Core/StopWatch.cpp" />
+		<Unit filename="../../src/Core/Timer.cpp" />
+		<Unit filename="../../src/CurveFactory.cpp" />
+		<Unit filename="../../src/Elements/Animatable.cpp" />
+		<Unit filename="../../src/Elements/Area.cpp" />
+		<Unit filename="../../src/Elements/Decor.cpp" />
+		<Unit filename="../../src/Elements/Drawable.cpp" />
+		<Unit filename="../../src/Elements/DynamicObject.cpp" />
+		<Unit filename="../../src/Elements/Physical.cpp" />
+		<Unit filename="../../src/Elements/Playable.cpp" />
+		<Unit filename="../../src/Elements/StaticObject.cpp" />
+		<Unit filename="../../src/Engines/AudioEngine.cpp" />
+		<Unit filename="../../src/Engines/Engine.cpp" />
+		<Unit filename="../../src/Engines/GraphicEngine.cpp" />
+		<Unit filename="../../src/Engines/NetworkEngine.cpp" />
+		<Unit filename="../../src/Engines/PhysicEngine.cpp" />
+		<Unit filename="../../src/Engines/WindowEngine.cpp" />
+		<Unit filename="../../src/Frame/Frame.cpp" />
+		<Unit filename="../../src/Frame/FrameManager.cpp" />
+		<Unit filename="../../src/Frame/GameFrame.cpp" />
+		<Unit filename="../../src/Level.cpp" />
+		<Unit filename="../../src/Loaders/ImageXmlLoader.cpp" />
+		<Unit filename="../../src/Loaders/LevelLoader.cpp" />
+		<Unit filename="../../src/Loaders/MusicXmlLoader.cpp" />
+		<Unit filename="../../src/Loaders/ObjectXmlLoader.cpp" />
+		<Unit filename="../../src/Loaders/SoundXmlLoader.cpp" />
+		<Unit filename="../../src/Managers/Settings.cpp" />
+		<Unit filename="../../src/Network/Client.cpp" />
+		<Unit filename="../../src/Network/Server.cpp" />
+		<Unit filename="../../src/Tools/BezierCurve.cpp" />
+		<Unit filename="../../src/Tools/BezierCurveUtil.cpp" />
+		<Unit filename="../../src/Tools/Log.cpp" />
+		<Unit filename="../../src/Tools/Randomizer.cpp" />
+		<Unit filename="../../src/Views/AnimatedView.cpp" />
+		<Unit filename="../../src/Views/AnimatedViewStep.cpp" />
+		<Unit filename="../../src/Views/DrunkerView.cpp" />
+		<Unit filename="../../src/Views/TransitionTiming.cpp" />
+		<Unit filename="../../src/Views/View.cpp" />
+		<Unit filename="../../src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

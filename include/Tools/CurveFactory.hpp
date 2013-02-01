@@ -26,27 +26,40 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#ifndef BEZIER_CURVE_HPP
-#define BEZIER_CURVE_HPP
+#ifndef CURVE_FACTORY_HPP
+#define CURVE_FACTORY_HPP
 
-#include <queue>
+#include <SFML/System/Vector2.hpp>
+
 #include <vector>
-#include <SFML/Graphics/Sprite.hpp>
 
 namespace sg
 {
-    class BezierCurve
+    class BezierCurve;
+    class CurveFactory
     {
         public:
             /** Default constructor */
-            BezierCurve(std::vector<sf::Vector2f> bezierPoints);
+            CurveFactory();
             /** Default destructor */
-            virtual ~BezierCurve();
+            virtual ~CurveFactory();
+
+            sg::BezierCurve* createCurve(const std::vector<sf::Vector2f> points);
+
+            sg::BezierCurve* createLinearCurve();
+
+            sg::BezierCurve* createEaseInCurve();
+
+            sg::BezierCurve* createEaseOutCurve();
+
+            sg::BezierCurve* createEaseInEaseOutCurve();
+
+            void clear();
+
 
         protected:
         private:
-            std::vector<sf::Vector2f> m_bezierPoints; //!< Points which define the bezier curve
-            std::queue<sf::Vector2f>  m_curvePoints;  //!< Points which compose an approximation of the curve
+            std::vector<sg::BezierCurve*> m_vCurve; //!< All the curves created by the factory
     };
-}
-#endif // BEZIER_CURVE_HPP
+} // namespace
+#endif // CURVE_FACTORY_HPP

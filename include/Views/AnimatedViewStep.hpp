@@ -34,9 +34,7 @@
 
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/Time.hpp>
-
-#include "Tools/BezierCurve.hpp"
-
+#include <SFML/System/Vector2.hpp>
 
 /**
   \author Xavier

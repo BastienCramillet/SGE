@@ -39,6 +39,9 @@
 
 #include "Views/TransitionTiming.hpp"
 
+
+#include "Tools/BezierCurveUtil.hpp"
+
 namespace sg {
 
 
@@ -122,7 +125,7 @@ namespace sg {
         }
         l.push_back(sf::Vector2f(1.f, 1.f));
 
-        m_computedPoints = BezierCurve::computeBezierCurve(l, m_animationPointCount);
+        m_computedPoints = BezierCurveUtil::computeBezierCurve(l, m_animationPointCount);
     }
 
 }

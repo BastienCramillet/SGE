@@ -26,24 +26,38 @@
 *-----------------------------------------------------------------------------*/
 
 /*!
-*   \file BezierCurve.cpp
+*   \file
 *   \version 0.1
 *   \author Bastien (Bigz) Cramillet
 */
 
+#include <Tools/CurveFactory.hpp>
 #include <Tools/BezierCurve.hpp>
-#include <Tools/BezierCurveUtil.hpp>
 
 namespace sg
 {
-    BezierCurve::BezierCurve(std::vector<sf::Vector2f> bezierPoints)
+    CurveFactory::CurveFactory()
     {
-        m_bezierPoints = bezierPoints;
-        m_curvePoints = BezierCurveUtil::computeBezierCurve(m_bezierPoints, 100.f);
+
     }
 
-    BezierCurve::~BezierCurve()
+    CurveFactory::~CurveFactory()
     {
         //dtor
+    }
+
+
+
+    void CurveFactory::clear()
+    {
+        if (!m_vCurve.empty())
+        {
+            int size = m_vCurve.size();
+            for (int i = 0; i < size; ++i)
+            {
+                delete m_vCurve[i];
+                m_vCurve[i] = 0;
+            }
+        }
     }
 }
