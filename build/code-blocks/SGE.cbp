@@ -152,6 +152,9 @@
 			<Add directory="F:/Developpement/tinyxml/lib" />
 		</Linker>
 		<Unit filename="../../include/Animations/AnimatedSprite.hpp" />
+		<Unit filename="../../include/Animations/Bone.hpp" />
+		<Unit filename="../../include/Animations/Node.hpp" />
+		<Unit filename="../../include/Animations/Skeleton.hpp" />
 		<Unit filename="../../include/Constants.hpp" />
 		<Unit filename="../../include/Core/DebugNew.hpp" />
 		<Unit filename="../../include/Core/DebugNewOff.hpp" />
@@ -209,12 +212,16 @@
 		<Unit filename="../../include/Tools/Log.hpp" />
 		<Unit filename="../../include/Tools/Log.inl" />
 		<Unit filename="../../include/Tools/Randomizer.hpp" />
+		<Unit filename="../../include/Tools/TrigoUtil.hpp" />
 		<Unit filename="../../include/Views/AnimatedView.hpp" />
 		<Unit filename="../../include/Views/AnimatedViewStep.hpp" />
 		<Unit filename="../../include/Views/DrunkerView.hpp" />
 		<Unit filename="../../include/Views/TransitionTiming.hpp" />
 		<Unit filename="../../include/Views/View.hpp" />
 		<Unit filename="../../src/Animation/AnimatedSprite.cpp" />
+		<Unit filename="../../src/Animation/Bone.cpp" />
+		<Unit filename="../../src/Animation/Node.cpp" />
+		<Unit filename="../../src/Animation/Skeleton.cpp" />
 		<Unit filename="../../src/Core/File.cpp" />
 		<Unit filename="../../src/Core/MemoryManager.cpp" />
 		<Unit filename="../../src/Core/StopWatch.cpp" />
@@ -250,6 +257,7 @@
 		<Unit filename="../../src/Tools/BezierCurveUtil.cpp" />
 		<Unit filename="../../src/Tools/Log.cpp" />
 		<Unit filename="../../src/Tools/Randomizer.cpp" />
+		<Unit filename="../../src/Tools/TrigoUtil.cpp" />
 		<Unit filename="../../src/Views/AnimatedView.cpp" />
 		<Unit filename="../../src/Views/AnimatedViewStep.cpp" />
 		<Unit filename="../../src/Views/DrunkerView.cpp" />
